@@ -12,6 +12,7 @@ import { toast } from 'react-toastify';
 import { formatTime } from '../../utils';
 import { LoadingIcon } from 'assets/svgs';
 import { useTranslation } from 'react-i18next';
+import rightimg from "../../assets/images/123.png"
 
 export default function Auth() {
   const {t}=useTranslation()
@@ -122,31 +123,7 @@ export default function Auth() {
         toast.error(error?.response?.data?.message || 'Xatolik bor!');
       });
   };
-  // const onUpdate = (data) => {
-  //   const token = Cookies.get('token');
-  //   axios
-  //     .put(
-  //       'https://api.frossh.uz/api/user/update',
-  //       {
-  //         last_name: data.lastName,
-  //         first_name: data.firstName
-  //       },
-  //       {
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //           Accept: 'application/json',
-  //           Authorization: `Bearer ${token}`
-  //         }
-  //       }
-  //     )
-  //     .then((response) => {
-  //       console.log(response?.data);
-  //     })
 
-  //     .catch((error) => {
-  //       console.log(error?.response?.data);
-  //     });
-  // };
   const onRegister = (data) => {
     if (data.year && data.month && data.day) {
       data.date = `${data.year}-${data.month}-${data.day}`;
@@ -189,31 +166,7 @@ export default function Auth() {
 
   const onSubmit = (values) => request[step](values);
 
-  // const handleLogout = () => {
-  //   const token = Cookies.get('token');
-  //   console.log(token);
-  //   axios
-  //     .post(
-  //       'https://api.frossh.uz/api/auth/logout',
-  //       {},
-  //       {
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //           Accept: 'application/json',
-  //           Authorization: `Bearer ${token}`
-  //         }
-  //       }
-  //     )
-  //     .then((response) => {
-  //       console.log(response?.data);
-  //     })
 
-  //     .catch((error) => {
-  //       console.log(error?.response?.data);
-  //     });
-  //   Cookies.remove('token');
-  //   reset();
-  // };
 
   const months = [
     {
@@ -283,7 +236,7 @@ export default function Auth() {
       <div className="register-card">
         <div className="reg-card-left">
           <p>{step === 'login' ? 'Hisobga kirish' : 'Ro’yxatdan o’tish'}</p>
-          <img src={regleft} alt="images-left" />
+          <img src={rightimg} alt="images-left" />
         </div>
         
         <form onSubmit={handleSubmit(onSubmit)} className="reg-card-register">
