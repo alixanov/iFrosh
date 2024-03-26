@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* global style for all elements */
+
+:root {
+  --success: #2ecc71;
+  --error: #e74c3c;
+  --warn: #f39c12;
+  --info: #73af00;
+  --primary: #0085af;
+  --secondary: #5d6661;
+  --black: #363636;
+  --light: #e7e7e7;
+  --light-2: #f2f2f2;
+  --dimmed: #b7c9b3;
+  --primary-2: #3498db;
+  --loader-color: var(--primary);
+  --swiper-pagination-color: #fff;
+  --swiper-pagination-bullet-inactive-color: #e4e4e4;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  outline: none;
+}
+
+/* container sizes */
+
+.container {
+  max-width: 1920px;
+  padding: 0 120px;
+  margin: 0 auto;
+}
+
+body {
+  font-family: Poppins;
+  line-height: 1;
+  font-size: 100%;
+}
+
+/* reset styles */
+select,
+label,
+button {
+  cursor: pointer;
+  border: none;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-family: Poppins;
+}
+textarea,
+input {
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  font-family: Poppins;
+  text-transform: inherit;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+a {
+  color: inherit;
+  font-size: inherit;
+}
+
+/* app-container style */
+
+.app-container {
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* pagination */
+
+.paginations {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin: 56px 0px;
+  width: 100%;
+}
+
+.paginations button {
+  border-radius: 11px;
+  background: var(--swiper-pagination-bullet-inactive-color);
+  box-shadow: 0px 2px 3.8px 0px rgba(0, 0, 0, 0.25);
+  color: var(--secondary);
+  font-size: 22.65px;
+  font-weight: 400;
+  width: 45px;
+  height: 45px;
+  border: 1px solid var(--swiper-pagination-bullet-inactive-color);
+  transition: 300ms ease;
+}
+
+.paginations button.active {
+  border-radius: 11px;
+  border-color: var(--primary-2);
+  background: var(--light-2);
+  translate: 0px -3px;
+}
+
+/* loader animation */
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid var(--loader-color);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/********* RESPONSIVE **********/
+
+@media (max-width: 1800px) {
+  .container {
+    padding: 0 140px;
+  }
+}
+@media (max-width: 1680px) {
+  .container {
+    padding: 0 100px;
+  }
+  h2.title {
+    font-size: 46px;
+  }
+}
+@media (max-width: 1250px) {
+  .container {
+    padding: 0 80px;
+  }
+  h2.title {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .container {
+    padding: 0 60px;
+  }
+  h2.title {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 780px) {
+  .container {
+    padding: 0 30px;
+  }
+}
+@media (max-width: 470px) {
+  .container {
+    padding: 0 22px;
+  }
+  .paginations button {
+    font-size: 18px;
+    width: 35px;
+    height: 35px;
+  }
+}

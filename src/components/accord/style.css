@@ -1,0 +1,29 @@
+.accordion-header {
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+  /* Frame 9 */
+  width: 155px;
+  height: 49px;
+  box-sizing: border-box;
+  border: 1px solid rgba(93, 102, 97, 0.5);
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+  margin: 0 auto;
+  color: rgb(93, 102, 97);
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.accordion-container .accordion-content {
+  overflow: hidden;
+  transition: height 0.3s ease-out;
+  margin: 10px 0;
+}

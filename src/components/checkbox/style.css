@@ -1,0 +1,50 @@
+.custome-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.custome-checkbox input {
+  width: 44px;
+  height: 44px;
+}
+.custome-checkbox .checked {
+  display: none;
+}
+.custome-checkbox:has(input:checked) .checked {
+  display: block;
+}
+.custome-checkbox p {
+  color: #5d6661;
+  font-size: 36.65px;
+  font-weight: 400;
+}
+
+@media (max-width: 1500px) {
+  h3.h3 {
+    font-size: 28px;
+  }
+  .custome-checkbox p {
+    font-size: 25px;
+  }
+  .custome-checkbox svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+@media (max-width: 500px) {
+  h3.h3 {
+    font-size: 24px;
+  }
+  .custome-checkbox p {
+    font-size: 24px;
+  }
+}
+  button.sender-btn {
+    width: 65%;
+    font-size: 26px;
+  }
+  button.sender-btn svg{
+    width: 22px;
+    height: 22px;
+  }

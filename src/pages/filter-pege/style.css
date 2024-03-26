@@ -1,0 +1,114 @@
+.filterpage {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #fff;
+  padding: 55px 0;
+  gap: 50px;
+  align-items: stretch;
+}
+.filterpage:has(.form) {
+  padding-bottom: 0px;
+}
+
+.f-right {
+  display: block;
+  padding-top: 0;
+}
+.f-left:has(.custome-select) .custome-select {
+  width: 100%;
+}
+.f-right:has(.cards-container) .cards-container {
+  row-gap: 70px;
+  column-gap: 20px;
+  height: 100%;
+  align-items: flex-start;
+}
+.not-found {
+  font-size: 30px;
+  font-weight: 600;
+  font-family: Poppins;
+  color: red;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 20px;
+}
+.fs-100 .custome-checkbox p {
+  font-size: 120%;
+}
+.grid-filter {
+  margin: 50px 0px;
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: 20% calc(80% - 60px);
+}
+.not-found svg {
+  width: 50px;
+  height: 50px;
+}
+.accordion-header.header-acc {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+  padding: 10px;
+  font-size: 23px;
+}
+.accordion-header.header-acc p {
+  font-size: 18px;
+}
+.accordion-header.header-acc svg {
+  rotate: 180deg;
+}
+.open .accordion-header.header-acc svg {
+  rotate: 0deg;
+}
+.filterpage .custome-checkbox p {
+  font-size: 23.65px;
+}
+.new-card-style > div {
+  width: calc(25% - 40px);
+}
+.range-slider {
+  color: white;
+  width: 317px;
+  font-size: 50px;
+}
+.input-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 16px;
+  padding-top: 10px;
+}
+.input-progress > p,
+#v {
+  color: rgb(93, 102, 97);
+  font-family: Poppins;
+  font-size: 22.65px;
+  font-weight: 400;
+  line-height: 34px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.input-size {
+  display: flex;
+  align-items: flex-start;
+  gap: 83px;
+}
+.input-progress > .input-size > input {
+  border: 1px solid black;
+  width: 122px;
+  height: 49px;
+  box-sizing: border-box;
+  border: 1px solid rgba(93, 102, 97, 0.5);
+  border-radius: 11px;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+  background: rgb(253, 253, 253);
+  padding-left: 10px;
+  margin-bottom: 20px;
+}

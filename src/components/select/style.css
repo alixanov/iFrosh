@@ -1,0 +1,96 @@
+.custome-select {
+  width: 300px;
+  position: relative;
+  color: #5d6661;
+  font-size: 22.65px;
+  font-weight: 400;
+  line-height: 34px;
+}
+.custome-select.opened .menu-header {
+  z-index: 3;
+}
+.custome-select.opened .menu-header svg {
+  rotate: 0deg;
+}
+.custome-select.opened .options {
+  scale: 1;
+  pointer-events: all;
+  opacity: 1;
+  transition: 100ms ease;
+}
+@scope (.custome-select) {
+  .relative {
+    position: relative;
+  }
+  .menu-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 13px;
+    border: 1px solid #5d6661;
+    background: #fbfbfb;
+    padding: 8px 12px;
+    position: relative;
+  }
+  .menu-header svg {
+    rotate: 180deg;
+    transition: 300ms ease;
+  }
+  .options {
+    opacity: 0;
+    scale: 0.7;
+    pointer-events: none;
+    z-index: 2;
+    position: absolute;
+    top: calc(100% - 25px);
+    left: 0px;
+    width: 100%;
+    border-radius: 13px;
+    border: 1px solid #5d6661;
+    background: #f9fdf7;
+    box-shadow: 0px 3px 10.5px 0px rgba(0, 0, 0, 0.25);
+    transform-origin: top right;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  .options .option {
+    padding: 4px 11px;
+    border-bottom: 1px solid #5d6661;
+    margin-top: 0;
+    cursor: pointer;
+    display: table;
+    width: 100%;
+  }
+  .options .option:first-child {
+    padding-top: 35px;
+  }
+  .options .option:last-child {
+    border-bottom: none;
+  }
+}
+@scope (.error) {
+  .menu-header {
+    border-color: red;
+    color: red;
+  }
+  svg {
+    stroke: red;
+  }
+  svg path {
+    fill: red;
+  }
+}
+
+/******* RESPONSIVE ********/
+
+@media (max-width: 400px) {
+  .custome-select {
+    width: 100%;
+    font-size: 18px;
+  }
+  .custome-select svg {
+    width: 25px;
+    height: 18px;
+  }
+}

@@ -1,0 +1,222 @@
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 6;
+  background: #e7e7e7;
+  box-shadow: 0px 4px 11.8px 0px rgba(0, 0, 0, 0.25);
+  transition: 300ms ease;
+  padding: 7px 0px;
+}
+@scope (.main-header) {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .h-left {
+    display: flex;
+    align-items: center;
+    gap: 269px;
+  }
+  .h-left :nth-child(1) {
+    color: #5d6661;
+    font-size: 22.65px;
+    font-weight: 400;
+  }
+  .h-left :nth-child(2) {
+    color: #5d6661;
+    font-size: 22.65px;
+    font-weight: 400;
+  }
+
+  .h-right {
+    display: flex;
+    gap: 24px;
+  }
+
+  .h-right :nth-child(2) {
+    border: none;
+    color: #5d6661;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .h-right :nth-child(3) {
+    color: #5d6661;
+    font-size: 22.65px;
+    font-weight: 400;
+    border: none;
+  }
+
+  .h-right > a {
+    width: 225px;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    background: #0085af;
+    box-shadow: 0px 0px 11.8px 0px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    font-size: 22.65px;
+    font-weight: 400;
+  }
+  select {
+    background: none;
+  }
+}
+
+/********* RESPONSIVE **********/
+
+@media (max-width: 1380px) {
+  @scope (.main-header) {
+    .h-left {
+      justify-content: space-between;
+      gap: 150px;
+    }
+
+    .h-left :nth-child(2) {
+      font-size: 20px;
+    }
+  }
+}
+@media (max-width: 1220px) {
+  @scope (.main-header) {
+    .h-left {
+      width: 50%;
+      justify-content: space-between;
+      gap: 0;
+      padding-right: 5%;
+    }
+    .h-left :nth-child(2) {
+      font-size: 18px;
+    }
+  }
+}
+@media (max-width: 1120px) {
+    .h-right a {
+      width: 150px !important;
+      height: 42px !important;
+      font-size: 16px !important;
+    }
+    a#usd{
+      font-size: 15px;
+    }
+      .h-right :nth-child(3) {
+      font-size: 16px !important;
+    }
+}
+@media (max-width: 900px) {
+  @scope (.main-header) {
+    .h-right > a {
+      width: 180px;
+      height: 42px;
+      font-size: 18px;
+    }
+    .h-right :nth-child(3),
+    a#usd{
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  @scope (.main-header) {
+    .h-left :nth-child(2) {
+      font-size: 14px;
+    }
+  }
+}
+@media (max-width: 700px) {
+  @scope (.main-header) {
+    .h-left :nth-child(2) {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 610px) {
+  .h-right a{
+    width: 130px !important;
+    font-size: 14px !important;
+  }
+  div.h-left{
+    width: auto;
+  }
+}
+@media (max-width: 530px) {
+  @scope (.main-header) {
+    .h-right {
+      gap: 15px;
+      align-items: center;
+    }
+    .h-right :nth-child(1) {
+      width: 40px;
+      height: 40px;
+    }
+    .h-right :nth-child(1){
+     width: 30px;
+     height: 30px;
+    }
+  }
+}
+@media (max-width: 515px) {
+    .h-right  a {
+      width: 110px !important;
+      height: 30px !important;
+      font-size: 12px !important;
+    }
+}
+
+@media (max-width: 470px) {
+  .h-right a{
+  width: 100px !important;
+font-size: 10px !important;
+    padding: 10px !important;
+    text-align: center;
+  }
+}
+@media (max-width: 440px) {
+  @scope (.main-header) {
+    .h-left {
+      gap: 0;
+    }
+    .h-right {
+      gap: 3px;
+    }
+    .h-right > a {
+      width: 80px !important;
+      font-size: 8px !important;
+    }
+  }
+}
+@media (max-width: 400px) {
+  @scope (.main-header) {
+    .h-left {
+      width: auto !important;
+      padding: 0;
+    }
+    .h-left a {
+      font-size: 20px !important;
+    }
+    .h-right :nth-child(1) {
+      width: 35px;
+    }
+     {
+      width: 100px;
+      height: 36px;
+      font-size: 12px;
+    }
+    .h-right :nth-child(3) {
+      font-size: 14px;
+      margin: 0px 3px;
+    }
+  }
+}
+@media (max-width: 350px) {
+  .h-left :nth-child(1) {
+    font-size: 16px !important;
+  }
+  .h-right a{
+    width: 70px !important;
+  }
+}

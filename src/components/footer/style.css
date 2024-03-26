@@ -1,0 +1,209 @@
+footer {
+  background: #363636;
+  padding: 84px 0px;
+}
+
+footer .container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.f-about,
+.f-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.f-about p,
+.f-contact p,
+.f-networks p {
+  color: #fff;
+  font-family: Poppins;
+  font-size: 36.65px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-bottom: 47px;
+}
+.f-about a,
+.f-contact a {
+  color: #fff;
+  font-family: Poppins;
+  font-size: 22.65px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 17px;
+}
+.social {
+  display: flex;
+  align-items: center;
+  gap: 98px;
+}
+.app-download {
+  display: flex;
+  align-items: center;
+  gap: 55px;
+  margin-top: 40px;
+}
+.app-download img {
+  width: 250px;
+  height: 75px;
+  object-fit: contain;
+}
+
+/********* RESPONSIVE **********/
+
+@media (min-width: 851px) and (max-width: 1600px) {
+  .f-about p,
+  .f-contact p,
+  .f-networks p {
+    font-size: 30px;
+  }
+  .f-contact a:last-child {
+    width: 290px;
+    line-height: 2;
+  }
+  .social {
+    gap: 40px;
+  }
+  .app-download {
+    justify-content: space-between;
+    gap: 0;
+    margin-top: 55px;
+  }
+  .app-download img {
+    width: 200px;
+  }
+}
+@media (min-width: 851px) and (max-width: 1250px) {
+  .f-about p,
+  .f-contact p,
+  .f-networks p {
+    font-size: 26px;
+    padding-bottom: 25px;
+  }
+
+  .f-about a,
+  .f-contact a {
+    font-size: 16px;
+  }
+
+  .social svg {
+    width: 50px;
+    height: 50px;
+  }
+  .app-download {
+    justify-content: space-between;
+    gap: 0;
+    margin-top: 30px;
+  }
+  .app-download img {
+    width: 180px;
+  }
+}
+@media (min-width: 851px) and (max-width: 1000px) {
+  .f-about a,
+  .f-contact a {
+    margin-top: 24px;
+    font-size: 18px;
+  }
+  .f-networks p {
+    width: 200px;
+  }
+  .social svg {
+    width: 30px;
+    height: 30px;
+  }
+  .app-download {
+    flex-direction: column;
+    align-items: start;
+  }
+  .f-contact a:last-child {
+    width: 240px;
+    line-height: 2.5;
+  }
+}
+@media (max-width: 850px) {
+  footer .container {
+    flex-wrap: wrap;
+    row-gap: 60px;
+  }
+  .f-contact {
+    width: 50%;
+  }
+  .f-contact a:last-child {
+    line-height: 2;
+  }
+  .f-about p,
+  .f-contact p,
+  .f-networks p {
+    padding-bottom: 20px;
+  }
+  .social {
+    margin-top: 20px;
+  }
+}
+@media (max-width: 700px) {
+  .f-about p,
+  .f-contact p,
+  .f-networks p {
+    padding-bottom: 20px;
+    font-size: 28px;
+  }
+  .f-about a,
+  .f-contact a {
+    font-size: 16px;
+  }
+  .social {
+    gap: 40px;
+  }
+  .social svg {
+    width: 55px;
+    height: 55px;
+  }
+}
+@media (max-width: 650px) {
+  .app-download img {
+    width: 160px;
+  }
+  .social svg {
+    width: 50px;
+    height: 50px;
+  }
+}
+@media (max-width: 480px) {
+  .f-about p,
+  .f-contact p,
+  .f-networks p {
+    font-size: 20px;
+  }
+}
+@media (max-width: 430px) {
+  footer {
+    padding: 50px 0px;
+  }
+  .f-about,
+  .f-contact,
+  .f-networks {
+    width: 100% !important;
+  }
+  .app-download {
+    gap: 20px;
+  }
+  .app-download img {
+    width: 150px;
+  }
+}
+@media (max-width: 380px) {
+
+  .app-download img {
+    max-width: 140px;
+  }
+}
+@media (max-width: 360px) {
+  .app-download img {
+    max-width: 120px;
+  }
+}
