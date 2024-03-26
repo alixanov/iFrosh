@@ -92,14 +92,6 @@ buy:'Sotib olish',
 rent:"Ijaraga olish",
 close:"Yopish",
 // regions
-qoraqalpoq:"Qoraqalpog'iston Respublikasi",
-andijan:"Andijon viloyati",
-buxara:"Buxoro viloyati",
-jizzax:"Jizzax viloyati",
-qashqadaryo:"Qashqadaryo viloyati",
-navoiy:"Navoiy viloyati",
-
-
 }
 
 export default translationuz

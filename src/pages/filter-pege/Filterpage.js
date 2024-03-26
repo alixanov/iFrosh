@@ -19,6 +19,8 @@ import axios from "axios";
 
 export default function Filterpage() {
   const [amenities, setAmenities] = useState([]);
+  const [openFilter, setOpenFilter] = useState(false);
+  console.log(openFilter);
   const [announcements, setAnnouncements] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -226,8 +228,21 @@ export default function Filterpage() {
   return (
     <div className="container">
       <div className="filterpage">{searchBar}</div>
-      <div className="grid-filter">
-        <div className="f-left">
+      <div onClick={() => setOpenFilter(!openFilter)} className="close_filter">
+        <ArrowSelect />
+      </div>
+      <div
+
+        className="grid-filter"
+      >
+        <div
+          style={
+            openFilter
+              ? { display: "flex" }
+              : { display: "none" }
+          }
+          className="f-left"
+        >
           <form onSubmit={handleSubmit(onSubmit)}>
             <Select
               defaultValue={
@@ -526,7 +541,10 @@ export default function Filterpage() {
             />
           </form>
         </div>
-        <div className="f-right personinfo">
+        <div
+          style={openFilter ? { opacity: 0.3 } : { opacity: 1 }}
+          className="f-right personinfo"
+        >
           <div
             className={"cards-container new-card-style"}
             style={
