@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import OtpInput from 'react-otp-input';
 import Cookies from 'js-cookie';
-import regleft from '../../assets/images/regleft.png';
 import trudemodal from '../../assets/images/tru.png';
 import falsemodal from '../../assets/images/false.png';
 import './auth.css';
