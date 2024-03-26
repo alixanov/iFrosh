@@ -1,15 +1,26 @@
-/* eslint-disable react/prop-types */
-import React, { useRef, useState, memo } from 'react';
-import { ArrowSelect, LoadingIcon } from 'assets/svgs';
-import { useClickOutside } from 'utils';
-import { Controller } from 'react-hook-form';
-import './style.css';
+import React, { useRef, useState, memo } from "react";
+import { Controller } from "react-hook-form";
+import { ArrowSelect, LoadingIcon } from "../../assets/svgs";
+import { useClickOutside } from "../../utils";
+import "./style.css";
 
-const Select = ({ label, name, onSelect, options, defaultOpened, control, error, required, loading }) => {
+const Select = ({
+  label,
+  name,
+  onSelect,
+  options,
+  defaultOpened,
+  control,
+  error,
+  required,
+  loading,
+  disabled,
+  defaultValue = null,
+}) => {
   const ref = useRef();
 
   const handleChange = (value, onChange, setValue, setOpen, option) => {
-    setValue(value);
+    setValue(option.label);
     setOpen(false);
     onChange && onChange({ target: { value } });
     onSelect && onSelect(value, option);
@@ -17,14 +28,23 @@ const Select = ({ label, name, onSelect, options, defaultOpened, control, error,
 
   const SelectComponent = ({ onChange, onBlur, value }) => {
     const [open, setOpen] = useState(defaultOpened || false);
-    const [valueSelect, setValue] = useState(null);
+    const [valueSelect, setValue] = useState(defaultValue);
     useClickOutside(ref, () => {
       setOpen(false);
     });
     return (
-      <div ref={ref} className={`custome-select ${open ? 'opened' : ''} ${error ? 'error' : ''}`}>
-        {valueSelect ? label || '' : ''}
-        <button className="menu-header" onClick={() => setOpen(!open)} type="button">
+      <div
+        ref={ref}
+        disabled={disabled}
+        title={disabled ? "Disabled!" : "Choose a select"}
+        className={`custome-select${open ? " opened" : ""}${error ? " error" : ""}`}
+      >
+        {valueSelect ? label || "" : ""}
+        <button
+          className="menu-header"
+          onClick={() => setOpen(!open)}
+          type="button"
+        >
           <p>{valueSelect || label}</p>
           {loading ? <LoadingIcon /> : <ArrowSelect />}
         </button>
@@ -34,8 +54,20 @@ const Select = ({ label, name, onSelect, options, defaultOpened, control, error,
               <div
                 aria-hidden
                 className="option"
-                key={['number', 'string'].includes(typeof option.value) ? option.value : JSON.stringify(option.value)}
-                onClick={() => handleChange(option.value, onChange, setValue, setOpen, option)}
+                key={
+                  ["number", "string"].includes(typeof option.value)
+                    ? option.value
+                    : JSON.stringify(option.value)
+                }
+                onClick={() =>
+                  handleChange(
+                    option.value,
+                    onChange,
+                    setValue,
+                    setOpen,
+                    option
+                  )
+                }
               >
                 {option.label}
               </div>
@@ -51,7 +83,9 @@ const Select = ({ label, name, onSelect, options, defaultOpened, control, error,
     <Controller
       control={control}
       rules={{ required }}
-      render={({ field: { onChange, onBlur, value } }) => SelectComponent({ onChange, onBlur, value })}
+      render={({ field: { onChange, onBlur, value } }) =>
+        SelectComponent({ onChange, onBlur, value })
+      }
       name={name}
     />
   ) : (

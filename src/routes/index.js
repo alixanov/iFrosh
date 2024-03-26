@@ -32,7 +32,7 @@ export const routes = [
     element: <CreateAnnouncement />
   },
   {
-    path: '/Filterpage',
+    path: '/filterpage',
     element: <Filterpage />
   }
 ];

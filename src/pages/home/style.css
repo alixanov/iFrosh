@@ -4,7 +4,7 @@
     padding-bottom: 340px;
     min-height: 943px;
     width: 100%;
-    background-image: url('../../assets/images/intro-bg.png');
+    background-image: url("../../assets/images/intro-bg.png");
   }
 
   .intro .content {
@@ -65,7 +65,7 @@
     z-index: 4;
   }
 
-  .content .form button[type='submit'] {
+  .content .form button[type="submit"] {
     align-items: center;
     border-radius: 15px;
     background: var(--primary);
@@ -292,4 +292,56 @@
   .search-bar {
     font-size: 16px !important;
   }
+}
+
+.filterpage .search-bar,
+.home-container .search-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 6px 6px 6px 16px;
+  border-radius: 15px;
+  background: var(--light);
+  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.25);
+  margin-top: 150px;
+  gap: 30px;
+  color: var(--secondary);
+  font-size: 22.65px;
+  font-weight: 400;
+  border: 2px solid var(--light);
+  transition: 100ms linear;
+}
+.filterpage .search-bar {
+  margin-top: 0px;
+}
+
+.filterpage .search-bar:has(input:valid),
+.filterpage .search-bar:has(.filter.open),
+.filterpage .search-bar:has(input:focus),
+.home-container .search-bar:hover,
+.home-container .search-bar:has(.filter.open),
+.home-container .search-bar:has(input:focus) {
+  border-color: #3498db;
+  background-color: #fff;
+}
+
+.filterpage .form input,
+.home-container .form input {
+  flex: 1;
+  background: none;
+  border: 0;
+  height: 100%;
+  font-size: inherit;
+  position: relative;
+  z-index: 4;
+}
+.filterpage .form button[type="submit"],
+.content .form button[type="submit"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  background: var(--primary);
+  box-shadow: 0px 0px 6.1px 0px rgba(0, 0, 0, 0.25);
+  padding: 8px;
 }

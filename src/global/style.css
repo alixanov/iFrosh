@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 /* global style for all elements */
 
@@ -17,6 +17,7 @@
   --loader-color: var(--primary);
   --swiper-pagination-color: #fff;
   --swiper-pagination-bullet-inactive-color: #e4e4e4;
+  --loader-size: 48px;
 }
 
 * {
@@ -68,7 +69,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type='number'] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
@@ -121,9 +122,11 @@ a {
 /* loader animation */
 
 .loader {
-  width: 48px;
-  height: 48px;
-  border: 5px solid var(--loader-color);
+  width: var(--loader-size);
+  height: var(--loader-size);
+  border-width: calc(var(--loader-size) / 10);
+  border-color: var(--loader-color);
+  border-style: solid;
   border-bottom-color: transparent;
   border-radius: 50%;
   display: inline-block;
@@ -139,7 +142,6 @@ a {
     transform: rotate(360deg);
   }
 }
-
 /********* RESPONSIVE **********/
 
 @media (max-width: 1800px) {

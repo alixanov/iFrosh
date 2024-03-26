@@ -261,7 +261,7 @@ export default function Filterpage() {
               />
             </div>
 
-            <div className="input-progress">
+            {/* <div className="input-progress">
               <p>Hajmi</p>
               <div className="input-size">
                 <input
@@ -292,7 +292,7 @@ export default function Filterpage() {
               </RangeSliderTrack>
               <RangeSliderThumb index={0} bg={"#0085AF"} />
               <RangeSliderThumb index={1} bg={"#0085AF"} />
-            </RangeSlider>
+            </RangeSlider> */}
             <div className="input-progress">
               <p>Narxi</p>
               <div className="input-size">

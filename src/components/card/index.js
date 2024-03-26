@@ -6,10 +6,8 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
-import { Eye, Pen, Reload } from 'assets/svgs';
+import { Eye, Pen, Reload } from '../../assets/svgs';
 
-
-// eslint-disable-next-line react/prop-types
 export const Card = ({ item, editable = false }) => {
   const swiperRef = useRef(null);
   const slideToIndex = useCallback((index) => {
@@ -37,8 +35,8 @@ export const Card = ({ item, editable = false }) => {
         <Link to={'/top-announcements'} className="badge">
           <p>TOP</p>
         </Link>
-        <Link to={`/announcement/${item}`}>
-          <div className="overlay">{[1, 2, 3, 4, 5, 6].map(navigation)}</div>
+        <Link to={`/announcement/${item?.slug}?_a_id=${item?.id}`}>
+          <div className="overlay">{item?.images?.map(navigation)}</div>
           <Swiper
             ref={swiperRef}
             autoplay={{ delay: 3000 }}
@@ -47,35 +45,35 @@ export const Card = ({ item, editable = false }) => {
             navigation={true}
             modules={[Autoplay, Pagination, Navigation]}
           >
-            {[1, 2, 3, 4, 5, 6].map((slide) => (
-              <SwiperSlide key={slide}>
-                <img src={'https://picsum.photos/300/' + (200 + slide + item)} alt="slide-item" />
+            {item?.images?.map((slide) => (
+              <SwiperSlide key={slide?.id}>
+                <img src={`https://api.frossh.uz/${slide?.path}`} alt="slide-item" />
               </SwiperSlide>
             ))}
             <div className="bottom-infos">
               <div className="views">
                 <Eye />
-                <p>12</p>
+                <p>{item?.checked_by}</p>
               </div>
             </div>
           </Swiper>
         </Link>
       </header>
-      <Link to={`/announcement/${item}`} className="card-body">
-        <p className="pice">40.000.000 uzs</p>
+      <Link to={`/announcement/${item?.slug}?_a_id=${item?.id}`} className="card-body">
+        <p className="pice">{item?.price} uzs</p>
         <div className="row-info">
-          <p>3 xona</p>
-          <p>3-qavat</p>
-          <p>120 m²</p>
+          <p>{item?.room_count} xona</p>
+          {item?.room_floor && <p>{item?.room_floor}-qavat</p>}
+          <p>{item?.m2} m²</p>
         </div>
-        <p className="address">Namangan viloyat, Chust shaxri, mustaqillik mahalla 123 uy.</p>
+        <p className="address">{item?.address}</p>
       </Link>
 
       {/* status pending overlay */}
       {item === 5
         ? overlay
         : editable && (
-            <Link to={`/announcement?edit=${item}`} className="edit-btn">
+            <Link to={`/announcement/${item?.id}?edit=${item?.slug}&_a_id=${item?.id}`} className="edit-btn">
               <Pen />
             </Link>
           )}
