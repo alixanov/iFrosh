@@ -19,7 +19,7 @@ import axios from "axios";
 
 export default function Filterpage() {
   const [amenities, setAmenities] = useState([]);
-  const [openFilter, setOpenFilter] = useState(false);
+  const [openFilter, setOpenFilter] = useState(true);
   console.log(openFilter);
   const [announcements, setAnnouncements] = useState([]);
   const [loading, setLoading] = useState(false);
