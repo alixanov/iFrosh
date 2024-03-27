@@ -5,6 +5,7 @@ import noProfileInfoImg from "./warningUser.png";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useTranslation } from "react-i18next";
+import { useStoreState } from "../../redux/selectors";
 
 export default function UserDashboard() {
   const { t } = useTranslation();
@@ -12,7 +13,7 @@ export default function UserDashboard() {
   const [districts, setDistricts] = useState([]);
   const [quarters, setQuarters] = useState([]);
 
-  const profileInfo = JSON.parse(localStorage.profileInfo || "{}") || {};
+  const profileInfo = useStoreState("user");
 
   const headers = useMemo(
     () => ({
@@ -36,7 +37,7 @@ export default function UserDashboard() {
       .catch((err) => {
         console.log(err);
       });
-  }, [regions, headers]);
+  }, [headers]);
 
   // GET DISTRICTS
   const getDistrict = (id) => {
@@ -111,12 +112,14 @@ export default function UserDashboard() {
 
   return (
     <div className="person">
-      {profileInfo.first_name ? (
+      {profileInfo?.first_name ? (
         <div>
           <div className="p-left">
             <div className="p-left-top">
               <div className="user-img" style={{ fontSize: "3vw" }}>
-                {profileInfo?.first_name + " " + profileInfo?.last_name}
+                {profileInfo?.first_name?.slice(0, 1) +
+                  " " +
+                  profileInfo?.last_name?.slice(0, 1)}
               </div>
               <div className="p-text-info">
                 <p>{profileInfo?.first_name + "." + profileInfo?.last_name}</p>
@@ -179,12 +182,12 @@ export default function UserDashboard() {
                   name="region_id"
                   onChange={(e) => getDistrict(e.target.value)}
                 >
-                  <option defaultValue={profileInfo?.region.name_uz}>
-                    {profileInfo?.region.name_uz}
+                  <option defaultValue={profileInfo?.region?.name_uz}>
+                    {profileInfo?.region?.name_uz}
                   </option>
                   {regions.map((region, index) => (
                     <option value={region.id} key={index}>
-                      {region.name_uz}
+                      {region?.name_uz}
                     </option>
                   ))}
                 </select>
@@ -195,12 +198,12 @@ export default function UserDashboard() {
                   name="district_id"
                   onChange={(e) => getQuarters(e.target.value)}
                 >
-                  <option defaultValue={profileInfo?.district.name_uz}>
-                    {profileInfo?.district.name_uz}
+                  <option defaultValue={profileInfo?.district?.name_uz}>
+                    {profileInfo?.district?.name_uz}
                   </option>
                   {districts.map((region, index) => (
                     <option value={region.id} key={index}>
-                      {region.name_uz}
+                      {region?.name_uz}
                     </option>
                   ))}
                 </select>
@@ -208,12 +211,12 @@ export default function UserDashboard() {
               <label htmlFor="">
                 <p>{t("street")}</p>
                 <select name="quarter_id">
-                  <option defaultValue={profileInfo?.quarter.name_uz}>
-                    {profileInfo?.quarter.name_uz}
+                  <option defaultValue={profileInfo?.quarter?.name_uz}>
+                    {profileInfo?.quarter?.name_uz}
                   </option>
-                  {quarters.map((region, index) => (
+                  {quarters?.map((region, index) => (
                     <option value={region.id} key={index}>
-                      {region.name_uz}
+                      {region?.name_uz}
                     </option>
                   ))}
                 </select>
@@ -228,7 +231,7 @@ export default function UserDashboard() {
       ) : (
         <div className="noProfileInfo">
           <img src={noProfileInfoImg} alt="" />
-          <p>{t}('must_register')</p>
+          <p>{t("must_register")}</p>
           <Link to="/auth">{t("enter_register")}</Link>
         </div>
       )}

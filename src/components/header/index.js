@@ -1,16 +1,50 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 import { ReactComponent as Bayroq } from "assets/svgs/flagUz.svg";
 import { useTranslation } from "react-i18next";
-import Cookies from 'js-cookie';
-const Header = ({ Changelang }) => {
+import Cookies from "js-cookie";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/user";
+
+const Header = ({ changeLanguage }) => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const Changelangheader = (e) => {
-    console.log(e.target.value);
+    changeLanguage(e.target.value);
   };
-  const token = Cookies.get('token');
+  const token = Cookies.get("token");
+
+  const getUser = useCallback(() => {
+    if (token) {
+      axios
+        .post(
+          "https://api.frossh.uz/api/auth/refresh",
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then(({ data }) => {
+          console.log(data);
+          dispatch(setUser(data?.result));
+          Cookies.set("token", data?.result?.token);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [token]);
+
+  useEffect(() => {
+    return () => {
+      getUser();
+    };
+  }, [getUser]);
 
   return (
     <div className="main-header">
@@ -32,7 +66,9 @@ const Header = ({ Changelang }) => {
             {t("create_announcement")} +
           </Link>
           {/* <Link to={"/auth"}>{t("register")}</Link> */}
-          <Link to={token ? '/profile' : '/auth'}>{token ? 'Shaxsiy kabinet' : 'Ro’yxatdan o’tish'}</Link>
+          <Link to={token ? "/profile" : "/auth"}>
+            {token ? "Shaxsiy kabinet" : "Ro’yxatdan o’tish"}
+          </Link>
         </div>
       </header>
     </div>

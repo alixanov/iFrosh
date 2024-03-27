@@ -20,7 +20,6 @@ import axios from "axios";
 export default function Filterpage() {
   const [amenities, setAmenities] = useState([]);
   const [openFilter, setOpenFilter] = useState(true);
-  console.log(openFilter);
   const [announcements, setAnnouncements] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -149,6 +148,7 @@ export default function Filterpage() {
     }
   }, [minPrice, maxPrice, minM2, maxM2, setValue, watch]);
   const region_id = watch("region_id");
+
   useEffect(() => {
     region_id &&
       setSearchParams((ee) => ({
@@ -231,18 +231,8 @@ export default function Filterpage() {
       <div onClick={() => setOpenFilter(!openFilter)} className="close_filter">
         <ArrowSelect />
       </div>
-      <div
-
-        className="grid-filter"
-      >
-        <div
-          style={
-            openFilter
-              ? { display: "flex" }
-              : { display: "none" }
-          }
-          className="f-left"
-        >
+      <div className="grid-filter">
+        <div className={`f-left md:${openFilter ? "open" : "close"}`}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Select
               defaultValue={
@@ -388,7 +378,7 @@ export default function Filterpage() {
                 register={register}
                 defaultChecked={searchParams.get("sale_type") === "rent"}
                 onChange={({ sale_type }) =>
-                  setSearchParams({ ...desiredObject, sale_type: sale_type })
+                  setSearchParams({ ...desiredObject, sale_type })
                 }
               />
             </div>
@@ -542,8 +532,7 @@ export default function Filterpage() {
           </form>
         </div>
         <div
-          style={openFilter ? { opacity: 0.3 } : { opacity: 1 }}
-          className="f-right personinfo"
+          className={`f-right personinfo md:opacty-${openFilter ? "0.3" : "1"}`}
         >
           <div
             className={"cards-container new-card-style"}
