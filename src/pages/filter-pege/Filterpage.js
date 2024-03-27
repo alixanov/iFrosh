@@ -545,12 +545,8 @@ export default function Filterpage() {
           </form>
         </div>
         <div
-<<<<<<< HEAD
           // style={openFilter ? { opacity: 0.3 } : { opacity: 1 }}
           className="f-right personinfo"
-=======
-          className={`f-right personinfo md:opacty-${openFilter ? "0.3" : "1"}`}
->>>>>>> 06830ec1df2693eab1d7814c15029daf362552b4
         >
           <div
             className={"cards-container new-card-style"}
