@@ -3,8 +3,10 @@ import { Card } from "../../components/card";
 // import { createPagination } from '../../utils/createPagination';
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const Announcements = () => {
+  const { t } = useTranslation();
   const [data, setData] = useState([]);
   // const [currentPage, setCurrentPage] = useState(1);
   const getTopAnnouncements = useCallback(() => {
@@ -24,7 +26,7 @@ const Announcements = () => {
   }, [getTopAnnouncements]);
   return (
     <div className="container announcement">
-      <h2 className="title">{"Top E’lonlar"}</h2>
+      <h2 className="title">{t("announcement")}</h2>
       <div
         className={`cards-container ${
           data?.length / 4 ? "justify-between" : ""
@@ -37,10 +39,12 @@ const Announcements = () => {
       <div className="paginations">
         {data?.links?.map((item) => (
           <button
-            dangerouslySetInnerHTML={{ __html: item?.label?.replace(/\b(Previous|Next)\b/g, '')?.trim() }}
+            dangerouslySetInnerHTML={{
+              __html: item?.label?.replace(/\b(Previous|Next)\b/g, "")?.trim(),
+            }}
             key={item?.label}
-            onClick={() => setCurrentPage(item === '...' ? currentPage : item)}
-            className={item?.active ? 'active' : undefined}
+            onClick={() => setCurrentPage(item === "..." ? currentPage : item)}
+            className={item?.active ? "active" : undefined}
             disabled={!item?.url}
           />
         ))}

@@ -1,12 +1,14 @@
-import React from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import Person from './info';
-import './style.css';
-import MyAnnouncements from './my-announcements';
-import Payment from './payme';
-import { Announcement, Plus, User, Wishes } from 'assets/svgs';
+import React from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import Person from "./info";
+import "./style.css";
+import MyAnnouncements from "./my-announcements";
+import Payment from "./payme";
+import { Announcement, Plus, User, Wishes } from "assets/svgs";
+import { useTranslation } from "react-i18next";
 
 export default function UserInfo() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   return (
     <div className="container">
@@ -21,18 +23,23 @@ export default function UserInfo() {
         </div>
 
         <div className="personright">
-          <button className="hidden-button" onClick={() => navigate('/profile')}>
-            Shaxsiy ma’lumotlar <User />
-            
+          <button
+            className="hidden-button"
+            onClick={() => navigate("/profile")}
+          >
+            {t("private_info")} <User />
           </button>
-          <button className="hidden-button" onClick={() => navigate('my-announcements')}>
-            E’lonlarim <Announcement />
+          <button
+            className="hidden-button"
+            onClick={() => navigate("my-announcements")}
+          >
+            {t("announcement")} <Announcement />
           </button>
-          <button className="hidden-button" onClick={() => navigate('wishes')}>
-            Sevimlilar <Wishes />
+          <button className="hidden-button" onClick={() => navigate("wishes")}>
+            {t("favorites")} <Wishes />
           </button>
-          <button className="hidden-button" onClick={() => navigate('payment')}>
-            To’ldirish
+          <button className="hidden-button" onClick={() => navigate("payment")}>
+            {t("fill")}
             <Plus />
           </button>
         </div>
