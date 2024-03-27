@@ -62,7 +62,7 @@
   text-align: center;
 }
 
-.reg-card-register input:not([type='checkbox'], .oferta) {
+.reg-card-register input:not([type="checkbox"], .oferta) {
   border-radius: 18px;
   background: #fff;
   box-shadow: 0px 4px 11px 0px rgba(0, 0, 0, 0.25);
@@ -527,6 +527,15 @@ label:has(.oferta) {
     height: 40px;
     font-size: 26px;
   }
+  .modal-card div input {
+    width: 55px !important;
+    height: 55px !important;
+    border-radius: 6px;
+    margin: 15px !important;
+  }
+  .modal-card span {
+    text-align: center;
+  }
 }
 @media (max-width: 860px) {
   .modal-card {
@@ -578,9 +587,13 @@ label:has(.oferta) {
   label:has(.oferta) {
     width: 60%;
   }
+  .modal-card {
+    width: 90%;
+    padding: 40px 30px;
+  }
 }
 @media (max-width: 500px) {
-  div.register-card{
+  div.register-card {
     width: 100%;
     margin: 40px 20px;
   }
@@ -595,19 +608,23 @@ label:has(.oferta) {
   .reg-card-register p {
     font-size: 22px;
   }
-.reg-card-register button:last-of-type{
-  font-size: 16px !important;
-}
+  .reg-card-register button:last-of-type {
+    font-size: 16px !important;
+  }
   .reg-card-register .input-row,
   .reg-card-register input:not(.oferta) {
     width: 88%;
   }
-  .modal-card {
-    width: 90%;
-  }
+
   .modal-card > p {
     width: 280px !important;
     font-size: 24px;
+  }
+  .modal-card div input {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 2px;
+    margin: 10px !important;
   }
   .truecart {
     width: 80%;
@@ -650,8 +667,8 @@ label:has(.oferta) {
     font-size: 16px;
   }
   .modal-card {
-    width: 300px !important;
-    padding: 20px 25px;
+    width: 95%;
+    padding: 40px 25px;
     margin: 0px;
     border-radius: 35px;
   }
@@ -690,8 +707,8 @@ label:has(.oferta) {
     font-size: 12px;
   }
   .modal-card {
-    width: 280px !important;
-    padding: 20px;
+    width:94% !important;
+    padding: 30px;
     border-radius: 30px;
   }
 }

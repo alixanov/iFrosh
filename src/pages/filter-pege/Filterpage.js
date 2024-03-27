@@ -229,17 +229,20 @@ export default function Filterpage() {
     <div className="container">
       <div className="filterpage">{searchBar}</div>
       <div onClick={() => setOpenFilter(!openFilter)} className="close_filter">
-        <ArrowSelect />
+        <ArrowSelect
+          style={
+            !openFilter
+              ? { transform: "rotate(-180deg)" }
+              : { transform: "rotate(0deg)" }
+          }
+        />
       </div>
-      <div
-
-        className="grid-filter"
-      >
+      <div className="grid-filter">
         <div
           style={
-            openFilter
-              ? { display: "flex" }
-              : { display: "none" }
+            !openFilter
+              ? { transform: "translateX(-100%)" }
+              : { transform: "translateX(0px)" }
           }
           className="f-left"
         >
@@ -542,7 +545,7 @@ export default function Filterpage() {
           </form>
         </div>
         <div
-          style={openFilter ? { opacity: 0.3 } : { opacity: 1 }}
+          // style={openFilter ? { opacity: 0.3 } : { opacity: 1 }}
           className="f-right personinfo"
         >
           <div
