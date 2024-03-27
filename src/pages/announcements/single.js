@@ -11,82 +11,80 @@ import { useTranslation } from "react-i18next";
 
 const Single = () => {
   const { t } = useTranslation();
-   const navigate = useNavigate();
-   const [searchParams] = useSearchParams();
-   const swiperRef = useRef(null);
-   const thumbsRef = useRef(null);
-   const [activeIndex, setActiveIndex] = useState(0);
-   const [loading, setLoading] = useState(false);
-   const [dataSingle, setDataSingle] = useState({
-     announcement: {},
-     similar: [],
-   });
-   const [open, setOpen] = useState(false);
-   const slideToIndex = useCallback((index) => {
-     if (swiperRef.current && swiperRef.current.swiper) {
-       swiperRef.current.swiper.slideTo(index);
-     }
-     if (thumbsRef.current && thumbsRef.current.swiper) {
-       thumbsRef.current.swiper.slideTo(index);
-     }
-   }, []);
-   const handleChange = ({ activeIndex }) => {
-     slideToIndex(activeIndex);
-     setActiveIndex(activeIndex);
-   };
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const swiperRef = useRef(null);
+  const thumbsRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [dataSingle, setDataSingle] = useState({
+    announcement: {},
+    similar: [],
+  });
+  const [open, setOpen] = useState(false);
+  const slideToIndex = useCallback((index) => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slideTo(index);
+    }
+    if (thumbsRef.current && thumbsRef.current.swiper) {
+      thumbsRef.current.swiper.slideTo(index);
+    }
+  }, []);
+  const handleChange = ({ activeIndex }) => {
+    slideToIndex(activeIndex);
+    setActiveIndex(activeIndex);
+  };
 
-   const icon = {
-     1: <icons.Gas />,
-     2: <icons.Water />,
-     3: <icons.Electric />,
-     4: <icons.Wifi />,
-     5: <icons.AirCondition />,
-     6: <icons.Refrigerator />,
-     7: <icons.TvIcon />,
-     8: <icons.Washing />,
-   };
+  const icon = {
+    1: <icons.Gas />,
+    2: <icons.Water />,
+    3: <icons.Electric />,
+    4: <icons.Wifi />,
+    5: <icons.AirCondition />,
+    6: <icons.Refrigerator />,
+    7: <icons.TvIcon />,
+    8: <icons.Washing />,
+  };
 
-   const config = useMemo(
-     () => ({
-       id: searchParams.get("_a_id"),
-       edit: searchParams.get("edit"),
-       token: Cookies.get("token"),
-     }),
-     [searchParams]
-   );
-   useEffect(() => {
-     if (!config.token) {
-       navigate("/auth");
-       Cookies.remove("token");
-     }
-     if (!config.id) navigate(-1);
-   }, [config, navigate]);
+  const config = useMemo(
+    () => ({
+      id: searchParams.get("_a_id"),
+      edit: searchParams.get("edit"),
+      token: Cookies.get("token"),
+    }),
+    [searchParams]
+  );
+  useEffect(() => {
+    if (config.edit && !config.token) {
+      navigate("/auth");
+      Cookies.remove("token");
+    }
+    if (!config.id) navigate(-1);
+  }, [config, navigate]);
 
-   useEffect(() => {
-     if (!config?.id) return;
-     setLoading(true);
-     axios
-       .get(`https://api.frossh.uz/api/announcement/get-by-id/${config?.id}`, {
-         headers: {
-           Authorization: `Bearer ${Cookies.get("token")}`,
-         },
-       })
-       .then(({ data }) => {
-         setLoading(false);
-         setDataSingle(data?.result);
-       })
-       .catch((err) => {
-         setLoading(false);
-         console.log(err);
-         toast.error(err?.response?.data?.result);
-         navigate(-1);
-       });
-   }, [config?.id, navigate]);
+  useEffect(() => {
+    if (!config?.id) return;
+    setLoading(true);
+    axios
+      .get(`https://api.frossh.uz/api/announcement/get-by-id/${config?.id}`, {
+        headers: {
+          Authorization: `Bearer ${Cookies.get("token")}`,
+        },
+      })
+      .then(({ data }) => {
+        setLoading(false);
+        setDataSingle(data?.result);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
+  }, [config?.id, navigate]);
 
-   const sliderData = useMemo(
-     () => dataSingle?.announcement?.images,
-     [dataSingle?.announcement?.images]
-   );
+  const sliderData = useMemo(
+    () => dataSingle?.announcement?.images,
+    [dataSingle?.announcement?.images]
+  );
   return (
     <div className="container single announcements">
       {loading ? (

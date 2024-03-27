@@ -132,7 +132,6 @@
     justify-content: end;
     flex-wrap: wrap !important;
     row-gap: 30px !important;
-    mni-height: 400px;
   }
   .cards-container.new-card-style > div {
     width: 280px;
@@ -159,9 +158,18 @@
     background: #fff;
     overflow: auto;
   }
+  .f-left.md\:open {
+    display: block;
+  }
+  .f-left.md\:close {
+    display: none;
+  }
   .f-right {
     width: 100% !important;
     justify-content: center !important;
+  }
+  .md\:opacity-0\.3 {
+    opacity: 0.3;
   }
   .cards-container.new-card-style {
     justify-content: space-between;

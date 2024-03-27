@@ -19,8 +19,7 @@ import axios from "axios";
 
 export default function Filterpage() {
   const [amenities, setAmenities] = useState([]);
-  const [openFilter, setOpenFilter] = useState(false);
-  console.log(openFilter);
+  const [openFilter, setOpenFilter] = useState(true);
   const [announcements, setAnnouncements] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -149,6 +148,7 @@ export default function Filterpage() {
     }
   }, [minPrice, maxPrice, minM2, maxM2, setValue, watch]);
   const region_id = watch("region_id");
+
   useEffect(() => {
     region_id &&
       setSearchParams((ee) => ({
@@ -391,7 +391,7 @@ export default function Filterpage() {
                 register={register}
                 defaultChecked={searchParams.get("sale_type") === "rent"}
                 onChange={({ sale_type }) =>
-                  setSearchParams({ ...desiredObject, sale_type: sale_type })
+                  setSearchParams({ ...desiredObject, sale_type })
                 }
               />
             </div>
@@ -545,8 +545,12 @@ export default function Filterpage() {
           </form>
         </div>
         <div
+<<<<<<< HEAD
           // style={openFilter ? { opacity: 0.3 } : { opacity: 1 }}
           className="f-right personinfo"
+=======
+          className={`f-right personinfo md:opacty-${openFilter ? "0.3" : "1"}`}
+>>>>>>> 06830ec1df2693eab1d7814c15029daf362552b4
         >
           <div
             className={"cards-container new-card-style"}

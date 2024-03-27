@@ -13,7 +13,7 @@ const Intro = () => {
 
   const onSubmit = (values) => {
     reset();
-    navigate(`/filterpage?address=${values["search-bar-frosh"]}`);
+    navigate(`/filterpage?title=${values["search-bar-frosh"]}`);
   };
 
   const searchBar = (
