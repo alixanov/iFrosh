@@ -2,7 +2,7 @@ const translationuz = {
   // general
   intro_title: "Keling sizning orzuyingizdagi\nuyni topaylik!",
   slider_title: "Turar joy majmualari",
-  announcement: "Top E’lonlar",
+  top_announcement: "Top E’lonlar",
   search: "Qidirish",
   create_announcement: "E'lon joylash",
   register: "Ro'yxatdan o'tish",

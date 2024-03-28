@@ -2,7 +2,7 @@ const translationru = {
        // general
         intro_title: "Давайте найдем дом\nвашей мечты!",
         slider_title:"Жилые комплексы",
-        announcement:"Лучшие объявления",
+        top_announcement:"Лучшие объявления",
         search:"поиск",
         create_announcement:"Разместить объявление",
         register:"Зарегистрироваться",

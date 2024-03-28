@@ -91,6 +91,8 @@
   .slide-item img {
     max-width: 100%;
     height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 
   .slide-container {
@@ -279,14 +281,14 @@
     height: 30px;
     border-radius: 10px !important;
   }
-    .content .form .search-bar {
+  .content .form .search-bar {
     gap: 15px !important;
   }
   .content .form button svg {
     width: 20px !important;
     height: 20px !important;
   }
-    .content .form .search-bar {
+  .content .form .search-bar {
     font-size: 18px;
   }
   .content .form button svg {

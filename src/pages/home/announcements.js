@@ -1,8 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Card } from "../../components/card";
-// import { createPagination } from '../../utils/createPagination';
 import axios from "axios";
-import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 
 const Announcements = () => {
@@ -16,23 +14,21 @@ const Announcements = () => {
         setData(data?.result?.top);
       })
       .catch((err) => {
-        toast.error(err?.response?.data?.message || "Xatolik!");
+        console.log(err?.response?.data?.message);
       });
   }, []);
   useEffect(() => {
-    return () => {
-      getTopAnnouncements();
-    };
+    getTopAnnouncements();
   }, [getTopAnnouncements]);
   return (
     <div className="container announcement">
-      <h2 className="title">{t("announcement")}</h2>
+      <h2 className="title">{t("top_announcement")}</h2>
       <div
         className={`cards-container ${
           data?.length / 4 ? "justify-between" : ""
         }`}
       >
-        {data.map((item) => (
+        {data?.map((item) => (
           <Card key={item?.id} item={item} />
         ))}
       </div>

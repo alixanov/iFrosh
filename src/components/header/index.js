@@ -1,16 +1,17 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./style.css";
-import { ReactComponent as Bayroq } from "assets/svgs/flagUz.svg";
-import { useTranslation } from "react-i18next";
 import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { useDispatch } from "react-redux";
+import { ReactComponent as Bayroq } from "assets/svgs/flagUz.svg";
 import { setUser } from "../../redux/user";
+import "./style.css";
 
 const Header = ({ changeLanguage }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
 
   const Changelangheader = (e) => {
     changeLanguage(e.target.value);
@@ -18,26 +19,28 @@ const Header = ({ changeLanguage }) => {
   const token = Cookies.get("token");
 
   const getUser = useCallback(() => {
-    if (token) {
-      axios
-        .post(
-          "https://api.frossh.uz/api/auth/refresh",
-          {},
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
-        .then(({ data }) => {
-          console.log(data);
-          dispatch(setUser(data?.result));
-          Cookies.set("token", data?.result?.token);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+    if (!token) return;
+    setLoading(true);
+    axios
+      .post(
+        "https://api.frossh.uz/api/auth/refresh",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(({ data }) => {
+        console.log(data);
+        setLoading(false);
+        dispatch(setUser(data?.result));
+        Cookies.set("token", data?.result?.token);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
   }, [token]);
 
   useEffect(() => {
@@ -48,6 +51,7 @@ const Header = ({ changeLanguage }) => {
 
   return (
     <div className="main-header">
+      {loading && <div className="loading-page"></div>}
       <header className="container">
         <div className="h-left">
           <Link to={"/"}>Frosh</Link>
