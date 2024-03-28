@@ -108,7 +108,7 @@ export default function UserDashboard() {
     { id: 12, name: "Dekabr" },
   ];
 
-  let birthDate = profileInfo?.birth_date?.split("-");
+  const birthDate = profileInfo?.birth_date?.split("-");
 
   return (
     <div className="person">
