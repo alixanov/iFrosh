@@ -39,8 +39,8 @@
 
 /* person page start */
 .person {
-  width: 1184px;
-  height: 1016px;
+  /* width: 1184px;
+  height: 1016px; */
   flex-shrink: 0;
   border-radius: 11px;
   background: #fcfcfc;
@@ -75,6 +75,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 40px;
+  color: #fff;
+  font-weight: 600;
+  font-family: Poppins;
 }
 .p-text-info {
   display: flex;
@@ -82,10 +86,17 @@
 }
 .p-text-info > p {
   color: #5d6661;
-  font-size: 55.9px;
+  font-size: 50px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  line-clamp: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 600px;
 }
 
 .p-text-info > span {
@@ -482,7 +493,7 @@ form > label > input,
     z-index: 3;
   }
   .personright::before {
-    content: '';
+    content: "";
     display: inline-block;
     vertical-align: middle;
     position: absolute;

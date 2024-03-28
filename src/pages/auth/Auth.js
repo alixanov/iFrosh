@@ -12,8 +12,11 @@ import { formatTime } from "../../utils";
 import { LoadingIcon } from "assets/svgs";
 import { useTranslation } from "react-i18next";
 import rightimg from "../../assets/images/123.png";
+import { setUser } from "../../redux/user";
+import { useDispatch } from "react-redux";
 
 export default function Auth() {
+  const dispatch = useDispatch();
   const { t } = useTranslation();
   const [num, setNum] = useState();
   const [loading, setLoading] = useState(false);
@@ -60,6 +63,7 @@ export default function Auth() {
       .then((response) => {
         setLoading(false);
         setStep("modal-success");
+        dispatch(setUser(response?.data?.result));
         Cookies.set("token", response?.data?.result?.token);
       })
       .catch((error) => {
@@ -433,9 +437,7 @@ export default function Auth() {
                 value={otp}
                 onChange={setOtp}
                 numInputs={4}
-                renderInput={(props) => (
-                  <input  {...props} required />
-                )}
+                renderInput={(props) => <input {...props} required />}
               />
               <span>{formatTime(seconds)}</span>
               {seconds ? null : (

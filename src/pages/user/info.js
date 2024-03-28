@@ -72,8 +72,8 @@ export default function UserDashboard() {
   // UPDATE USER
   const handleUpdateUserInfo = (e) => {
     e.preventDefault();
-    let formData = Object.fromEntries(new FormData(e.target));
-    let body = {
+    const formData = Object.fromEntries(new FormData(e.target));
+    const body = {
       first_name: formData.first_name,
       last_name: formData.last_name,
       region_id: formData.region_id,
@@ -82,7 +82,7 @@ export default function UserDashboard() {
       birth_date: formData.year + "-" + formData.month + "-" + formData.day,
     };
 
-    let url = "https://api.frossh.uz/api/user/update";
+    const url = "https://api.frossh.uz/api/user/update";
     axios
       .put(url, body, { headers })
       .then((res) => {
@@ -113,17 +113,17 @@ export default function UserDashboard() {
   return (
     <div className="person">
       {profileInfo?.first_name ? (
-        <div>
+        <div className="person">
           <div className="p-left">
             <div className="p-left-top">
-              <div className="user-img" style={{ fontSize: "3vw" }}>
+              <div className="user-img">
                 {profileInfo?.first_name?.slice(0, 1) +
                   " " +
                   profileInfo?.last_name?.slice(0, 1)}
               </div>
               <div className="p-text-info">
                 <p>{profileInfo?.first_name + "." + profileInfo?.last_name}</p>
-                <span>{t("your_account")}: 123456</span>
+                <span>{t("your_account")}: {profileInfo?.id}</span>
                 <b>+{profileInfo?.phone_number}</b>
               </div>
             </div>
