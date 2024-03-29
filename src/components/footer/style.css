@@ -41,6 +41,9 @@ footer .container {
   align-items: center;
   gap: 98px;
 }
+.social > svg {
+  width: 50px;
+}
 .app-download {
   display: flex;
   align-items: center;
@@ -48,7 +51,7 @@ footer .container {
   margin-top: 40px;
 }
 .app-download img {
-  width: 250px;
+  width: 200px;
   height: 75px;
   object-fit: contain;
 }
@@ -197,7 +200,6 @@ footer .container {
   }
 }
 @media (max-width: 380px) {
-
   .app-download img {
     max-width: 140px;
   }
