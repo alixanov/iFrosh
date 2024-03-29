@@ -265,6 +265,8 @@
   width: 67px;
   height: 67px;
   z-index: 2;
+  display: grid;
+  place-content: center;
 }
 .slider-wrapper .next-btn {
   right: -30px;

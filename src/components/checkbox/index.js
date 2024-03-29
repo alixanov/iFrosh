@@ -22,7 +22,7 @@ const Checkbox = ({
       <input
         hidden
         type={type}
-        value={type === "checkbox" ? v : value}
+        value={value}
         name={name}
         {...register(name, { required })}
         onChange={(e) => {

@@ -66,7 +66,7 @@ const Header = ({ changeLanguage }) => {
           <select>
             <option>UZS</option>
           </select>
-          <Link id="a" to={"/announcement/create"}>
+          <Link id="a" to={token ? "/announcement/create" : "/auth"}>
             {t("create_announcement")} +
           </Link>
           {/* <Link to={"/auth"}>{t("register")}</Link> */}

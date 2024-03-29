@@ -20,7 +20,7 @@ import axios from "axios";
 export default function Filterpage() {
   const [amenities, setAmenities] = useState([]);
   const [openFilter, setOpenFilter] = useState(true);
-  const [announcements, setAnnouncements] = useState([]);
+  const [announcements, setAnnouncements] = useState({});
   const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
@@ -129,11 +129,14 @@ export default function Filterpage() {
     setLoading(true);
     axios
       .get(
-        `https://api.frossh.uz/api/announcement/get-by-filter${location.search}`
+        `https://api.frossh.uz/api/announcement/get-by-filter${encodeURI(location.search)}`
       )
       .then(({ data }) => {
         setLoading(false);
-        setAnnouncements(data?.result?.nonTop);
+        setAnnouncements({
+          data: [...data?.result?.top, ...data?.result?.non_top?.data],
+          links: data?.result?.non_top?.links,
+        });
       })
       .catch((err) => {
         setLoading(false);
@@ -240,8 +243,10 @@ export default function Filterpage() {
       <div className="grid-filter">
         <div
           style={
-            !openFilter
-              ? { transform: "translateX(-100%)" }
+            openFilter
+              ? window.innerWidth <= 1000
+                ? { transform: "translateX(-100%)" }
+                : {}
               : { transform: "translateX(0px)" }
           }
           className="f-left"
