@@ -18,6 +18,11 @@
     align-items: center;
     gap: 269px;
   }
+  .h-left a{
+    display:flex;
+      align-items: center;
+    
+  }
   .h-left :nth-child(1) {
     color: #5d6661;
     font-size: 22.65px;

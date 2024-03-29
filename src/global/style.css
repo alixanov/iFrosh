@@ -27,6 +27,7 @@
   list-style: none;
   text-decoration: none;
   outline: none;
+  font-family: sans-serif !important;
 }
 
 /* container sizes */

@@ -6,6 +6,7 @@ const translationuz = {
   search: "Qidirish",
   create_announcement: "E'lon joylash",
   register: "Ro'yxatdan o'tish",
+  cabinet: "Shaxsiy kabinet",
   // Register
   enter_your_info: "Ma'umotlaringizni kiriting",
   name: "Ismingiz",
