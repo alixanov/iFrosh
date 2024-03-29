@@ -1,3 +1,7 @@
+.c {
+  background-size: cover;
+}
+
 @scope (.home-container) {
   .intro {
     padding-top: 156px;
@@ -5,6 +9,9 @@
     min-height: 943px;
     width: 100%;
     background-image: url("../../assets/images/intro-bg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
   }
 
   .intro .content {

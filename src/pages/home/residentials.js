@@ -8,7 +8,7 @@ import { Arrow } from 'assets/svgs';
 import { useTranslation } from 'react-i18next';
 
 const Residentials = () => {
-  const {t} =useTranslation()
+  const { t } = useTranslation()
   const sliderRef = useRef();
   const handlePrev = useCallback(() => {
     if (!sliderRef.current) return;
