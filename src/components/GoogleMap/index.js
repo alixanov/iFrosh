@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
-import axios from 'axios';
-import { headers } from 'utils/location';
+import React from "react";
+import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import axios from "axios";
+import { headers } from "utils/location";
 
 const mapStyles = {
-  height: '50vh',
-  width: '100%',
-  borderRadius: 16
+  height: "50vh",
+  width: "100%",
+  borderRadius: 16,
 };
 
 const MapContainer = ({ setValue, location, onSelect, setLoading }) => {
@@ -18,19 +18,20 @@ const MapContainer = ({ setValue, location, onSelect, setLoading }) => {
     axios
       .get(apiUrl, { headers })
       .then(({ data }) => {
-        console.log('====================================');
-        console.log(data);
-        console.log('====================================');
         setLoading(false);
-        if (data.status.message === 'OK') {
-          console.log('Location Name:', data?.results?.[0]?.formatted);
-          setValue('address', String(data?.results?.[0]?.formatted?.replace('unnamed road,', '')));
+        if (data.status.message === "OK") {
+          setValue(
+            "address",
+            String(data?.results?.[0]?.formatted?.replace("unnamed road,", ""))
+          );
+          setValue("latitude", data?.results?.[0]?.geometry?.lat);
+          setValue("longitude", data?.results?.[0]?.geometry?.lng);
           onSelect && onSelect(data);
         }
       })
       .catch((error) => {
         setLoading(false);
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       });
   }
 
@@ -51,7 +52,7 @@ const MapContainer = ({ setValue, location, onSelect, setLoading }) => {
 export default MapContainer;
 
 export const MapComponent = ({ latitude, longitude, ...props }) => {
-  const [iframeSrc, setIframeSrc] = React.useState('');
+  const [iframeSrc, setIframeSrc] = React.useState("");
 
   React.useEffect(() => {
     setIframeSrc(
@@ -62,6 +63,14 @@ export const MapComponent = ({ latitude, longitude, ...props }) => {
   return (
     iframeSrc &&
     latitude &&
-    longitude && <iframe title="Google Map" style={{ border: 0, ...mapStyles }} {...props} src={iframeSrc} allowFullScreen />
+    longitude && (
+      <iframe
+        title="Google Map"
+        style={{ border: 0, ...mapStyles }}
+        {...props}
+        src={iframeSrc}
+        allowFullScreen
+      />
+    )
   );
 };
