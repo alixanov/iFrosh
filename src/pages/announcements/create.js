@@ -267,7 +267,7 @@ const CreateAnnouncement = () => {
   }, [amenities?.length]);
 
   useEffect(() => {
-      getAminites();
+    getAminites();
   }, [getAminites]);
 
   return (
@@ -296,7 +296,7 @@ const CreateAnnouncement = () => {
               onClick={
                 imgFiles.length === 10
                   ? () =>
-                      toast.error("10 tadan ko'p rasmlar tanlash mumkin emas!")
+                    toast.error("10 tadan ko'p rasmlar tanlash mumkin emas!")
                   : null
               }
             >
@@ -356,27 +356,27 @@ const CreateAnnouncement = () => {
           <Select
             error={errors["place_type"]}
             name={"place_type"}
-            label={"Joy turini tanlang"}
+            label={t("select_place_type")}
             options={[
               {
                 value: "Kvartira",
-                label: "Kvartira",
+                label: t("flat"),
               },
               {
                 value: "Xonadon",
-                label: "Xonadon",
+                label: t("home"),
               },
               {
                 value: "Quruq yer",
-                label: "Quruq yer",
+                label: t("quruq"),
               },
               {
                 value: "Biznes uchun joy",
-                label: "Biznes uchun joy",
+                label: t("business_place"),
               },
               {
                 value: "Turar joy majmuasi",
-                label: "Turar joy majmuasi",
+                label: t("majmua"),
               },
             ]}
             control={control}
@@ -389,15 +389,15 @@ const CreateAnnouncement = () => {
             options={[
               {
                 value: "bad",
-                label: "Yomon",
+                label: t("bad"),
               },
               {
                 value: "good",
-                label: "O’rtacha",
+                label: t("norm"),
               },
               {
                 value: "new",
-                label: "Yaxshi",
+                label: t("good"),
               },
             ]}
             control={control}
@@ -411,13 +411,13 @@ const CreateAnnouncement = () => {
             options={[
               {
                 value: "sale",
-                label: "Sotish",
+                label: t("sell"),
               },
               place_type !== "skyscraper"
                 ? {
-                    value: "rent",
-                    label: "Ijaraga berish",
-                  }
+                  value: "rent",
+                  label: t("rent_out"),
+                }
                 : null,
             ].filter(Boolean)}
             control={control}
@@ -427,7 +427,7 @@ const CreateAnnouncement = () => {
       </div>
       {place_type !== "skyscraper" ? (
         <>
-          <h3 className="h3">Narx*</h3>
+          <h3 className="h3">{t("price")}</h3>
           <div className="inputs-row align-center">
             <label className={`input-label ${errors["price"] ? "error" : ""}`}>
               <input
@@ -457,7 +457,7 @@ const CreateAnnouncement = () => {
             {watch("sale_type") === "rent" ? (
               <>
                 <div className="space_left">
-                  <h3 className="h3">Oldindan to’lov*</h3>
+                  <h3 className="h3">{t("payment")}</h3>
                   <div className="checkboxes">
                     <Checkbox
                       type="radio"
@@ -504,11 +504,11 @@ const CreateAnnouncement = () => {
               </>
             ) : null}
             <div className="space_left">
-              <h3 className="h3">Narxi kelishiladimi?</h3>
+              <h3 className="h3">{t("agree")}</h3>
               <div className="checkboxes">
                 <Checkbox
                   type="radio"
-                  label={"Ha"}
+                  label={t("exist")}
                   value="1"
                   required
                   name="bargain"
@@ -517,7 +517,7 @@ const CreateAnnouncement = () => {
                 />
                 <Checkbox
                   type="radio"
-                  label={"Yo’q"}
+                  label={t("not_exist")}
                   value="0"
                   required
                   name="bargain"
@@ -529,13 +529,13 @@ const CreateAnnouncement = () => {
           </div>
           <div className="row mt-30">
             <div className="_col">
-              <h3 className="h3">Umumiy ma’lumot*</h3>
+              <h3 className="h3">{t("general_info")}*</h3>
               <div className="row mt-30">
                 {place_type === "dry land" ? null : (
                   <Select
                     error={errors["construction_year"]}
                     name={"construction_year"}
-                    label={"Qurilgan yil"}
+                    label={t("year_built")}
                     options={Array.from({ length: 25 }, (_, i) => ({
                       label: 2000 + i,
                       value: 2000 + i,
@@ -548,7 +548,7 @@ const CreateAnnouncement = () => {
                   <Select
                     error={errors["room_count"]}
                     name={"room_count"}
-                    label={"Xonalar soni"}
+                    label={t("rooms")}
                     options={Array.from({ length: 30 }, (_, i) => ({
                       label: 1 + i,
                       value: 1 + i,
@@ -558,7 +558,7 @@ const CreateAnnouncement = () => {
                   />
                 )}
               </div>
-              <h3 className="h3 mt-30">Umumiy joy*</h3>
+              <h3 className="h3 mt-30">{t("whole_place")}*</h3>
               <div className="inputs-row">
                 <label
                   className={`input-label w-220 ${errors["space_size"] ? "error" : ""}`}
@@ -574,23 +574,23 @@ const CreateAnnouncement = () => {
               </div>
             </div>
             <div className="_col">
-              <h3 className="h3">Qo’shimcha qulayliklar</h3>
+              <h3 className="h3">{t("extra_comfort")}</h3>
               <div className="checkboxes">
                 {amenities?.length
                   ? amenities?.map((item) => (
-                      <Checkbox
-                        key={item?.id}
-                        name={"amenities"}
-                        value={item?.id}
-                        label={item?.name_uz}
-                        register={register}
-                      />
-                    ))
+                    <Checkbox
+                      key={item?.id}
+                      name={"amenities"}
+                      value={item?.id}
+                      label={item?.name_uz}
+                      register={register}
+                    />
+                  ))
                   : "Hech narsa topilmadi"}
               </div>
             </div>
           </div>
-          <h3 className="h3 mt-30">Qayerda joylashgan*</h3>
+          <h3 className="h3 mt-30">{t("where")}*</h3>
           <div className={mapsArray.length > 1 ? "address-row" : "inputs-row"}>
             {mapsArray?.length > 1 ? (
               <>
@@ -624,9 +624,9 @@ const CreateAnnouncement = () => {
               >
                 <input
                   type="text"
-                  placeholder="Namangan, Davlatobod, 5-kichik noxiya 1-uy"
+                  placeholder={t("where_situated_placeholder")}
                   {...register("address")}
-                  // onBlur={() => handleGetCordinate(getValues("address"))}
+                // onBlur={() => handleGetCordinate(getValues("address"))}
                 />
                 {isLoading && <LoadingIcon />}
               </label>
@@ -641,13 +641,13 @@ const CreateAnnouncement = () => {
               setLoading={setIsLoading}
             />
           </div>
-          <h3 className="h3 mt-30">Tavsifi*</h3>
+          <h3 className="h3 mt-30">{t("description")}*</h3>
           <div className="inputs-row">
             <label
               className={`input-label address ${errors["description"] ? "error" : ""}`}
             >
               <textarea
-                placeholder="Tavsifi*"
+                placeholder={t("description*")}
                 {...register("description", { required: true })}
               />
             </label>
@@ -658,7 +658,7 @@ const CreateAnnouncement = () => {
         className={`sender-btn mt-30 ${place_type === "skyscraper" ? "disabled" : ""}`}
         disabled={place_type === "skyscraper"}
       >
-        <span>Saqlash</span>
+        <span>{t("save")}</span>
         <Save />
       </button>
     </form>
