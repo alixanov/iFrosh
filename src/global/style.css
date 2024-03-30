@@ -30,6 +30,11 @@
   font-family: sans-serif !important;
 }
 
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
 /* container sizes */
 
 .container {

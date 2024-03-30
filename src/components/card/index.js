@@ -63,7 +63,7 @@ export const Card = ({ item, editable = false }) => {
             <div className="bottom-infos">
               <div className="views">
                 <Eye />
-                <p>{item?.checked_by}</p>
+                <p>{item?.views_count}</p>
               </div>
             </div>
           </Swiper>

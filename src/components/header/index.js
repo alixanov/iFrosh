@@ -85,7 +85,7 @@ const Header = ({ changeLanguage }) => {
             Frosh
           </Link>
           <Link id="usd">
-            <p>1USD-{nbuData}UZS</p>
+            <p>1 USD {nbuData} UZS</p>
           </Link>
         </div>
         <div className="h-right">

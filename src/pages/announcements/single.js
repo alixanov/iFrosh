@@ -5,12 +5,15 @@ import "./style.css";
 import * as icons from "../../assets/svgs";
 import { Card } from "../../components/card";
 import axios from "axios";
-import Cookies from "js-cookie";
-import { toast } from "react-toastify";
-import { useTranslation } from "react-i18next";
+// import Cookies from "js-cookie";
+// import { toast } from "react-toastify";
+// import { useTranslation } from "react-i18next";
+import { Map, YMaps } from "react-yandex-maps";
+import { useStoreState } from "../../redux/selectors";
 
 const Single = () => {
-  const { t } = useTranslation();
+  const user = useStoreState("user");
+  // const { t } = useTranslation();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const swiperRef = useRef(null);
@@ -50,9 +53,9 @@ const Single = () => {
     () => ({
       id: searchParams.get("_a_id"),
       edit: searchParams.get("edit"),
-      token: Cookies.get("token"),
+      token: user?.token,
     }),
-    [searchParams]
+    [searchParams, user?.token]
   );
   useEffect(() => {
     if (config.edit && !config.token) {
@@ -68,7 +71,7 @@ const Single = () => {
     axios
       .get(`https://api.frossh.uz/api/announcement/get-by-id/${config?.id}`, {
         headers: {
-          Authorization: `Bearer ${Cookies.get("token")}`,
+          Authorization: `Bearer ${user?.token}`,
         },
       })
       .then(({ data }) => {
@@ -79,7 +82,7 @@ const Single = () => {
         setLoading(false);
         console.log(err);
       });
-  }, [config?.id, navigate]);
+  }, [config?.id, user?.token, navigate]);
 
   const sliderData = useMemo(
     () => dataSingle?.announcement?.images,
@@ -189,11 +192,18 @@ const Single = () => {
               <h3 className="h3">Narx</h3>
               <ul className="values">
                 <li>
-                  <span>{dataSingle?.announcement?.price_m2}</span> UZS/
-                  {dataSingle?.announcement?.calculation_method}
+                  <span>
+                    {" "}
+                    {dataSingle?.announcement?.[`price_uzs_formatted`]}{" "}
+                  </span>
+                  UZS
                 </li>
                 <li>
-                  <span>{dataSingle?.announcement?.price} </span>UZS
+                  <span>
+                    {" "}
+                    {dataSingle?.announcement?.[`price_usd_formatted`]}{" "}
+                  </span>
+                  $
                 </li>
               </ul>
               <h3 className="h3">Oldindan to’lov</h3>
@@ -326,13 +336,21 @@ const Single = () => {
           </li>*/}
             </ul>
           </div>
+          <YMaps>
+            <Map
+              className="iframe"
+              defaultState={{
+                center: [
+                  dataSingle?.announcement?.latitude,
+                  dataSingle?.announcement?.longitude,
+                ],
+                zoom: 9,
+              }}
+              width="100%"
+              height="400px"
+            ></Map>
+          </YMaps>
 
-          <iframe
-            className="iframe"
-            title="Announcement location"
-            allowFullScreen
-            src={`https://www.google.com/maps/embed/v1/view?key=AIzaSyD4-Tql8MsjYikxxPerVehVN4lf95zzgHg&center=${dataSingle?.announcement?.latitude},${dataSingle?.announcement?.longitude}&zoom=15`}
-          ></iframe>
           {dataSingle?.similar?.length ? (
             <>
               <h3 className="title">O’xshash e’lonlar</h3>
