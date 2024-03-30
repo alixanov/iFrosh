@@ -73,7 +73,9 @@ export const Card = ({ item, editable = false }) => {
         to={`/announcement/${item?.slug}?_a_id=${item?.id}`}
         className="card-body"
       >
-        <p className="pice">{item[`price_${user?.currency?.code?.toLowerCase()}_formatted`]} uzs</p>
+        <p className="pice">
+          {item[`price_${user?.currency?.code?.toLowerCase()}_formatted`]} uzs
+        </p>
         <div className="row-info">
           <p>{item?.room_count} xona</p>
           {item?.room_floor && <p>{item?.room_floor}-qavat</p>}
@@ -83,7 +85,7 @@ export const Card = ({ item, editable = false }) => {
       </Link>
 
       {/* status pending overlay */}
-      {item === 5
+      {!item.is_active
         ? overlay
         : editable && (
             <Link

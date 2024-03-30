@@ -39,6 +39,7 @@ const translationru = {
   social: "Наши социальные сети",
   // create
   select_type: "Выберите тип",
+  select_type_sale: "Выберите тип продажи",
   select_place_type: "Выберите тип местоположения",
   sotix: "Сотих",
   quruq: "Сухая земля",

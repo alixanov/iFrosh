@@ -4,8 +4,9 @@ import Person from "./info";
 import "./style.css";
 import MyAnnouncements from "./my-announcements";
 import Payment from "./payme";
-import { Announcement, Plus, User, Wishes } from "assets/svgs";
+import { Announcement, Plus, User, Wishes as WishesIcon } from "assets/svgs";
 import { useTranslation } from "react-i18next";
+import Wishes from "./wishes";
 
 export default function UserInfo() {
   const [open, setOpen] = useState(false);
@@ -18,7 +19,7 @@ export default function UserInfo() {
           <Routes>
             <Route index path="/" element={<Person />} />
             <Route path="/my-announcements" element={<MyAnnouncements />} />
-            <Route path="/wishes" element={<MyAnnouncements />} />
+            <Route path="/wishes" element={<Wishes />} />
             <Route path="/payment" element={<Payment />} />
           </Routes>
         </div>
@@ -52,7 +53,7 @@ export default function UserInfo() {
               navigate("wishes");
             }}
           >
-            {t("favorites")} <Wishes />
+            {t("favorites")} <WishesIcon />
           </button>
           <button
             className="hidden-button"

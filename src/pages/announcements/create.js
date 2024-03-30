@@ -16,7 +16,7 @@ import {
 import { formatFileSize } from "../../utils";
 import Select from "../../components/select";
 import Checkbox from "../../components/checkbox";
-import MapContainer from "../../components/GoogleMap";
+import MapContainer from "../../components/ymap3";
 import { getCoorDinates } from "../../utils/location";
 import "./style.css";
 import Cookies from "js-cookie";
@@ -96,6 +96,7 @@ const CreateAnnouncement = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [resultStatus, setResultStatus] = useState(null);
   const [location, setLocation] = useState({
     lat: 40.98,
     lng: 71.58,
@@ -164,9 +165,9 @@ const CreateAnnouncement = () => {
     clearErrors,
   } = useForm({
     defaultValues: {
+      space_size: "",
       description: "",
       price: "",
-      calculation_method: "",
       place_type: "",
       repair_type: "",
       sale_type: "sale",
@@ -176,7 +177,6 @@ const CreateAnnouncement = () => {
       room_floor: "",
       room_count: "",
       construction_year: "",
-      m2: "",
       address: "",
       latitude: "",
       longitude: "",
@@ -409,7 +409,7 @@ const CreateAnnouncement = () => {
             defaultOpened
             error={errors["sale_type"]}
             name={"sale_type"}
-            label={t("select_type")}
+            label={t("select_type_sale")}
             options={[
               {
                 value: "sale",
@@ -440,27 +440,7 @@ const CreateAnnouncement = () => {
               <span>UZS</span>
               <Pen />
             </label>
-            <Select
-              error={errors["calculation_method"]}
-              name={"calculation_method"}
-              label={"Turini tanlang"}
-              options={[
-                {
-                  value: "sotix",
-                  label: "Sotix",
-                },
-                {
-                  value: "m2",
-                  label: "M²",
-                },
-                {
-                  value: "etc",
-                  label: "Quruq yer",
-                },
-              ]}
-              control={control}
-              required
-            />
+
             {["apartment", "business place"].includes(place_type) ? (
               <Select
                 error={errors["room_floor"]}
@@ -571,9 +551,9 @@ const CreateAnnouncement = () => {
                     error={errors["room_count"]}
                     name={"room_count"}
                     label={"Xonalar soni"}
-                    options={Array.from({ length: 5 }, (_, i) => ({
+                    options={Array.from({ length: 30 }, (_, i) => ({
                       label: 1 + i,
-                      value: 1 + i
+                      value: 1 + i,
                     }))}
                     control={control}
                     required
@@ -582,11 +562,13 @@ const CreateAnnouncement = () => {
               </div>
               <h3 className="h3 mt-30">Umumiy joy*</h3>
               <div className="inputs-row">
-                <label className={`input-label ${errors["m2"] ? "error" : ""}`}>
+                <label
+                  className={`input-label w-220 ${errors["space_size"] ? "error" : ""}`}
+                >
                   <input
                     type="number"
                     placeholder="100"
-                    {...register("m2", { required: true })}
+                    {...register("space_size", { required: true, max: 50000 })}
                   />
                   <span>m²</span>
                   <Pen />
@@ -646,7 +628,7 @@ const CreateAnnouncement = () => {
                   type="text"
                   placeholder="Namangan, Davlatobod, 5-kichik noxiya 1-uy"
                   {...register("address")}
-                  onBlur={() => handleGetCordinate(getValues("address"))}
+                  // onBlur={() => handleGetCordinate(getValues("address"))}
                 />
                 {isLoading && <LoadingIcon />}
               </label>
@@ -654,6 +636,7 @@ const CreateAnnouncement = () => {
           </div>
           <div className="mt-30">
             <MapContainer
+              address={watch("address")}
               setValue={setValue}
               location={location}
               onSelect={() => setMapArray([])}

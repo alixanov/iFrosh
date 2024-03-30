@@ -39,6 +39,7 @@ const translationuz = {
   // create
   select_type: "Turini tanlang",
   select_place_type: "Joy turini tanlang",
+  select_type_sale: "Sotuv turini tanlang",
   sotix: "Sotix",
   quruq: "Quruq yer",
   repairment: "Ta'mir holati",

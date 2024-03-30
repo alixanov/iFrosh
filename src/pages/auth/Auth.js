@@ -30,7 +30,9 @@ export default function Auth() {
     setError,
     clearErrors,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: { phone: "998" },
+  });
   const [otp, setOtp] = useState("");
   const [openSelect, setOpenSelect] = useState("");
   const [step, setStep] = useState("register"); // register || login || modal-otp || modal-[success||reject]

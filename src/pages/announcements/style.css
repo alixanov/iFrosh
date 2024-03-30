@@ -514,6 +514,9 @@
   padding: 16px 100px;
 }
 
+.w-220 {
+  width: 220px !important;
+}
 /******* RESPONSIVE ********/
 
 @media (max-width: 1600px) {
