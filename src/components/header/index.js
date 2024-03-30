@@ -8,9 +8,8 @@ import { ReactComponent as Bayroq } from "assets/svgs/flagUz.svg";
 import { ReactComponent as Rus } from "assets/svgs/rus.svg";
 import { setUser } from "../../redux/user";
 import "./style.css";
-import logo from "../../assets/svgs/LOGO.svg"
+import logo from "../../assets/images/placemark.png";
 import { useStoreState } from "../../redux/selectors";
-
 
 const Header = ({ changeLanguage }) => {
   const { t } = useTranslation();
@@ -19,17 +18,12 @@ const Header = ({ changeLanguage }) => {
   const [loading, setLoading] = useState(false);
   const [nbuData, setNbuData] = useState(null);
   const [selectedCurrency, setSelectedCurrency] = useState("USD");
-  const [flag, setFlag] = useState('uz')
-
+  const [flag, setFlag] = useState("uz");
 
   const Changelangheader = (e) => {
     changeLanguage(e.target.value);
-    setFlag(e.target.value)
-
+    setFlag(e.target.value);
   };
-
-
-
 
   const token = Cookies.get("token");
 
@@ -63,14 +57,14 @@ const Header = ({ changeLanguage }) => {
     };
   }, [getUser]);
 
-  // usd api get 
+  // usd api get
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://api.frossh.uz/api/nbu/show');
+        const response = await axios.get("https://api.frossh.uz/api/nbu/show");
         setNbuData(response.data.result.nbu_cell_price);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
@@ -95,11 +89,7 @@ const Header = ({ changeLanguage }) => {
           </Link>
         </div>
         <div className="h-right">
-          {
-            flag == 'uz' ? <Bayroq /> : <Rus />
-          }
-
-
+          {flag == "uz" ? <Bayroq /> : <Rus />}
 
           <select onChange={Changelangheader}>
             <option value="uz">uz</option>

@@ -220,7 +220,12 @@ a {
 }
 @media (max-width: 470px) {
   .container {
-    padding: 0 22px;
+    padding: 0 16px;
+  }
+  @scope (.main-header) {
+    .h-left :nth-child(1) {
+      font-size: 18px !important;
+    }
   }
   .paginations button {
     font-size: 18px;

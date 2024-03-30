@@ -18,10 +18,14 @@
     align-items: center;
     gap: 269px;
   }
-  .h-left a{
-    display:flex;
-      align-items: center;
-    
+  .h-left img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+  }
+  .h-left a {
+    display: flex;
+    align-items: center;
   }
   .h-left :nth-child(1) {
     color: #5d6661;
@@ -98,17 +102,17 @@
   }
 }
 @media (max-width: 1120px) {
-    .h-right a {
-      width: 150px !important;
-      height: 42px !important;
-      font-size: 16px !important;
-    }
-    a#usd{
-      font-size: 15px;
-    }
-      .h-right :nth-child(3) {
-      font-size: 16px !important;
-    }
+  .h-right a {
+    width: 150px !important;
+    height: 42px !important;
+    font-size: 16px !important;
+  }
+  a#usd {
+    font-size: 15px;
+  }
+  .h-right :nth-child(3) {
+    font-size: 16px !important;
+  }
 }
 @media (max-width: 900px) {
   @scope (.main-header) {
@@ -118,7 +122,7 @@
       font-size: 18px;
     }
     .h-right :nth-child(3),
-    a#usd{
+    a#usd {
       display: none;
     }
   }
@@ -140,11 +144,11 @@
 }
 
 @media (max-width: 610px) {
-  .h-right a{
+  .h-right a {
     width: 130px !important;
     font-size: 14px !important;
   }
-  div.h-left{
+  div.h-left {
     width: auto;
     transform: translateX();
   }
@@ -154,30 +158,33 @@
     .h-right {
       gap: 15px;
       align-items: center;
-
+    }
+    .h-left img {
+      width: 40px;
+      height: 40px;
     }
     .h-right :nth-child(1) {
       width: 40px;
       height: 40px;
     }
-    .h-right :nth-child(1){
-     width: 30px;
-     height: 30px;
+    .h-right :nth-child(1) {
+      width: 30px;
+      height: 30px;
     }
   }
 }
 @media (max-width: 515px) {
-    .h-right  a {
-      width: 110px !important;
-      height: 30px !important;
-      font-size: 12px !important;
-    }
+  .h-right a {
+    width: 110px !important;
+    height: 30px !important;
+    font-size: 12px !important;
+  }
 }
 
 @media (max-width: 470px) {
-  .h-right a{
-  width: 100px !important;
-font-size: 10px !important;
+  .h-right a {
+    width: 100px !important;
+    font-size: 10px !important;
     padding: 10px !important;
     text-align: center;
   }
@@ -194,7 +201,7 @@ font-size: 10px !important;
       width: 80px !important;
       font-size: 8px !important;
     }
-    .h-right svg{
+    .h-right svg {
       display: none;
     }
   }
@@ -226,7 +233,7 @@ font-size: 10px !important;
   .h-left :nth-child(1) {
     font-size: 16px !important;
   }
-  .h-right > a{
+  .h-right > a {
     width: 60px !important;
   }
 }
