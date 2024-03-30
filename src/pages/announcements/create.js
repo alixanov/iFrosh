@@ -267,9 +267,7 @@ const CreateAnnouncement = () => {
   }, [amenities?.length]);
 
   useEffect(() => {
-    return () => {
       getAminites();
-    };
   }, [getAminites]);
 
   return (
@@ -636,7 +634,7 @@ const CreateAnnouncement = () => {
           </div>
           <div className="mt-30">
             <MapContainer
-              address={watch("address")}
+              // address={watch("address")}
               setValue={setValue}
               location={location}
               onSelect={() => setMapArray([])}

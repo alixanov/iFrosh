@@ -9,10 +9,12 @@ import { ReactComponent as Rus } from "assets/svgs/rus.svg";
 import { setUser } from "../../redux/user";
 import "./style.css";
 import logo from "../../assets/svgs/LOGO.svg"
+import { useStoreState } from "../../redux/selectors";
 
 
 const Header = ({ changeLanguage }) => {
   const { t } = useTranslation();
+  const user = useStoreState("user");
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [nbuData, setNbuData] = useState(null);
@@ -107,11 +109,11 @@ const Header = ({ changeLanguage }) => {
             <option value="USD">USD</option>
             <option value="UZS">UZS</option>
           </select>
-          <Link id="a" to={token ? "/announcement/create" : "/auth"}>
+          <Link id="a" to={user?.id ? "/announcement/create" : "/auth"}>
             {t("create_announcement")} +
           </Link>
-          <Link to={token ? "/profile" : "/auth"}>
-            {token ? t("cabinet") : t("register")}
+          <Link to={user?.id ? "/profile" : "/auth"}>
+            {user?.id ? t("cabinet") : t("register")}
           </Link>
         </div>
       </header>
