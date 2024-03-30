@@ -584,7 +584,7 @@ export default function Filterpage() {
                 onClick={() =>
                   setSearchParams({
                     ...desiredObject,
-                    page: item?.url?.split("=")[1],
+                    page: item?.url?.split("=")[1]
                   })
                 }
                 className={item?.active ? "active" : undefined}

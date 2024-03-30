@@ -345,14 +345,6 @@ const CreateAnnouncement = () => {
                 </button>
               </div>
             )}
-            <button
-              type="button"
-              disabled={!imgFiles.length}
-              className="image-saver"
-            >
-              <span>Saqlash</span>
-              <Save />
-            </button>
           </div>
           <div className="progressbar">
             <div
@@ -581,7 +573,7 @@ const CreateAnnouncement = () => {
                     label={"Xonalar soni"}
                     options={Array.from({ length: 5 }, (_, i) => ({
                       label: 1 + i,
-                      value: 1 + i,
+                      value: 1 + i
                     }))}
                     control={control}
                     required

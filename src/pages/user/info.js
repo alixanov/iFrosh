@@ -17,11 +17,11 @@ export default function UserDashboard() {
 
   const headers = useMemo(
     () => ({
-      Authorization: `Bearer ${Cookies.get("token")}`,
+      Authorization: `Bearer ${profileInfo?.token}`,
       Accept: "application/json",
       "Content-Type": "application/json",
     }),
-    []
+    [profileInfo?.token]
   );
 
   // GET REGIONS
@@ -112,7 +112,7 @@ export default function UserDashboard() {
 
   return (
     <div className="person">
-      {profileInfo?.first_name ? (
+      {profileInfo?.id ? (
         <div className="person">
           <div className="p-left">
             <div className="p-left-top">
@@ -123,7 +123,9 @@ export default function UserDashboard() {
               </div>
               <div className="p-text-info">
                 <p>{profileInfo?.first_name + "." + profileInfo?.last_name}</p>
-                <span>{t("your_account")}: {profileInfo?.id}</span>
+                <span>
+                  {t("your_account")}: {profileInfo?.id}
+                </span>
                 <b>+{profileInfo?.phone_number}</b>
               </div>
             </div>

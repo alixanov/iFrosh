@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Person from "./info";
 import "./style.css";
@@ -8,6 +8,7 @@ import { Announcement, Plus, User, Wishes } from "assets/svgs";
 import { useTranslation } from "react-i18next";
 
 export default function UserInfo() {
+  const [open, setOpen] = useState(false);
   const { t } = useTranslation();
   const navigate = useNavigate();
   return (
@@ -22,23 +23,44 @@ export default function UserInfo() {
           </Routes>
         </div>
 
-        <div className="personright">
+        <div
+          className={`personright ${open ? "active" : ""}`}
+          onClick={() => setOpen(!open)}
+        >
           <button
             className="hidden-button"
-            onClick={() => navigate("/profile")}
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate("/profile");
+            }}
           >
             {t("private_info")} <User />
           </button>
           <button
             className="hidden-button"
-            onClick={() => navigate("my-announcements")}
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate("my-announcements");
+            }}
           >
             {t("announcement")} <Announcement />
           </button>
-          <button className="hidden-button" onClick={() => navigate("wishes")}>
+          <button
+            className="hidden-button"
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate("wishes");
+            }}
+          >
             {t("favorites")} <Wishes />
           </button>
-          <button className="hidden-button" onClick={() => navigate("payment")}>
+          <button
+            className="hidden-button"
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate("payment");
+            }}
+          >
             {t("fill")}
             <Plus />
           </button>

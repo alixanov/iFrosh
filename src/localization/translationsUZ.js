@@ -55,6 +55,7 @@ const translationuz = {
   rent_out: "Ijaraga berish",
   sell: "Sotish",
   select_month: "Oyni tanlash",
+  month: "Oy",
   general_info: "Umumiy ma'lumot",
   extra_info: "Qo'shimcha ma'lumot",
   rooms: "Xonalar soni",
@@ -92,6 +93,7 @@ const translationuz = {
   buy: "Sotib olish",
   rent: "Ijaraga olish",
   close: "Yopish",
+  demo: "Sayt hozirda bepul rejimida ishlamoqda. Bemalol bepul e’lon joylashingiz mumkin!",
   // user
   private_info: "Shaxsiy malumotlarim",
   announcement: "E'lonlarim",

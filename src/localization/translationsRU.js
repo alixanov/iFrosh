@@ -6,7 +6,7 @@ const translationru = {
   search: "поиск",
   create_announcement: "Разместить ",
   register: "Зарегистрироваться",
-   cabinet:"Личный кабинет",
+  cabinet: "Личный кабинет",
   // Register
   enter_your_info: "Введите свои учетные данные",
   name: "Ваше имя",
@@ -15,6 +15,7 @@ const translationru = {
   account: "У тебя есть аккаунт?",
   login: "Войти в аккаунт",
   sms: "Отправить СМС-код",
+  demo: "Сайт в настоящее время работает в бесплатном режиме. Вы можете легко разместить бесплатное объявление!",
   // months
   january: "январь",
   february: "февраль",
@@ -55,6 +56,7 @@ const translationru = {
   rent_out: "Сдать в аренду",
   sell: "Продажа",
   select_month: "Выберите месяц",
+  month: "Месяц",
   general_info: "Общая информация",
   extra_info: "Дополнительная информация",
   rooms: "Количество комнат",
@@ -90,7 +92,6 @@ const translationru = {
   cheap: "Более дешевый",
   expensive: "Дорогой",
   close: "закрывать",
+};
 
-}
-
-export default translationru
+export default translationru;

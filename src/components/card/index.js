@@ -7,8 +7,10 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { Eye, Pen, Reload } from "../../assets/svgs";
+import { useStoreState } from "../../redux/selectors";
 
 export const Card = ({ item, editable = false }) => {
+  const user = useStoreState("user");
   const swiperRef = useRef(null);
   const slideToIndex = useCallback((index) => {
     if (swiperRef.current && swiperRef.current.swiper) {
@@ -71,7 +73,7 @@ export const Card = ({ item, editable = false }) => {
         to={`/announcement/${item?.slug}?_a_id=${item?.id}`}
         className="card-body"
       >
-        <p className="pice">{item?.price} uzs</p>
+        <p className="pice">{item[`price_${user?.currency?.code?.toLowerCase()}_formatted`]} uzs</p>
         <div className="row-info">
           <p>{item?.room_count} xona</p>
           {item?.room_floor && <p>{item?.room_floor}-qavat</p>}
