@@ -36,17 +36,19 @@ function App() {
     i18next.changeLanguage(value);
   };
 
+  const hideHeader = ["/auth"].includes(pathname);
+
   return (
     <div className="app-container" ref={appRef}>
       <div className="space-top-container">
-        <Header changeLanguage={Changelang} />
+        {hideHeader ? null : <Header changeLanguage={Changelang} />}
         <Routes>
           {routes.map((route) => (
             <Route key={route.path} {...route} />
           ))}
         </Routes>
       </div>
-      <Footer />
+      {hideHeader ? null : <Footer />}
     </div>
   );
 }

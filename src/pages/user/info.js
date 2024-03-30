@@ -122,7 +122,7 @@ export default function UserDashboard() {
                   profileInfo?.last_name?.slice(0, 1)}
               </div>
               <div className="p-text-info">
-                <p>{profileInfo?.first_name + "." + profileInfo?.last_name}</p>
+                <p>{`${profileInfo?.first_name}\n${profileInfo?.last_name}`}</p>
                 <span>
                   {t("your_account")}: {profileInfo?.id}
                 </span>
