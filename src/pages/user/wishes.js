@@ -43,10 +43,10 @@ const Wishes = () => {
           announcements?.data?.map((item) => (
             <Card key={item?.id} item={item} />
           ))
-        ) : (
+        ) : loading ? null : (
           <div className="noProfileInfo">
-            <img src={noProfileInfoImg} alt="" />
-            <Link to={"/announcement/create"}>{t("create_announcement")}</Link>
+            <img src={noProfileInfoImg} alt="noProfileInfoImg" />
+            <Link to={"/"}>{t("main")}</Link>
           </div>
         )}
       </div>

@@ -1,4 +1,8 @@
 const translationru = {
+  bargain: "Торговаться",
+  main: "Главная",
+  success_created: "Ваше успешное объявление\nотправлено на проверку!",
+  reject_message: "Произошла ошибка!\nПопробуйте позже",
   // general
   intro_title: "Давайте найдем дом\nвашей мечты!",
   slider_title: "Жилые комплексы",

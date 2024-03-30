@@ -44,7 +44,7 @@ const MyAnnouncements = () => {
           announcements?.announcements?.map((item) => (
             <Card key={item?.id} item={item} editable />
           ))
-        ) : (
+        ) : loading ? null : (
           <div className="noProfileInfo">
             <img src={noProfileInfoImg} alt="" />
             <Link to={"/announcement/create"}>{t("create_announcement")}</Link>

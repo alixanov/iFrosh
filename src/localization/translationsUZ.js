@@ -1,4 +1,8 @@
 const translationuz = {
+  bargain: "Narx muzokarasi",
+  main: "Bosh sahifa",
+  success_created: "Muvaffaqiyatli e’loningiz\ntekshiruvga yuborildi!",
+  reject_message: "Hatolik yuz berdi!\nKeynroq urinib ko’ring",
   // general
   intro_title: "Keling sizning orzuyingizdagi\nuyni topaylik!",
   slider_title: "Turar joy majmualari",
