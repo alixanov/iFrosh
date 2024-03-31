@@ -121,8 +121,7 @@
       height: 42px;
       font-size: 18px;
     }
-    .h-right :nth-child(3),
-    a#usd {
+    .h-right a:last-child {
       display: none;
     }
   }

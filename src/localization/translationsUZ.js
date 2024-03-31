@@ -1,4 +1,5 @@
 const translationuz = {
+  logout: "Chiqish",
   bargain: "Narx muzokarasi",
   main: "Bosh sahifa",
   success_created: "Muvaffaqiyatli e’loningiz\ntekshiruvga yuborildi!",

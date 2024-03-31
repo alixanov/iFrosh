@@ -1,4 +1,5 @@
 const translationru = {
+  logout:"Выход",
   bargain: "Торговаться",
   main: "Главная",
   success_created: "Ваше успешное объявление\nотправлено на проверку!",
