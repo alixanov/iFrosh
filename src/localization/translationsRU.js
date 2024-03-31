@@ -25,7 +25,7 @@ const translationru = {
   kodkelmadi: "не кодировал",
   qaytayuborish: "Отправить",
   yuborish: "Отправить",
-  siz: "Вы успешно зарегистрировались!",
+  siz: "Вы успешно  вошли в систему!",
   bosh: "Главное меню",
 
   demo: "Сайт в настоящее время работает в бесплатном режиме. Вы можете легко разместить бесплатное объявление!",
@@ -52,14 +52,15 @@ const translationru = {
   social: "Наши социальные сети",
   // create
   select_type: "Выберите тип",
-  select_type_sale: "Выберите тип продажи",
-  select_place_type: "Выберите тип местоположения",
+  select_type_sale: " тип продажи",
+  select_place_type: " тип местоположения",
   sotix: "Сотих",
   quruq: "Сухая земля",
   repairment: "Статус ремонта",
   bad: "Это плохо",
   norm: "Средний",
   good: "Хороший",
+  majmuo: "сложный",
   flat: "Квартира",
   home: "дом",
   price: "Цена",
@@ -104,6 +105,8 @@ const translationru = {
   qqavat: "пол",
   umumiy: "Общая информацияt",
   qoshimcha: "Дополнительные удобства",
+  ha: "Da",
+  yoq: "Heт",
 
   repair: "Ремонт",
   bath: "Душ",
@@ -128,6 +131,14 @@ const translationru = {
   enter_register: "Войти в систему",
   viloyat: "Провинция:",
   shaxar: "Город:",
+  xona: "комната",
+  qavat: "пол",
+  //
+
+  tekshirilmoqda: "Проверка...",
+  Quyidagi: "Следующие файлы имеют размер более 10 МБ:",
+
+
 
 
 

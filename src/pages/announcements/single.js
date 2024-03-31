@@ -208,7 +208,7 @@ const Single = () => {
                   {dataSingle?.announcement?.advance &&
                     dataSingle?.announcement?.advance_month
                     ? `${dataSingle?.announcement?.advance_month} oylik`
-                    : "Yo’q"}
+                    : t("yoq")}
                 </li>
               </ul>
               <ul className="options">
@@ -216,7 +216,7 @@ const Single = () => {
                   <li>
                     <icons.Floor />
                     <span className="h3">
-                      {dataSingle?.announcement?.room_floor}-qavat
+                      {dataSingle?.announcement?.room_floor}- {t("qavat")}
                     </span>
                   </li>
                 )}
@@ -224,7 +224,7 @@ const Single = () => {
                   <li>
                     <icons.Room />
                     <span className="h3">
-                      {dataSingle?.announcement?.room_count} xona
+                      {dataSingle?.announcement?.room_count}{t("xona")}
                     </span>
                   </li>
                 )}
@@ -236,12 +236,7 @@ const Single = () => {
                     </span>
                   </li>
                 )}
-                {/* {dataSingle?.announcement?.space_size && (
-              <li>
-                <icons.Home />
-                <span className="h3">6 sotix</span>
-              </li>
-            )} */}
+
               </ul>
             </div>
           </div>
@@ -264,7 +259,7 @@ const Single = () => {
               </li>
               <li>
                 <p> {t("kelishish")} </p>
-                <p>{dataSingle?.announcement?.bargain ? "Ha" : "Yo'q"}</p>
+                <p>{dataSingle?.announcement?.bargain ? t("ha") : t("yoq")}</p>
               </li>
 
               <li>

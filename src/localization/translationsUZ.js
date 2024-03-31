@@ -23,10 +23,10 @@ const translationuz = {
   royxat: "Royxatdan o'tish",
   xali: "Xali xisob ochmadingizmi",
   kodini: "Tasdiqlash kodini kiriting! ",
-  kodkelmadi:"Kod kelmadimi?",
-  qaytayuborish:"Qayta yuborish",
-  yuborish:"Yuborish",
-  siz:"Siz muvaffaqiyatli ro’yxatdan o’tdingiz!",
+  kodkelmadi: "Kod kelmadimi?",
+  qaytayuborish: "Qayta yuborish",
+  yuborish: "Yuborish",
+  siz: "Siz muvaffaqiyatli ro’yxatdan o’tdingiz!",
   bosh: "Bosh menyu",
 
   // months
@@ -55,6 +55,7 @@ const translationuz = {
   select_place_type: "Joy turini tanlang",
   select_type_sale: "Sotuv turini tanlang",
   sotix: "Sotix",
+  majmuo:"majmua",
   quruq: "Quruq yer",
   repairment: "Ta'mir holati",
   bad: "Yomon",
@@ -110,6 +111,8 @@ const translationuz = {
   appearence: "Oynadan ko'rinish",
   lift: "Lift",
   similar_adds: "O'xshash e'lonlar",
+  ha: "Ha",
+  yoq: "Yoq",
   // filter
   sort: "Saralash",
   popular: "Ommabop",
@@ -128,8 +131,10 @@ const translationuz = {
   wer_glad: "Frosh.uz saytini tanlaganingizdan mamnunmiz!",
   must_register: "Tizimga kirishingiz kerak!",
   enter_register: "Tizimga kirish",
-  viloyat:"Viloyat:",
-  shaxar:"Shahar:",
+  viloyat: "Viloyat:",
+  shaxar: "Shahar:",
+  xona: "xona",
+  qavat: "qavat",
   // payme
   payment_type_sel: "To’lov turini tanlang",
   enter_emount: "To’lov summasini kiriting",
@@ -139,6 +144,12 @@ const translationuz = {
   close: "Yopish",
   additional_comfort: "Qo`shimcha qulayliklar",
   close: "Yopish",
+
+  //
+  tekshirilmoqda:"Tekshirilmoqda...",
+  Quyidagi:"Quyidagi fayllar 10 MB dan katta:",
+
+ 
 };
 
 export default translationuz;

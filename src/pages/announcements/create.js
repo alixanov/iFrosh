@@ -119,7 +119,7 @@ const CreateAnnouncement = () => {
     if (invalidFiles.length > 0) {
       // 10 MB dan katta bo'lgan fayllar qo'shilgan
       toast.error(
-        `Quyidagi fayllar 10 MB dan katta: ${invalidFiles
+        `${t('Quyidagi')} ${invalidFiles
           .map((file) => file.name)
           .join(", ")}`
       );
@@ -275,9 +275,8 @@ const CreateAnnouncement = () => {
         </div>
       )}
       <form
-        className={`container announcements ${
-          resultStatus ? "with-overlay" : ""
-        }`}
+        className={`container announcements ${resultStatus ? "with-overlay" : ""
+          }`}
         onSubmit={handleSubmit(onSubmit)}
       >
         {loading && (
@@ -305,9 +304,9 @@ const CreateAnnouncement = () => {
                 onClick={
                   imgFiles.length === 10
                     ? () =>
-                        toast.error(
-                          "10 tadan ko'p rasmlar tanlash mumkin emas!"
-                        )
+                      toast.error(
+                        "10 tadan ko'p rasmlar tanlash mumkin emas!"
+                      )
                     : null
                 }
               >
@@ -395,7 +394,7 @@ const CreateAnnouncement = () => {
                 },
                 {
                   value: "Turar joy majmuasi",
-                  label: t("majmua"),
+                  label: t("majmuo"),
                 },
               ]}
               control={control}
@@ -434,9 +433,9 @@ const CreateAnnouncement = () => {
                 },
                 place_type !== "skyscraper"
                   ? {
-                      value: "rent",
-                      label: t("rent_out"),
-                    }
+                    value: "rent",
+                    label: t("rent_out"),
+                  }
                   : null,
               ].filter(Boolean)}
               control={control}
@@ -482,7 +481,7 @@ const CreateAnnouncement = () => {
                     <div className="checkboxes">
                       <Checkbox
                         type="radio"
-                        label={"Bor"}
+                        label={t('yoq')}
                         value="1"
                         required
                         name="advance"
@@ -491,7 +490,7 @@ const CreateAnnouncement = () => {
                       />
                       <Checkbox
                         type="radio"
-                        label={"Yo’q"}
+                        label={t('yoq')}
                         value="0"
                         required
                         name="advance"
@@ -582,9 +581,8 @@ const CreateAnnouncement = () => {
                 <h3 className="h3 mt-30">{t("whole_place")}*</h3>
                 <div className="inputs-row">
                   <label
-                    className={`input-label w-220 ${
-                      errors["space_size"] ? "error" : ""
-                    }`}
+                    className={`input-label w-220 ${errors["space_size"] ? "error" : ""
+                      }`}
                   >
                     <input
                       type="number"
@@ -604,14 +602,14 @@ const CreateAnnouncement = () => {
                 <div className="checkboxes">
                   {amenities?.length
                     ? amenities?.map((item) => (
-                        <Checkbox
-                          key={item?.id}
-                          name={"amenities"}
-                          value={item?.id}
-                          label={item?.name_uz}
-                          register={register}
-                        />
-                      ))
+                      <Checkbox
+                        key={item?.id}
+                        name={"amenities"}
+                        value={item?.id}
+                        label={item?.name_uz}
+                        register={register}
+                      />
+                    ))
                     : "Hech narsa topilmadi"}
                 </div>
               </div>
@@ -651,9 +649,8 @@ const CreateAnnouncement = () => {
                 </>
               ) : (
                 <label
-                  className={`input-label address ${
-                    errors["address"] ? "error" : ""
-                  }`}
+                  className={`input-label address ${errors["address"] ? "error" : ""
+                    }`}
                 >
                   <input
                     type="text"
@@ -677,9 +674,8 @@ const CreateAnnouncement = () => {
             <h3 className="h3 mt-30">{t("description")}*</h3>
             <div className="inputs-row">
               <label
-                className={`input-label address ${
-                  errors["description"] ? "error" : ""
-                }`}
+                className={`input-label address ${errors["description"] ? "error" : ""
+                  }`}
               >
                 <textarea
                   placeholder={t("description*")}
@@ -690,9 +686,8 @@ const CreateAnnouncement = () => {
           </>
         ) : null}
         <button
-          className={`sender-btn mt-30 ${
-            place_type === "skyscraper" ? "disabled" : ""
-          }`}
+          className={`sender-btn mt-30 ${place_type === "skyscraper" ? "disabled" : ""
+            }`}
           disabled={place_type === "skyscraper"}
         >
           <span>{t("save")}</span>

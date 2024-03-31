@@ -8,10 +8,12 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { Eye, Pen, Reload } from "../../assets/svgs";
 import { useStoreState } from "../../redux/selectors";
+import { useTranslation } from "react-i18next";
 
 export const Card = ({ item, editable = false }) => {
   const user = useStoreState("user");
   const swiperRef = useRef(null);
+  const { t } = useTranslation();
   const slideToIndex = useCallback((index) => {
     if (swiperRef.current && swiperRef.current.swiper) {
       swiperRef.current.swiper.slideTo(index);
@@ -27,7 +29,7 @@ export const Card = ({ item, editable = false }) => {
   const overlay = (
     <div className="overlay pending-status">
       <Reload />
-      <p>Tekshirilmoqda...</p>
+      <p> {t('tekshirilmoqda')}  </p>
     </div>
   );
 
@@ -74,11 +76,11 @@ export const Card = ({ item, editable = false }) => {
         className="card-body"
       >
         <p className="pice">
-          {item[`price_${user?.currency?.code?.toLowerCase() || "uzs"}_formatted`]} {user?.currency?.code|| "uzs"}
+          {item[`price_${user?.currency?.code?.toLowerCase() || "uzs"}_formatted`]} {user?.currency?.code || "uzs"}
         </p>
         <div className="row-info">
-          <p>{item?.room_count} xona</p>
-          {item?.room_floor && <p>{item?.room_floor}-qavat</p>}
+          <p>{item?.room_count} - {t('xona')}  </p>
+          {item?.room_floor && <p>{item?.room_floor}-{t('qavat')} </p>}
           <p>{item?.space_size} m²</p>
         </div>
         <p className="address">{item?.address}</p>
@@ -88,13 +90,13 @@ export const Card = ({ item, editable = false }) => {
       {!item.is_active
         ? overlay
         : editable && (
-            <Link
-              to={`/announcement/${item?.id}?edit=${item?.slug}&_a_id=${item?.id}`}
-              className="edit-btn"
-            >
-              <Pen />
-            </Link>
-          )}
+          <Link
+            to={`/announcement/${item?.id}?edit=${item?.slug}&_a_id=${item?.id}`}
+            className="edit-btn"
+          >
+            <Pen />
+          </Link>
+        )}
     </div>
   );
 };
