@@ -425,7 +425,7 @@ export default function Auth() {
         <div className="modal">
           {step === "modal-otp" ? (
             <div className="modal-card">
-              <p>Tasdiqlash kodini kiriting!</p>
+              <p>{t('kodini')}</p>
               <OtpInput
                 inputStyle={{
                   width: "77px",
@@ -444,28 +444,28 @@ export default function Auth() {
               <span>{formatTime(seconds)}</span>
               {seconds ? null : (
                 <span>
-                  Kod kelmadimi?{" "}
+                  {t('kodkelmadi')}
                   <button onClick={() => onResendMessage(otp)}>
-                    Qayta yuborish
+                    {t('qaytayuborish')}
                   </button>
                 </span>
               )}
-              <button onClick={() => onVerificationCode(otp)}>Yuborish</button>
+              <button onClick={() => onVerificationCode(otp)}> {t('yuborish')}</button>
             </div>
           ) : (
             <div className="truecart">
               {step === "modal-success" ? (
                 <>
                   <img src={trudemodal} alt="cs" />
-                  <p>Siz muvaffaqiyatli ro’yxatdan o’tdingiz!</p>
-                  <button onClick={() => navigate("/")}>Bosh menyu </button>
+                  <p>  {t('siz')} </p>
+                  <button onClick={() => navigate("/")}> {t('bosh')} </button>
                 </>
               ) : step === "modal-reject" ? (
                 <>
                   <img src={falsemodal} alt="cs" />
                   <p>Hatolik yuz berdi! Keynroq urinib ko’ring</p>
                   <button onClick={() => setStep("register")}>
-                    Bosh menyu
+                     {t('bosh')}
                   </button>
                 </>
               ) : null}

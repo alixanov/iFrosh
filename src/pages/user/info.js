@@ -179,7 +179,7 @@ export default function UserDashboard() {
               </label>
 
               <label htmlFor="">
-                <p>Viloyat:</p>
+                <p>  {t('viloyat')} </p>
                 <select
                   name="region_id"
                   onChange={(e) => getDistrict(e.target.value)}
@@ -195,7 +195,7 @@ export default function UserDashboard() {
                 </select>
               </label>
               <label htmlFor="">
-                <p>Shahar:</p>
+                <p>  {t('shaxar')}  </p>
                 <select
                   name="district_id"
                   onChange={(e) => getQuarters(e.target.value)}
