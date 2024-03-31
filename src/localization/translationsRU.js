@@ -106,7 +106,7 @@ const translationru = {
   qqavat: "пол",
   umumiy: "Общая информацияt",
   qoshimcha: "Дополнительные удобства",
-  ha: "Da",
+  ha: "Да",
   yoq: "Heт",
 
   repair: "Ремонт",
