@@ -74,7 +74,7 @@ export const Card = ({ item, editable = false }) => {
         className="card-body"
       >
         <p className="pice">
-          {item[`price_${user?.currency?.code?.toLowerCase()}_formatted`]} {user?.currency?.code}
+          {item[`price_${user?.currency?.code?.toLowerCase() || "uzs"}_formatted`]} {user?.currency?.code|| "uzs"}
         </p>
         <div className="row-info">
           <p>{item?.room_count} xona</p>

@@ -78,7 +78,7 @@
 }
 
 .card .card-body .pice {
-  color: var(--info);
+  color: rgb(52, 152, 219);
   text-transform: uppercase;
 }
 
@@ -219,6 +219,9 @@
 @media (max-width: 400px) {
   .card {
     max-width: 280px;
+  }
+  .card .card-top .badge p {
+    font-weight: 700;
   }
   .card .card-body {
     font-size: 14px;

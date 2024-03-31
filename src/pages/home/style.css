@@ -202,6 +202,23 @@
   .intro h2.title {
     font-size: 40px;
   }
+  @scope (.home-container) {
+    .content .form .search-bar {
+      padding: 3px 3px 3px 10px;
+    }
+    .content .form input {
+      height: 34px;
+      font-size: 22.65px;
+
+      width: 100%;
+    }
+    .content .form button[type="submit"] {
+      width: 40px;
+      height: 40px;
+      border-radius: 15px !important;
+    }
+  }
+
   h2.title:not(.intro h2.title) {
     font-size: 28px !important;
   }

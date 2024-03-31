@@ -19,9 +19,10 @@
     gap: 269px;
   }
   .h-left img {
-    width: 70px;
-    height: 70px;
+    width: 32px;
+    height: 32px;
     object-fit: contain;
+    margin-right: 10px;
   }
   .h-left a {
     display: flex;
@@ -158,10 +159,6 @@
       gap: 15px;
       align-items: center;
     }
-    .h-left img {
-      width: 40px;
-      height: 40px;
-    }
     .h-right :nth-child(1) {
       width: 40px;
       height: 40px;
@@ -190,6 +187,9 @@
 }
 @media (max-width: 440px) {
   @scope (.main-header) {
+    .container {
+      padding: 0 10px 0 0;
+    }
     .h-left {
       gap: 0;
     }
@@ -197,11 +197,9 @@
       gap: 3px;
     }
     .h-right > a {
-      width: 80px !important;
-      font-size: 8px !important;
-    }
-    .h-right svg {
-      display: none;
+      width: auto !important;
+      font-size: 14px !important;
+      border-radius: 5px;
     }
   }
 }
@@ -229,10 +227,15 @@
   }
 }
 @media (max-width: 350px) {
-  .h-left :nth-child(1) {
-    font-size: 16px !important;
-  }
-  .h-right > a {
-    width: 60px !important;
+  @scope (.main-header) {
+    .h-left a:nth-child(1) {
+      font-size: 14px !important;
+    }
+    .h-left img {
+      margin-right: 0px;
+    }
+    .h-right > a {
+      font-size: 10px !important;
+    }
   }
 }
