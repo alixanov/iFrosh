@@ -39,7 +39,7 @@ export default function Payment() {
           ))}
         </div>
         <p>{t("enter_emount")}</p>
-        <label htmlFor="">
+        <label >
           <input type="text" placeholder="1.000.000" />
           UZS
         </label>
