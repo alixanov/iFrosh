@@ -7,13 +7,13 @@ import { Card } from "../../components/card";
 import axios from "axios";
 // import Cookies from "js-cookie";
 // import { toast } from "react-toastify";
-// import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { Map, YMaps } from "react-yandex-maps";
 import { useStoreState } from "../../redux/selectors";
 
 const Single = () => {
   const user = useStoreState("user");
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const swiperRef = useRef(null);
@@ -143,9 +143,8 @@ const Single = () => {
                   <div
                     className="filled"
                     style={{
-                      "--percent": `${
-                        (activeIndex + 1) * (100 / sliderData?.length)
-                      }%`,
+                      "--percent": `${(activeIndex + 1) * (100 / sliderData?.length)
+                        }%`,
                     }}
                   ></div>
                   <p className="absolute-center">
@@ -164,22 +163,19 @@ const Single = () => {
                       className="single-img-small"
                     />
                   ) : (
-                    `${
-                      dataSingle?.announcement?.user?.first_name?.charAt(0) ||
-                      ""
-                    }${
-                      dataSingle?.announcement?.user?.last_name?.charAt(0) || ""
+                    `${dataSingle?.announcement?.user?.first_name?.charAt(0) ||
+                    ""
+                    }${dataSingle?.announcement?.user?.last_name?.charAt(0) || ""
                     }`
                   )}
                 </div>
                 <div className="column">
                   <h3 className="h3">
-                    {`${dataSingle?.announcement?.user?.first_name || ""} ${
-                      dataSingle?.announcement?.user?.last_name || ""
-                    }`}
+                    {`${dataSingle?.announcement?.user?.first_name || ""} ${dataSingle?.announcement?.user?.last_name || ""
+                      }`}
                   </h3>
                   <span>
-                    Sizning hisob raqamingiz:{" "}
+                    {t("your_account")}
                     {dataSingle?.announcement?.user_id}
                   </span>
                   <a
@@ -189,7 +185,7 @@ const Single = () => {
                   </a>
                 </div>
               </div>
-              <h3 className="h3">Narx</h3>
+              <h3 className="h3">{t('narx')}</h3>
               <ul className="values">
                 <li>
                   <span>
@@ -204,11 +200,13 @@ const Single = () => {
                   y.e
                 </li>
               </ul>
-              <h3 className="h3">Oldindan to’lov</h3>
+              <h3 className="h3">
+                {t('oldindantolov')}
+              </h3>
               <ul className="values">
                 <li>
                   {dataSingle?.announcement?.advance &&
-                  dataSingle?.announcement?.advance_month
+                    dataSingle?.announcement?.advance_month
                     ? `${dataSingle?.announcement?.advance_month} oylik`
                     : "Yo’q"}
                 </li>
@@ -249,90 +247,40 @@ const Single = () => {
           </div>
           <div className="more-infos">
             <ul>
-              <li className="caption">Qo’shimcha :</li>
+              <li className="caption">{t('extra')} :</li>
               <li className="comment">
                 {dataSingle?.announcement?.description || "Ma’lumot yo’q"}
               </li>
             </ul>
             <ul className="values">
-              <li className="caption">Umumiy ma’lumot</li>
+              <li className="caption">  {t('umumiy')}  </li>
               <li>
-                <p>Xonalar soni</p>
+                <p>{t("xonalar")}</p>
                 <p>{dataSingle?.announcement?.room_count}</p>
               </li>
               <li>
-                <p>Umumiy joy</p>
+                <p>  {t("joy")} </p>
                 <p>{dataSingle?.announcement?.space_size}m²</p>
               </li>
               <li>
-                <p>Narxini kelishiladimi</p>
+                <p> {t("kelishish")} </p>
                 <p>{dataSingle?.announcement?.bargain ? "Ha" : "Yo'q"}</p>
               </li>
-              {/* <li>
-                <p>Tamir</p>
-                <p>Evro</p>
-              </li>
+
               <li>
-                <p>Dush</p>
-                <p>Bor</p>
-              </li>
-              <li>
-                <p>Balkon</p>
-                <p>Bor</p>
-              </li>
-              <li>
-                <p>Oynadan korinish</p>
-                <p>Hovli</p>
-              </li>
-              <li>
-                <p>Lift</p>
-                <p>Bor</p>
-              </li> */}
-              <li>
-                <p>Qurilgan yil</p>
+                <p>  {t("qurulganyil")} </p>
                 <p>{dataSingle?.announcement?.construction_year}</p>
               </li>
             </ul>
             <ul className="values">
-              <li className="caption">Qo’shimcha qulayliklar</li>
+              <li className="caption">  {t('qoshimcha')} </li>
               {dataSingle?.announcement?.amenities?.map((item) => (
                 <li key={item?.id}>
                   {icon[item?.id] ? icon[item?.id] : null}
                   <span>{item?.name_uz}</span>
                 </li>
               ))}
-              {/*<li>
-            <icons.Gas />
-            <span>Gaz</span>
-          </li>
-          <li>
-            <icons.Water />
-            <span>Suv</span>
-          </li>
-          <li>
-            <icons.Electric />
-            <span>Elektr energiya</span>
-          </li>
-          <li>
-            <icons.Wifi />
-            <span>Internet</span>
-          </li>
-          <li>
-            <icons.AirCondition />
-            <span>Konditsioner</span>
-          </li>
-          <li>
-            <icons.Refrigerator />
-            <span>Muzlatgich</span>
-          </li>
-          <li>
-            <icons.TvIcon />
-            <span>Televizor</span>
-          </li>
-          <li>
-            <icons.Washing />
-            <span>Kiryuvish mashinasi</span>
-          </li>*/}
+
             </ul>
           </div>
           <YMaps>
@@ -352,7 +300,7 @@ const Single = () => {
 
           {dataSingle?.similar?.length ? (
             <>
-              <h3 className="title">O’xshash e’lonlar</h3>
+              <h3 className="title"> {t('elonlar')} </h3>
               <div className="row similar">
                 {dataSingle?.similar?.map((slide) => (
                   <Card key={slide?.id} item={slide} />

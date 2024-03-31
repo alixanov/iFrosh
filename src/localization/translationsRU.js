@@ -1,5 +1,5 @@
 const translationru = {
-  logout:"Выход",
+  logout: "Выход",
   bargain: "Торговаться",
   main: "Главная",
   success_created: "Ваше успешное объявление\nотправлено на проверку!",
@@ -85,7 +85,18 @@ const translationru = {
   img10: "До 10 фотографий/ Он не должен быть больше 10 мегабайт",
   // single page
   your_account: "Ваш номер счета",
+  narx: "цена",
+  oldindantolov: "предоплата",
   extra: "Дополнительный",
+  joy: "Общее место",
+  kelishish: "Цена договорная?",
+  qurulganyil: "год постройки",
+  elonlar: "Похожие объявления",
+  xonalar: "Количество комнат",
+  qqavat: "пол",
+  umumiy: "Общая информацияt",
+  qoshimcha: "Дополнительные удобства",
+
   repair: "Ремонт",
   bath: "Душ",
   balcony: "Балкон",
