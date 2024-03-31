@@ -242,23 +242,23 @@ export default function Auth() {
     <div className="register">
       <div className="register-card">
         <div className="reg-card-left">
-          <p>{step === "login" ? "Hisobga kirish" : "Ro’yxatdan o’tish"}</p>
+          <p>{step === "login" ? t('login') : t('royxat')}</p>
           <img src={rightimg} alt="images-left" />
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="reg-card-register">
-          <p>{"Ma'lumotlaringizni kiriting"}</p>
+          <p>{t('enter_your_info')}</p>
           {step !== "login" ? (
             <>
               <input
                 type="text"
-                placeholder="Ismingiz"
+                placeholder={t('name')}
                 {...register("firstName", { required: true })}
                 className={errors.firstName ? "error" : ""}
               />
               <input
                 type="text"
-                placeholder="Familiyangiz"
+                placeholder={t('surname')}
                 {...register("lastName", { required: true })}
                 className={errors.lastName ? "error" : ""}
               />
@@ -327,29 +327,29 @@ export default function Auth() {
                   <div className="options">
                     {watch("month")
                       ? Array.from(
-                          {
-                            length: months.find(
-                              (item) => item?.value === watch("month")
-                            )?.days,
-                          },
-                          (_, i) => `${i + 1 < 9 ? "0" : ""}${i + 1}`
-                        ).map((item) => (
-                          <div
-                            className="option"
-                            key={item}
-                            aria-hidden
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setValue("day", item);
-                              clearErrors("day");
-                              setOpenSelect(() =>
-                                !watch("year") ? "year" : ""
-                              );
-                            }}
-                          >
-                            {item}
-                          </div>
-                        ))
+                        {
+                          length: months.find(
+                            (item) => item?.value === watch("month")
+                          )?.days,
+                        },
+                        (_, i) => `${i + 1 < 9 ? "0" : ""}${i + 1}`
+                      ).map((item) => (
+                        <div
+                          className="option"
+                          key={item}
+                          aria-hidden
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setValue("day", item);
+                            clearErrors("day");
+                            setOpenSelect(() =>
+                              !watch("year") ? "year" : ""
+                            );
+                          }}
+                        >
+                          {item}
+                        </div>
+                      ))
                       : null}
                   </div>
                 </div>
@@ -416,7 +416,7 @@ export default function Auth() {
           )}
 
           <button type="submit" disabled={loading}>
-            {loading ? <LoadingIcon color={"#fff"} /> : "Sms kod yuborish"}
+            {loading ? <LoadingIcon color={"#fff"} /> : t('sms')}
           </button>
         </form>
       </div>

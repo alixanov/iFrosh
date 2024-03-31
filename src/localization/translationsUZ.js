@@ -20,6 +20,7 @@ const translationuz = {
   account: "Hisobingiz bormi?",
   login: "Hisobga kirish",
   sms: "Sms kod yuborish",
+  royxat:"Royxatdan o'tish",
   // months
   january: "Yanvar",
   february: "Fevral",
