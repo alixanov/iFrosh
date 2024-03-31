@@ -33,6 +33,7 @@ export default function UserInfo() {
             onClick={(e) => {
               e.stopPropagation();
               navigate("/profile");
+              setOpen(false);
             }}
           >
             {t("private_info")} <User />
@@ -42,6 +43,7 @@ export default function UserInfo() {
             onClick={(e) => {
               e.stopPropagation();
               navigate("my-announcements");
+              setOpen(false);
             }}
           >
             {t("announcement")} <Announcement />
@@ -51,6 +53,7 @@ export default function UserInfo() {
             onClick={(e) => {
               e.stopPropagation();
               navigate("wishes");
+              setOpen(false);
             }}
           >
             {t("favorites")} <WishesIcon />
@@ -60,6 +63,7 @@ export default function UserInfo() {
             onClick={(e) => {
               e.stopPropagation();
               navigate("payment");
+              setOpen(false);
             }}
           >
             {t("fill")}

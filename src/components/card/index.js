@@ -74,12 +74,12 @@ export const Card = ({ item, editable = false }) => {
         className="card-body"
       >
         <p className="pice">
-          {item[`price_${user?.currency?.code?.toLowerCase()}_formatted`]} uzs
+          {item[`price_${user?.currency?.code?.toLowerCase()}_formatted`]} {user?.currency?.code}
         </p>
         <div className="row-info">
           <p>{item?.room_count} xona</p>
           {item?.room_floor && <p>{item?.room_floor}-qavat</p>}
-          <p>{item?.m2} m²</p>
+          <p>{item?.space_size} m²</p>
         </div>
         <p className="address">{item?.address}</p>
       </Link>

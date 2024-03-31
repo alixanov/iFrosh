@@ -17,7 +17,8 @@ const Header = ({ changeLanguage }) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [nbuData, setNbuData] = useState(null);
-  const [selectedCurrency, setSelectedCurrency] = useState("USD");
+  const [currencyList, setCurrencyList] = useState([]);
+  const [selectedCurrency, setSelectedCurrency] = useState(user?.currency?.code);
   const [flag, setFlag] = useState("uz");
 
   const Changelangheader = (e) => {
@@ -49,12 +50,10 @@ const Header = ({ changeLanguage }) => {
         setLoading(false);
         console.log(err);
       });
-  }, [dispatch, token]);
+  }, [dispatch]);
 
   useEffect(() => {
-    return () => {
-      getUser();
-    };
+    getUser();
   }, [getUser]);
 
   // usd api get
@@ -62,7 +61,11 @@ const Header = ({ changeLanguage }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get("https://api.frossh.uz/api/nbu/show");
-        setNbuData(response.data.result.nbu_cell_price);
+        const currency_list = await axios.get(
+          "https://api.frossh.uz/api/currency/get"
+        );
+        setCurrencyList(currency_list.data?.result);
+        setNbuData(response.data?.result?.nbu_cell_price);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -71,8 +74,22 @@ const Header = ({ changeLanguage }) => {
     fetchData();
   }, []);
 
+  const headers = {
+    Authorization: `Bearer ${user?.token}`,
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  };
+
   const handleCurrencyChange = (e) => {
     setSelectedCurrency(e.target.value);
+    axios.put(
+      "https://api.frossh.uz/api/user/update",
+      {
+        ...user,
+        currency_id: e.target.value,
+      },
+      { headers }
+    );
   };
 
   return (
@@ -95,9 +112,13 @@ const Header = ({ changeLanguage }) => {
             <option value="uz">uz</option>
             <option value="ru">ru</option>
           </select>
-          <select value={selectedCurrency} onChange={handleCurrencyChange}>
-            <option value="USD">USD</option>
-            <option value="UZS">UZS</option>
+
+          <select value={selectedCurrency} onBlur={handleCurrencyChange}>
+            {currencyList?.map((currency) => (
+              <option key={currency?.id} value={currency?.id}>
+                {currency?.code}
+              </option>
+            ))}
           </select>
           <Link id="a" to={user?.id ? "/announcement/create" : "/auth"}>
             {t("create_announcement")} +

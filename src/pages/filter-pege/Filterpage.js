@@ -45,12 +45,12 @@ export default function Filterpage() {
     return 0;
   }, [announcements]);
   const maxM2 = useMemo(
-    () => announcements?.data?.sort((a, b) => b?.m2 - a?.m2)[0]?.m2 || 5,
+    () => announcements?.data?.sort((a, b) => b?.space_size - a?.space_size)[0]?.space_size || 5,
     [announcements]
   );
   const minM2 = useMemo(() => {
     if (announcements?.data?.length > 1) {
-      return announcements?.data?.sort((a, b) => a?.m2 - b?.m2)[0]?.m2 || 0;
+      return announcements?.data?.sort((a, b) => a?.space_size - b?.space_size)[0]?.space_size || 0;
     }
     return 0;
   }, [announcements]);

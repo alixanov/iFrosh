@@ -6,12 +6,15 @@ import { useTranslation } from "react-i18next";
 const Announcements = () => {
   const { t } = useTranslation();
   const [data, setData] = useState([]);
-  // const [currentPage, setCurrentPage] = useState(1);
-  const getTopAnnouncements = useCallback(() => {
+  const [links, seLinks] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const getTopAnnouncements = useCallback((link) => {
+    if (link === null) return;
     axios
-      .get("https://api.frossh.uz/api/announcement/get-by-filter")
+      .get(link ? link : "https://api.frossh.uz/api/announcement/get-by-filter")
       .then(({ data }) => {
         setData(data?.result?.top);
+        seLinks(data?.result?.non_top?.links);
       })
       .catch((err) => {
         console.log(err?.response?.data?.message);
@@ -33,13 +36,16 @@ const Announcements = () => {
         ))}
       </div>
       <div className="paginations">
-        {data?.links?.map((item) => (
+        {links?.map((item) => (
           <button
             dangerouslySetInnerHTML={{
               __html: item?.label?.replace(/\b(Previous|Next)\b/g, "")?.trim(),
             }}
             key={item?.label}
-            onClick={() => setCurrentPage(item === "..." ? currentPage : item)}
+            onClick={() => {
+              setCurrentPage(item?.label === "..." ? currentPage : item?.url);
+              getTopAnnouncements(item?.label === "..." ? null : item?.url);
+            }}
             className={item?.active ? "active" : undefined}
             disabled={!item?.url}
           />

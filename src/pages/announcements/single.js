@@ -193,24 +193,23 @@ const Single = () => {
               <ul className="values">
                 <li>
                   <span>
-                    {" "}
                     {dataSingle?.announcement?.[`price_uzs_formatted`]}{" "}
                   </span>
                   UZS
                 </li>
                 <li>
                   <span>
-                    {" "}
                     {dataSingle?.announcement?.[`price_usd_formatted`]}{" "}
                   </span>
-                  $
+                  y.e
                 </li>
               </ul>
               <h3 className="h3">Oldindan to’lov</h3>
               <ul className="values">
                 <li>
-                  {dataSingle?.announcement?.advance
-                    ? dataSingle?.announcement?.advance_month + " oylik"
+                  {dataSingle?.announcement?.advance &&
+                  dataSingle?.announcement?.advance_month
+                    ? `${dataSingle?.announcement?.advance_month} oylik`
                     : "Yo’q"}
                 </li>
               </ul>
@@ -231,15 +230,15 @@ const Single = () => {
                     </span>
                   </li>
                 )}
-                {dataSingle?.announcement?.m2 && (
+                {dataSingle?.announcement?.space_size && (
                   <li>
                     <icons.Quadrad />
                     <span className="h3">
-                      {dataSingle?.announcement?.m2} m²
+                      {dataSingle?.announcement?.space_size} m²
                     </span>
                   </li>
                 )}
-                {/* {dataSingle?.announcement?.m2 && (
+                {/* {dataSingle?.announcement?.space_size && (
               <li>
                 <icons.Home />
                 <span className="h3">6 sotix</span>
@@ -263,7 +262,7 @@ const Single = () => {
               </li>
               <li>
                 <p>Umumiy joy</p>
-                <p>{dataSingle?.announcement?.m2}m²</p>
+                <p>{dataSingle?.announcement?.space_size}m²</p>
               </li>
               <li>
                 <p>Narxini kelishiladimi</p>
