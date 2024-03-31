@@ -21,9 +21,9 @@ const translationru = {
   login: "Войти в аккаунт",
   royxat: "Зарегистрироваться",
   sms: "Отправить СМС-код",
-  kodini: "Введите код подтверждения!",
-  kodkelmadi: "не кодировал",
-  qaytayuborish: "Отправить",
+  kodkelmadi: "Код не пришел ?",
+  qaytayuborish: "Повторная отправка",
+  yuborish: "Отправить",
   yuborish: "Отправить",
   siz: "Вы успешно  вошли в систему!",
   bosh: "Главное меню",
@@ -147,11 +147,8 @@ const translationru = {
 
   tekshirilmoqda: "Проверка...",
   Quyidagi: "Следующие файлы имеют размер более 10 МБ:",
-
-
-
-
-
+  have_not_account: "У вас нет аккаунта?",
+  create_account: "Создать аккаунт",
 };
 
 export default translationru;

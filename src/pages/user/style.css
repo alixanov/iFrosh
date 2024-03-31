@@ -12,7 +12,7 @@
   align-items: flex-start;
 }
 [role="dialog"] {
-  border: none !important; 
+  border: none !important;
 }
 .personright {
   display: flex;
@@ -642,6 +642,9 @@ form > label > input,
   }
 }
 @media (max-width: 500px) {
+  .payme .overlay {
+    font-size: 20px;
+  }
   .payme-click button {
     width: 50%;
   }
