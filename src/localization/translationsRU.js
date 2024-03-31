@@ -21,6 +21,13 @@ const translationru = {
   login: "Войти в аккаунт",
   royxat: "Зарегистрироваться",
   sms: "Отправить СМС-код",
+  kodini: "Введите код подтверждения!",
+  kodkelmadi: "не кодировал",
+  qaytayuborish: "Отправить",
+  yuborish: "Отправить",
+  siz: "Вы успешно зарегистрировались!",
+  bosh: "Главное меню",
+
   demo: "Сайт в настоящее время работает в бесплатном режиме. Вы можете легко разместить бесплатное объявление!",
   // months
   january: "январь",
@@ -110,6 +117,20 @@ const translationru = {
   cheap: "Более дешевый",
   expensive: "Дорогой",
   close: "закрывать",
+  //user
+  private_info: "Мои личные данные",
+  announcement: "Мои объявления",
+  favorites: "Избранное",
+  fill: "Заполнить",
+  street: "Улица",
+  wer_glad: "Мы рады, что выбрали сайт Frosh.uz!",
+  must_register: "Необходимо войти в систему!",
+  enter_register: "Войти в систему",
+  viloyat: "Провинция:",
+  shaxar: "Город:",
+
+
+
 };
 
 export default translationru;
