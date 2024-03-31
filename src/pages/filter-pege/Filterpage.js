@@ -12,12 +12,13 @@ import {
   RangeSliderThumb,
 } from "@chakra-ui/react";
 import { ArrowSelect, LoadingIcon, NotFound, Search } from "../../assets/svgs";
-
+import { useTranslation } from 'react-i18next';
 import "./style.css";
 import { useSearchParams, useLocation } from "react-router-dom";
 import axios from "axios";
 
 export default function Filterpage() {
+  const { i18n } = useTranslation();
   const [amenities, setAmenities] = useState([]);
   const [openFilter, setOpenFilter] = useState(true);
   const [announcements, setAnnouncements] = useState({});
@@ -25,6 +26,7 @@ export default function Filterpage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const search = new URLSearchParams(location.search);
+  const { t } = useTranslation();
 
   // Convert URLSearchParams object to an array of [key, value] pairs
   const paramsArray = Array.from(search.entries());
@@ -68,9 +70,8 @@ export default function Filterpage() {
   }, [amenities?.length]);
 
   useEffect(() => {
-    return () => {
-      getAminites();
-    };
+
+    getAminites();
   }, [getAminites]);
   const {
     handleSubmit,
@@ -178,53 +179,53 @@ export default function Filterpage() {
   );
 
   const place_types = [
-      {
-        value: "apartment",
-        label: "Kvartira",
-      },
-      {
-        value: "home",
-        label: "Xonadon",
-      },
-      {
-        value: "dry land",
-        label: "Quruq yer",
-      },
-      {
-        value: "business place",
-        label: "Biznes uchun joy",
-      },
-      {
-        value: "skyscraper",
-        label: "Turar joy majmuasi",
-      },
-    ],
+    {
+      value: "apartment",
+      label: t('flat'),
+    },
+    {
+      value: "home",
+      label: t("home"),
+    },
+    {
+      value: "dry land",
+      label: t("quruq"),
+    },
+    {
+      value: "business place",
+      label: t("business_place"),
+    },
+    {
+      value: "skyscraper",
+      label: t("slider_title"),
+    },
+  ],
     repair_types = [
       {
         value: "bad",
-        label: "Yomon",
+        label: t("bad"),
       },
       {
         value: "good",
-        label: "O’rtacha",
+        label: t("good"),
       },
       {
         value: "new",
-        label: "Yaxshi",
+        label: t("good"),
       },
     ],
     sortes = [
       {
         value: "popular",
-        label: "Ommabop",
+        label: t('popular')
       },
       {
         value: "cheap",
-        label: "Arzonroq",
+        label: t('cheap'),
       },
       {
         value: "expensive",
-        label: "Qimmatroq",
+        label: t('expensive'),
       },
     ];
 
@@ -260,7 +261,7 @@ export default function Filterpage() {
               onSelect={(v) => setSearchParams({ ...desiredObject, sort: v })}
               error={errors["sort"]}
               name={"sort"}
-              label={"Saralash"}
+              label={t('sort')}
               options={sortes}
               control={control}
               required
@@ -277,47 +278,16 @@ export default function Filterpage() {
                 }
                 error={errors["place_type"]}
                 name={"place_type"}
-                label={"Joy turini tanlang"}
+                label={t('place')}
                 options={place_types}
                 control={control}
                 required
               />
             </div>
 
-            {/* <div className="input-progress">
-              <p>Hajmi</p>
-              <div className="input-size">
-                <input
-                  type="number"
-                  onChange={(e) => handleFirstInputChange(e, "m2")}
-                  placeholder="dan"
-                  value={watch("m2")[0]}
-                />
-                <input
-                  type="number"
-                  onChange={(e) => handleSecondInputChange(e, "m2")}
-                  placeholder="gacha"
-                  value={watch("m2")[1]}
-                />
-              </div>
-            </div>
 
-            <RangeSlider
-              onChange={(value) => setValue("m2", value)}
-              value={watch("m2")}
-              aria-label={"['min', 'max']"}
-              className="range-slider"
-              max={maxM2}
-              min={minM2}
-            >
-              <RangeSliderTrack>
-                <RangeSliderFilledTrack />
-              </RangeSliderTrack>
-              <RangeSliderThumb index={0} bg={"#0085AF"} />
-              <RangeSliderThumb index={1} bg={"#0085AF"} />
-            </RangeSlider> */}
             <div className="input-progress">
-              <p>Narxi</p>
+              <p>{t("price")}</p>
               <div className="input-size">
                 <input
                   type="number"
@@ -371,7 +341,7 @@ export default function Filterpage() {
               }
               error={errors["repair_type"]}
               name={"repair_type"}
-              label={"Ta’mir holati"}
+              label={t("tamir")}
               options={repair_types}
               control={control}
               required
@@ -381,7 +351,7 @@ export default function Filterpage() {
                 type="radio"
                 name={"sale_type"}
                 value={"sale"}
-                label={"Sotib olish"}
+                label={t("buy")}
                 register={register}
                 defaultChecked={searchParams.get("sale_type") === "sale"}
                 onChange={({ sale_type }) =>
@@ -392,7 +362,7 @@ export default function Filterpage() {
                 type="radio"
                 name={"sale_type"}
                 value={"rent"}
-                label={"Ijaraga olish"}
+                label={t("rent")}
                 register={register}
                 defaultChecked={searchParams.get("sale_type") === "rent"}
                 onChange={({ sale_type }) =>
@@ -405,13 +375,13 @@ export default function Filterpage() {
               classes={{ header: "header-acc" }}
               header={
                 <>
-                  <p>Viloyatlar</p>
+                  <p>{t("regions")}</p>
                   <ArrowSelect />
                 </>
               }
               headerOpen={
                 <>
-                  <p>Yopish</p>
+                  <p>{t("close")}</p>
                   <ArrowSelect />
                 </>
               }
@@ -494,7 +464,7 @@ export default function Filterpage() {
                       type="radio"
                       name="region_id"
                       value={item.id}
-                      label={item.name_uz}
+                      label={item?.[`name_${i18n.language}`]}
                       register={register}
                       defaultChecked={
                         +searchParams.get("region_id") === item.id
@@ -513,7 +483,7 @@ export default function Filterpage() {
               classes={{ header: "header-acc" }}
               header={
                 <>
-                  <p>Qo`shimcha qulayliklar</p>
+                  <p>   {t("additional_comfort")} </p>
                   <ArrowSelect />
                 </>
               }
@@ -539,7 +509,7 @@ export default function Filterpage() {
                       }}
                       name={`Amenites[${i}]`}
                       value={item?.id}
-                      label={item?.name_uz}
+                      label={item?.[`name_${i18n.language}`]}
                       register={register}
                       defaultChecked={desiredObject[`Amenites[${i}]`]}
                     />
@@ -567,7 +537,7 @@ export default function Filterpage() {
               ))
             ) : loading ? null : (
               <h3 className="not-found">
-                {"E'lonlar topilmadi"}
+                {t("elon")}
                 <NotFound />
               </h3>
             )}

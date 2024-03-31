@@ -55,7 +55,7 @@ const translationuz = {
   select_place_type: "Joy turini tanlang",
   select_type_sale: "Sotuv turini tanlang",
   sotix: "Sotix",
-  majmuo:"majmua",
+  majmuo: "majmua",
   quruq: "Quruq yer",
   repairment: "Ta'mir holati",
   bad: "Yomon",
@@ -118,10 +118,14 @@ const translationuz = {
   popular: "Ommabop",
   cheap: "Arzonzoq",
   expensive: "Qimmat",
+  //joy turini tanlang
+  place: "Joy turini tanlang",
   buy: "Sotib olish",
   rent: "Ijaraga olish",
   close: "Yopish",
   demo: "Sayt hozirda bepul rejimida ishlamoqda. Bemalol bepul e’lon joylashingiz mumkin!",
+  tamir:"Ta’mir holati",
+
   // user
   private_info: "Shaxsiy malumotlarim",
   announcement: "E'lonlarim",
@@ -144,12 +148,13 @@ const translationuz = {
   close: "Yopish",
   additional_comfort: "Qo`shimcha qulayliklar",
   close: "Yopish",
+  elon: "E'lonlar topilmadi",
 
   //
-  tekshirilmoqda:"Tekshirilmoqda...",
-  Quyidagi:"Quyidagi fayllar 10 MB dan katta:",
+  tekshirilmoqda: "Tekshirilmoqda...",
+  Quyidagi: "Quyidagi fayllar 10 MB dan katta:",
 
- 
+
 };
 
 export default translationuz;

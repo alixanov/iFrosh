@@ -121,6 +121,13 @@ const translationru = {
   cheap: "Более дешевый",
   expensive: "Дорогой",
   close: "закрывать",
+  place: " тип место",
+  buy: "Покупка",
+  rent: "Аренда",
+  tamir: "Статус ремонта",
+  regions: "регионы",
+  additional_comfort: "Дополнительные ",
+  elon: "Объявления не найдены",
   //user
   private_info: "Мои личные данные",
   announcement: "Мои объявления",
