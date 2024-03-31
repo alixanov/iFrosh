@@ -3,12 +3,14 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import noProfileInfoImg from "./warningUser.png";
 import { Link } from "react-router-dom";
-import Cookies from "js-cookie";
 import { useTranslation } from "react-i18next";
 import { useStoreState } from "../../redux/selectors";
 
 export default function UserDashboard() {
-  const { t } = useTranslation();
+  const {
+    t,
+    i18n: { language: lang },
+  } = useTranslation();
   const [regions, setRegions] = useState([]);
   const [districts, setDistricts] = useState([]);
   const [quarters, setQuarters] = useState([]);
@@ -93,20 +95,36 @@ export default function UserDashboard() {
       .catch((err) => console.log(err));
   };
 
-  const monthNames = [
-    { id: 1, name: "Yanvar" },
-    { id: 2, name: "Fevral" },
-    { id: 3, name: "Mart" },
-    { id: 4, name: "Aprel" },
-    { id: 5, name: "May" },
-    { id: 6, name: "Iyun" },
-    { id: 7, name: "Iyul" },
-    { id: 8, name: "Avgust" },
-    { id: 9, name: "Sentabr" },
-    { id: 10, name: "Oktabr" },
-    { id: 11, name: "Noyabr" },
-    { id: 12, name: "Dekabr" },
-  ];
+  const monthNames = {
+    uz: [
+      { id: 1, name: "Yanvar" },
+      { id: 2, name: "Fevral" },
+      { id: 3, name: "Mart" },
+      { id: 4, name: "Aprel" },
+      { id: 5, name: "May" },
+      { id: 6, name: "Iyun" },
+      { id: 7, name: "Iyul" },
+      { id: 8, name: "Avgust" },
+      { id: 9, name: "Sentabr" },
+      { id: 10, name: "Oktabr" },
+      { id: 11, name: "Noyabr" },
+      { id: 12, name: "Dekabr" },
+    ],
+    ru: [
+      { id: 1, name: "Январь" },
+      { id: 2, name: "Февраль" },
+      { id: 3, name: "Март" },
+      { id: 4, name: "Апрель" },
+      { id: 5, name: "Май" },
+      { id: 6, name: "Июнь" },
+      { id: 7, name: "Июль" },
+      { id: 8, name: "Август" },
+      { id: 9, name: "Сентябрь" },
+      { id: 10, name: "Октябрь" },
+      { id: 11, name: "Ноябрь" },
+      { id: 12, name: "Декабрь" },
+    ],
+  };
 
   const birthDate = profileInfo?.birth_date?.split("-");
 
@@ -130,7 +148,7 @@ export default function UserDashboard() {
               </div>
             </div>
             <form onSubmit={handleUpdateUserInfo}>
-              <label htmlFor="">
+              <label>
                 <p>{t("name")}</p>
                 <input
                   type="text"
@@ -139,7 +157,7 @@ export default function UserDashboard() {
                   placeholder="Name"
                 />
               </label>
-              <label htmlFor="">
+              <label>
                 <p>{t("surname")}</p>
                 <input
                   type="text"
@@ -149,14 +167,14 @@ export default function UserDashboard() {
                 />
               </label>
 
-              <label htmlFor="">
+              <label>
                 <p>{t("month")}</p>
                 <div>
                   <select name="month">
-                    <option defaultValue={monthNames[birthDate[1] - 1].name}>
-                      {monthNames[birthDate[1] - 1].name}
+                    <option value={monthNames[lang][birthDate[1] - 1].id}>
+                      {monthNames[lang][birthDate[1] - 1].name}
                     </option>
-                    {monthNames.map((item) => (
+                    {monthNames[lang].map((item) => (
                       <option value={item.id} key={item.id}>
                         {item.name}
                       </option>
@@ -178,47 +196,51 @@ export default function UserDashboard() {
                 </div>
               </label>
 
-              <label htmlFor="">
-                <p>  {t('viloyat')} </p>
+              <label>
+                <p> {t("viloyat")} </p>
                 <select
                   name="region_id"
                   onChange={(e) => getDistrict(e.target.value)}
                 >
-                  <option defaultValue={profileInfo?.region?.name_uz}>
-                    {profileInfo?.region?.name_uz}
+                  <option value={profileInfo?.region?.id}>
+                    {profileInfo?.region?.[`name_${lang}`]}
                   </option>
                   {regions.map((region, index) => (
-                    <option value={region.id} key={index}>
-                      {region?.name_uz}
+                    <option value={region?.id} key={index}>
+                      {region?.[`name_${lang}`]}
                     </option>
                   ))}
                 </select>
               </label>
-              <label htmlFor="">
-                <p>  {t('shaxar')}  </p>
+              <label>
+                <p> {t("shaxar")} </p>
                 <select
                   name="district_id"
                   onChange={(e) => getQuarters(e.target.value)}
                 >
-                  <option defaultValue={profileInfo?.district?.name_uz}>
-                    {profileInfo?.district?.name_uz}
+                  <option value={profileInfo?.district?.id}>
+                    {profileInfo?.district?.[`name_${lang}`]}
                   </option>
                   {districts.map((region, index) => (
-                    <option value={region.id} key={index}>
-                      {region?.name_uz}
+                    <option value={region?.id} key={index}>
+                      {region?.[`name_${lang}`]}
                     </option>
                   ))}
                 </select>
               </label>
-              <label htmlFor="">
+              <label>
                 <p>{t("street")}</p>
                 <select name="quarter_id">
-                  <option defaultValue={profileInfo?.quarter?.name_uz}>
-                    {profileInfo?.quarter?.name_uz}
+                  <option value={profileInfo?.quarter?.id}>
+                    {profileInfo?.quarter?.[`name_${lang}`]
+                      ? profileInfo?.quarter?.[`name_${lang}`]
+                      : profileInfo?.quarter?.name_uz}
                   </option>
                   {quarters?.map((region, index) => (
-                    <option value={region.id} key={index}>
-                      {region?.name_uz}
+                    <option value={region?.id} key={index}>
+                      {region?.[`name_${lang}`]
+                        ? region?.[`name_${lang}`]
+                        : region?.name_uz}
                     </option>
                   ))}
                 </select>
