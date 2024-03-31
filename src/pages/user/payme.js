@@ -21,7 +21,7 @@ export default function Payment() {
   const handleTypeChange = (type) => setActiveType(type);
 
   return (
-    <div className="container person">
+    <div className="person">
       <div className="payme">
         <div className="overlay">{t("demo")}</div>
         <p>{t("payment_type_sel")}</p>
