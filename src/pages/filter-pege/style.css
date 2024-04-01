@@ -21,7 +21,7 @@
 .f-right:has(.cards-container) .cards-container {
   row-gap: 50px;
   column-gap: 20px;
-  height: 100%;
+  align-items: flex-start;
 }
 .not-found {
   font-size: 30px;
