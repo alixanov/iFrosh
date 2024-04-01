@@ -22,7 +22,7 @@
 
   .row .space .top-slider {
     cursor: zoom-in;
-    min-height: 500px;
+    height: 500px;
     border-radius: 27px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     margin-bottom: 45px;
@@ -706,7 +706,7 @@
     height: 400px !important;
   }
   .row .space .top-slider {
-    min-height: 400px !important;
+    height: 400px !important;
   }
   .between.right-bar_,
   .inputs-row,

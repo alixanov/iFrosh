@@ -17,7 +17,10 @@ import { useDispatch } from "react-redux";
 
 export default function Auth() {
   const dispatch = useDispatch();
-  const { t } = useTranslation();
+  const {
+    t,
+    i18n: { language: lang },
+  } = useTranslation();
   const [num, setNum] = useState();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -31,7 +34,7 @@ export default function Auth() {
     clearErrors,
     formState: { errors },
   } = useForm({
-    defaultValues: { phone: "998" },
+    defaultValues: { phone: "+998" },
   });
   const [otp, setOtp] = useState("");
   const [openSelect, setOpenSelect] = useState("");
@@ -173,70 +176,126 @@ export default function Auth() {
     "modal-otp": onVerificationCode,
   };
 
-  const onSubmit = (values) => request[step](values);
+  const onSubmit = (values) => {
+    values.phone = values?.phone?.replace(/\D/g, "");
+    request[step](values);
+  };
 
   const months = [
     {
-      label: "Yanvar",
+      label: {
+        uz: "Yanvar",
+        ru: "Январь",
+      },
       value: "01",
       days: 31,
     },
     {
-      label: "Fevral",
+      label: {
+        uz: "Fevral",
+        ru: "Февраль",
+      },
       value: "02",
       days: 28,
     },
     {
-      label: "Mart",
+      label: {
+        uz: "Mart",
+        ru: "Март",
+      },
       value: "03",
       days: 31,
     },
     {
-      label: "Aprel",
+      label: {
+        uz: "Aprel",
+        ru: "Апрель",
+      },
       value: "04",
       days: 30,
     },
     {
-      label: "May",
+      label: {
+        uz: "May",
+        ru: "Май",
+      },
       value: "05",
       days: 31,
     },
     {
-      label: "Iyun",
+      label: {
+        uz: "Iyun",
+        ru: "Июнь",
+      },
       value: "06",
       days: 30,
     },
     {
-      label: "Iyul",
+      label: {
+        uz: "Iyul",
+        ru: "Июль",
+      },
       value: "07",
       days: 31,
     },
     {
-      label: "Avgust",
+      label: {
+        uz: "Avgust",
+        ru: "Август",
+      },
       value: "08",
       days: 31,
     },
     {
-      label: "Sentabr",
+      label: {
+        uz: "Sentabr",
+        ru: "Сентябрь",
+      },
       value: "09",
       days: 30,
     },
     {
-      label: "Oktabr",
+      label: {
+        uz: "Oktabr",
+        ru: "Октябрь",
+      },
       value: "10",
       days: 31,
     },
     {
-      label: "Noyabr",
+      label: {
+        uz: "Noyabr",
+        ru: "Ноябрь",
+      },
       value: "11",
       days: 30,
     },
     {
-      label: "Dekabr",
+      label: {
+        uz: "Dekabr",
+        ru: "Декабрь",
+      },
       value: "12",
       days: 31,
     },
   ];
+
+  const useOutsideClick = (ref) => {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setOpenSelect("");
+        }
+      }
+
+      document.addEventListener("mousedown", handleClickOutside);
+      return () =>
+        document.removeEventListener("mousedown", handleClickOutside);
+    }, [ref]);
+  };
+
+  const wrapperRef = React.useRef(null);
+  useOutsideClick(wrapperRef);
 
   return (
     <div className="register">
@@ -267,7 +326,15 @@ export default function Auth() {
           <input
             {...register("phone", {
               required: true,
-              pattern: { value: /^[0-9]{12}$/ },
+              pattern: { value: /^\+998\d{9}$/ },
+              onChange: (e) => {
+                if (e.target.value.length <= 3) {
+                  e.target.value = "+998";
+                } else if (e.target.value.length > 13) {
+                  e.target.value = e.target.value.slice(0, 13);
+                }
+                return e;
+              },
             })}
             type="text"
             placeholder="998"
@@ -276,7 +343,7 @@ export default function Auth() {
           {step !== "login" ? (
             <>
               {" "}
-              <div className="input-row">
+              <div className="input-row" ref={wrapperRef}>
                 <div
                   className={openSelect === "month" ? "opened" : ""}
                   aria-hidden
@@ -286,7 +353,7 @@ export default function Auth() {
                     {...register("month", { required: true })}
                     readOnly
                     type="number"
-                    placeholder="mm"
+                    placeholder={t("mm")}
                     className={errors.month ? "error" : ""}
                   />
                   <div className="options">
@@ -302,7 +369,7 @@ export default function Auth() {
                           setOpenSelect(() => (!watch("day") ? "day" : ""));
                         }}
                       >
-                        {item.label}
+                        {item.label[lang]}
                       </div>
                     ))}
                   </div>
@@ -321,7 +388,7 @@ export default function Auth() {
                     {...register("day", { required: true })}
                     readOnly
                     type="number"
-                    placeholder="dd"
+                    placeholder={t("dd")}
                     className={errors.day ? "error" : ""}
                   />
                   <div className="options">
@@ -362,7 +429,7 @@ export default function Auth() {
                     {...register("year", { required: true })}
                     type="number"
                     readOnly
-                    placeholder="yyyy"
+                    placeholder={t("yyyy")}
                     className={errors.year ? "error" : ""}
                   />
                   <div className="options">

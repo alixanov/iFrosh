@@ -29,7 +29,7 @@ export const Card = ({ item, editable = false }) => {
   const overlay = (
     <div className="overlay pending-status">
       <Reload />
-      <p> {t('tekshirilmoqda')}  </p>
+      <p> {t("tekshirilmoqda")} </p>
     </div>
   );
 
@@ -76,12 +76,25 @@ export const Card = ({ item, editable = false }) => {
         className="card-body"
       >
         <p className="pice">
-          {item[`price_${user?.currency?.code?.toLowerCase() || "uzs"}_formatted`]} {user?.currency?.code || "uzs"}
+          {
+            item[
+              `price_${user?.currency?.code?.toLowerCase() || "uzs"}_formatted`
+            ]
+          }{" "}
+          {(user?.currency?.code?.toUpperCase() || "UZS") === "UZS"
+            ? "UZS"
+            : "y.e"}
         </p>
         <div className="row-info">
-          <p>{item?.room_count} - {t('xona')}  </p>
-          {item?.room_floor && <p>{item?.room_floor}-{t('qavat')} </p>}
-          <p>{item?.space_size} m²</p>
+          <p>
+            {item?.room_count}-{t("xona")}{" "}
+          </p>
+          {item?.room_floor && (
+            <p>
+              {item?.room_floor}-{t("qavat")}{" "}
+            </p>
+          )}
+          <p>{item?.space_size}m²</p>
         </div>
         <p className="address">{item?.address}</p>
       </Link>
@@ -90,13 +103,13 @@ export const Card = ({ item, editable = false }) => {
       {!item.is_active
         ? overlay
         : editable && (
-          <Link
-            to={`/announcement/${item?.id}?edit=${item?.slug}&_a_id=${item?.id}`}
-            className="edit-btn"
-          >
-            <Pen />
-          </Link>
-        )}
+            <Link
+              to={`/announcement/${item?.id}?edit=${item?.slug}&_a_id=${item?.id}`}
+              className="edit-btn"
+            >
+              <Pen />
+            </Link>
+          )}
     </div>
   );
 };

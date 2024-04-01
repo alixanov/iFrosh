@@ -181,14 +181,10 @@ const Single = () => {
                       dataSingle?.announcement?.user?.last_name || ""
                     }`}
                   </h3>
-                  <span>
-                    {t("your_account")}
-                    {dataSingle?.announcement?.user_id}
-                  </span>
                   <a
-                    href={`tel:${dataSingle?.announcement?.user?.phone_number}`}
+                    href={`tel:+${dataSingle?.announcement?.user?.phone_number}`}
                   >
-                    {dataSingle?.announcement?.user?.phone_number}
+                    +{dataSingle?.announcement?.user?.phone_number}
                   </a>
                 </div>
               </div>
@@ -196,15 +192,32 @@ const Single = () => {
               <ul className="values">
                 <li>
                   <span>
-                    {dataSingle?.announcement?.[`price_uzs_formatted`]}{" "}
+                    {
+                      dataSingle?.announcement?.[
+                        `price_per_meter_${
+                          user?.currency?.code?.toLowerCase() || "uzs"
+                        }_formatted`
+                      ]
+                    }{" "}
+                    {(user?.currency?.code?.toUpperCase() || "UZS") === "UZS"
+                      ? "UZS"
+                      : "y.e"}
+                    /m²
                   </span>
-                  UZS
                 </li>
                 <li>
                   <span>
-                    {dataSingle?.announcement?.[`price_usd_formatted`]}{" "}
+                    {
+                      dataSingle?.announcement?.[
+                        `price_${
+                          user?.currency?.code?.toLowerCase() || "uzs"
+                        }_formatted`
+                      ]
+                    }{" "}
+                    {(user?.currency?.code?.toUpperCase() || "UZS") === "UZS"
+                      ? "UZS"
+                      : "y.e"}
                   </span>
-                  y.e
                 </li>
               </ul>
               <h3 className="h3">{t("oldindantolov")}</h3>
@@ -221,7 +234,7 @@ const Single = () => {
                   <li>
                     <icons.Floor />
                     <span className="h3">
-                      {dataSingle?.announcement?.room_floor}- {t("qavat")}
+                      {dataSingle?.announcement?.room_floor}-{t("qavat")}
                     </span>
                   </li>
                 )}
@@ -229,8 +242,7 @@ const Single = () => {
                   <li>
                     <icons.Room />
                     <span className="h3">
-                      {dataSingle?.announcement?.room_count}
-                      {t("xona")}
+                      {dataSingle?.announcement?.room_count}-{t("xona")}
                     </span>
                   </li>
                 )}

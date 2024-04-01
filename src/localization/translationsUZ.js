@@ -1,4 +1,7 @@
 const translationuz = {
+  mm: "oy",
+  dd: "kun",
+  yyyy: "yil",
   logout: "Chiqish",
   bargain: "Narx muzokarasi",
   main: "Bosh sahifa",
@@ -138,7 +141,6 @@ const translationuz = {
   viloyat: "Viloyat:",
   shaxar: "Shahar:",
   xona: "xona",
-  qavat: "qavat",
   // payme
   payment_type_sel: "To’lov turini tanlang",
   enter_emount: "To’lov summasini kiriting",

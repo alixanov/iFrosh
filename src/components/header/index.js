@@ -63,7 +63,9 @@ const Header = ({ changeLanguage }) => {
         const currency_list = await axios.get(
           "https://api.frossh.uz/api/currency/get"
         );
-        setCurrencyList(currency_list.data?.result);
+        setCurrencyList(
+          currency_list.data?.result?.sort((a, b) => b?.code?.localeCompare(a?.code))
+        );
         setNbuData(response.data?.result?.nbu_cell_price);
       } catch (error) {
         console.error("Error fetching data:", error);

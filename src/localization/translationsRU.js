@@ -1,4 +1,7 @@
 const translationru = {
+  mm: "мм",
+  dd: "дд",
+  yyyy: "гггг",
   logout: "Выход",
   bargain: "Торговаться",
   main: "Главная",
@@ -14,8 +17,8 @@ const translationru = {
   cabinet: "Личный кабинет",
   // Register
   enter_your_info: "Введите свои учетные данные",
-  name: "Ваше имя",
-  surname: "Ваша фамилия",
+  name: "Имя",
+  surname: "Фамилия",
   oferta: "Подтверждение предложения!",
   account: "У тебя есть аккаунт?",
   login: "Войти в аккаунт",
@@ -103,7 +106,6 @@ const translationru = {
   qurulganyil: "год постройки",
   elonlar: "Похожие объявления",
   xonalar: "Количество комнат",
-  qqavat: "пол",
   umumiy: "Общая информацияt",
   qoshimcha: "Дополнительные удобства",
   ha: "Да",
@@ -142,7 +144,7 @@ const translationru = {
   proceed_payment: "Продолжить оплату",
   shaxar: "Город:",
   xona: "комната",
-  qavat: "пол",
+  qavat: "этаж",
   //
 
   tekshirilmoqda: "Проверка...",
