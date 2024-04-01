@@ -5,6 +5,13 @@
   width: 100%;
   background: linear-gradient(90deg, white 50%, #8acbe7 50%);
 }
+.error-message {
+  color: #e74c3c;
+  font-size: 32px;
+  font-weight: 400;
+  font-family: Poppins;
+  margin-top: 10px;
+}
 
 .register-card {
   max-width: 1800px;
@@ -357,6 +364,9 @@ label:has(.oferta) {
 }
 
 @media (max-width: 1500px) {
+  .error-message {
+    font-size: 22px;
+  }
   .reg-card-left > p {
     font-size: 40px;
   }
@@ -405,6 +415,9 @@ label:has(.oferta) {
 }
 
 @media (max-width: 1200px) {
+  .error-message {
+    font-size: 18px;
+  }
   .register {
     background: url(../../assets/images/intro-bg.png) center no-repeat;
     background-size: cover;
@@ -707,7 +720,7 @@ label:has(.oferta) {
     font-size: 12px;
   }
   .modal-card {
-    width:94% !important;
+    width: 94% !important;
     padding: 30px;
     border-radius: 30px;
   }

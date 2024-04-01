@@ -116,6 +116,7 @@ const translationuz = {
   similar_adds: "O'xshash e'lonlar",
   ha: "Ha",
   yoq: "Yoq",
+  example: "Namuna",
   // filter
   sort: "Saralash",
   popular: "Ommabop",

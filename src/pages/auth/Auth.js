@@ -167,7 +167,10 @@ export default function Auth() {
       .catch((error) => {
         setLoading(false);
         console.log(error?.response?.data);
-        toast.error(error?.response?.data?.message || "Xatolik bor!");
+        toast.error(error?.response?.data?.result || "Xatolik bor!",{
+          position: "top-center",
+          autoClose: 5000,
+        });
       });
   };
   const request = {
@@ -340,6 +343,9 @@ export default function Auth() {
             placeholder="998"
             className={errors.phone ? "error" : ""}
           />
+          {errors.phone && (
+            <span className="error-message">{t('example')}: +998XXZZZYYXX</span>
+          )}
           {step !== "login" ? (
             <>
               {" "}

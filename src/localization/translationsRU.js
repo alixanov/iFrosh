@@ -110,7 +110,7 @@ const translationru = {
   qoshimcha: "Дополнительные удобства",
   ha: "Да",
   yoq: "Heт",
-
+  example: "Пример",
   repair: "Ремонт",
   bath: "Душ",
   balcony: "Балкон",
