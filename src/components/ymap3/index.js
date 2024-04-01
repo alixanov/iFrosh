@@ -29,7 +29,7 @@ const GeocoderMap = ({ address, setValue }) => {
     const newCenter = event.get("newCenter");
     setCoordinates(newCenter);
     if (!window.ymaps) return;
-    ymaps.geocode(newCenter).then(
+    window.ymaps.geocode(newCenter).then(
       function (res) {
         const address = res.geoObjects.get(0).properties.get("text");
         setValue("address", address);
