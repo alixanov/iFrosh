@@ -18,9 +18,6 @@ const Header = ({ changeLanguage }) => {
   const [loading, setLoading] = useState(false);
   const [nbuData, setNbuData] = useState(null);
   const [currencyList, setCurrencyList] = useState([]);
-  const [selectedCurrency, setSelectedCurrency] = useState(
-    user?.currency?.code || "uzs"
-  );
   const [flag, setFlag] = useState("uz");
 
   const Changelangheader = (e) => {
@@ -83,35 +80,19 @@ const Header = ({ changeLanguage }) => {
   };
 
   const handleCurrencyChange = (e) => {
-    setSelectedCurrency(e.target.value);
+    dispatch(
+      setUser({
+        ...user,
+        currency: currencyList?.find(
+          (currency) => +currency?.id === +e.target?.value
+        ),
+      })
+    );
+    if (!user?.token) return;
     axios
-      .put(
-        "https://api.frossh.uz/api/user/update",
-        {
-          ...user,
-          currency_id: e.target.value,
-        },
-        { headers }
-      )
+      .put("https://api.frossh.uz/api/user/update", {}, { headers })
       .then((_) => {
-        axios
-          .post(
-            "https://api.frossh.uz/api/auth/refresh",
-            {},
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          )
-          .then(({ data }) => {
-            dispatch(setUser(data?.result));
-            Cookies.set("token", data?.result?.token);
-          })
-          .catch((err) => {
-            setLoading(false);
-            console.log(err);
-          });
+        getUser();
       })
       .catch((err) => console.log(err));
   };
