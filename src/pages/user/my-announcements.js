@@ -11,7 +11,6 @@ import { useStoreState } from "../../redux/selectors";
 const MyAnnouncements = () => {
   const user = useStoreState("user");
   const { t } = useTranslation();
-  const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [announcements, setAnnouncements] = useState({});
   const getAnnouncements = useCallback(() => {
@@ -51,19 +50,7 @@ const MyAnnouncements = () => {
           </div>
         )}
       </div>
-      {/* <div className="paginations">
-        {announcements?.links?.map((item) => (
-          <button
-            dangerouslySetInnerHTML={{
-              __html: item?.label?.replace(/\b(Previous|Next)\b/g, "")?.trim(),
-            }}
-            key={item?.label}
-            onClick={() => setCurrentPage(item === "..." ? currentPage : item)}
-            className={item?.active ? "active" : undefined}
-            disabled={!item?.url}
-          />
-        ))}
-      </div> */}
+
     </>
   );
 };

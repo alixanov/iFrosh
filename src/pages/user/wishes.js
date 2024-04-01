@@ -46,12 +46,12 @@ const Wishes = () => {
         ) : loading ? null : (
           <div className="noProfileInfo">
             <img src={noProfileInfoImg} alt="noProfileInfoImg" />
-            <Link to={"/"}>{t("main")}</Link>
+            <Link to={"/"}>{t("main1")}</Link>
           </div>
         )}
       </div>
       <div className="paginations">
-        {announcements?.links?.map((item) => (
+        {announcements?.data?.length && announcements?.links?.map((item) => (
           <button
             dangerouslySetInnerHTML={{
               __html: item?.label?.replace(/\b(Previous|Next)\b/g, "")?.trim(),
@@ -63,6 +63,7 @@ const Wishes = () => {
           />
         ))}
       </div>
+
     </div>
   );
 };

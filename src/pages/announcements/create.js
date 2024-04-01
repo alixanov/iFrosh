@@ -174,7 +174,7 @@ const CreateAnnouncement = () => {
       price: "",
       place_type: "",
       repair_type: "",
-      sale_type: "sale",
+      sale_type: "",
       advance: "0",
       bargain: "",
       advance_month: "",
@@ -689,8 +689,13 @@ const CreateAnnouncement = () => {
           className={`sender-btn mt-30 ${place_type === "skyscraper" ? "disabled" : ""
             }`}
           disabled={place_type === "skyscraper"}
+          onClick={() => {
+            if (!imgFiles.length) {
+              setError("photo")
+            }
+          }}
         >
-          <span>{t("save")}</span>
+          <span  >{t("save")}</span>
           <Save />
         </button>
       </form>

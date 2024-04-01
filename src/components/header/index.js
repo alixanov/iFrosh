@@ -10,6 +10,8 @@ import { setUser } from "../../redux/user";
 import "./style.css";
 import logo from "../../assets/images/placemark.png";
 import { useStoreState } from "../../redux/selectors";
+import { Select } from '@chakra-ui/react'
+
 
 const Header = ({ changeLanguage }) => {
   const { t } = useTranslation();
@@ -18,7 +20,7 @@ const Header = ({ changeLanguage }) => {
   const [loading, setLoading] = useState(false);
   const [nbuData, setNbuData] = useState(null);
   const [currencyList, setCurrencyList] = useState([]);
-  const [selectedCurrency, setSelectedCurrency] = useState(user?.currency?.code|| "uzs");
+  const [selectedCurrency, setSelectedCurrency] = useState(user?.currency?.code || "uzs");
   const [flag, setFlag] = useState("uz");
 
   const Changelangheader = (e) => {
@@ -113,10 +115,11 @@ const Header = ({ changeLanguage }) => {
             <option value="ru">ru</option>
           </select>
 
+
           <select value={selectedCurrency} onBlur={handleCurrencyChange}>
             {currencyList?.map((currency) => (
               <option key={currency?.id} value={currency?.id}>
-                {currency?.code|| "uzs"}
+                {currency?.code || "uzs"}
               </option>
             ))}
           </select>
