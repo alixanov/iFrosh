@@ -16,7 +16,7 @@ const translationuz = {
   register: "Ro'yxatdan o'tish",
   cabinet: "Shaxsiy kabinet",
   // Register
-  enter_your_info: "Ma'umotlaringizni kiriting",
+  enter_your_info: "Ma'lumotlaringizni kiriting",
   name: "Ismingiz",
   surname: "Familiyangiz",
   oferta: "Ofertani tasdiqlash!",
@@ -117,6 +117,7 @@ const translationuz = {
   ha: "Ha",
   yoq: "Yoq",
   example: "Namuna",
+  incorrect_code: "Tasdiqlash kodi noto’g’ri!",
   // filter
   sort: "Saralash",
   popular: "Ommabop",

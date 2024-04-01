@@ -40,6 +40,7 @@ export default function Auth() {
   const [openSelect, setOpenSelect] = useState("");
   const [step, setStep] = useState("register"); // register || login || modal-otp || modal-[success||reject]
   const [seconds, setSeconds] = useState(0);
+  const [otpError, setOtpError] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -73,7 +74,8 @@ export default function Auth() {
       })
       .catch((error) => {
         setLoading(false);
-        setStep("modal-reject");
+        // setStep("modal-reject");
+        setOtpError(true);
         console.log(error);
         toast.error(error?.response?.data?.message || "Xatolik bor!");
       });
@@ -167,7 +169,7 @@ export default function Auth() {
       .catch((error) => {
         setLoading(false);
         console.log(error?.response?.data);
-        toast.error(error?.response?.data?.result || "Xatolik bor!",{
+        toast.error(error?.response?.data?.result[lang] || "Xatolik bor!", {
           position: "top-center",
           autoClose: 5000,
         });
@@ -344,7 +346,7 @@ export default function Auth() {
             className={errors.phone ? "error" : ""}
           />
           {errors.phone && (
-            <span className="error-message">{t('example')}: +998XXZZZYYXX</span>
+            <span className="error-message">{t("example")}: +998XXZZZYYXX</span>
           )}
           {step !== "login" ? (
             <>
@@ -498,7 +500,7 @@ export default function Auth() {
         <div className="modal">
           {step === "modal-otp" ? (
             <div className="modal-card">
-              <p>{t("kodini")}</p>
+              <p>{t(otpError ? "incorrect_code" : "kodini")}</p>
               <OtpInput
                 inputStyle={{
                   width: "77px",
@@ -507,19 +509,26 @@ export default function Auth() {
                   margin: 18,
                   borderRadius: 18,
                   fontSize: 32,
-                  border: "1px solid black",
+                  border: `1px solid ${otpError ? "red" : "#000"}`,
                 }}
                 value={otp}
-                onChange={setOtp}
+                onChange={(otp) => {
+                  setOtpError(false);
+                  setOtp(otp);
+                }}
                 numInputs={4}
                 renderInput={(props) => <input {...props} required />}
               />
               <span>{formatTime(seconds)}</span>
               {seconds ? null : (
                 <span>
-                  {t("kodkelmadi")}
-                  <br />
-                  <button onClick={() => onResendMessage(otp)}>
+                  {t("kodkelmadi")}{" "}
+                  <button
+                    onClick={() => onResendMessage(otp)}
+                    style={{
+                      color: "#3498DB",
+                    }}
+                  >
                     {t("qaytayuborish")}
                   </button>
                 </span>

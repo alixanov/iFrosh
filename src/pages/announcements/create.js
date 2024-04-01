@@ -119,9 +119,7 @@ const CreateAnnouncement = () => {
     if (invalidFiles.length > 0) {
       // 10 MB dan katta bo'lgan fayllar qo'shilgan
       toast.error(
-        `${t('Quyidagi')} ${invalidFiles
-          .map((file) => file.name)
-          .join(", ")}`
+        `${t("Quyidagi")} ${invalidFiles.map((file) => file.name).join(", ")}`
       );
     }
     setKeyCounter((prevCounter) => prevCounter + 1);
@@ -275,8 +273,9 @@ const CreateAnnouncement = () => {
         </div>
       )}
       <form
-        className={`container announcements ${resultStatus ? "with-overlay" : ""
-          }`}
+        className={`container announcements ${
+          resultStatus ? "with-overlay" : ""
+        }`}
         onSubmit={handleSubmit(onSubmit)}
       >
         {loading && (
@@ -304,9 +303,9 @@ const CreateAnnouncement = () => {
                 onClick={
                   imgFiles.length === 10
                     ? () =>
-                      toast.error(
-                        "10 tadan ko'p rasmlar tanlash mumkin emas!"
-                      )
+                        toast.error(
+                          "10 tadan ko'p rasmlar tanlash mumkin emas!"
+                        )
                     : null
                 }
               >
@@ -433,9 +432,9 @@ const CreateAnnouncement = () => {
                 },
                 place_type !== "skyscraper"
                   ? {
-                    value: "rent",
-                    label: t("rent_out"),
-                  }
+                      value: "rent",
+                      label: t("rent_out"),
+                    }
                   : null,
               ].filter(Boolean)}
               control={control}
@@ -472,22 +471,6 @@ const CreateAnnouncement = () => {
                   required
                 />
               ) : null}
-              <div className="_col">
-                <h3 className="h3">{t("extra_comfort")}</h3>
-                <div className="checkboxes">
-                  {amenities?.length
-                    ? amenities?.map((item) => (
-                      <Checkbox
-                        key={item?.id}
-                        name={"amenities"}
-                        value={item?.id}
-                        label={item?.name_uz}
-                        register={register}
-                      />
-                    ))
-                    : "Hech narsa topilmadi"}
-                </div>
-              </div>
             </div>
             <div className="inputs-row">
               {watch("sale_type") === "rent" ? (
@@ -497,7 +480,7 @@ const CreateAnnouncement = () => {
                     <div className="checkboxes">
                       <Checkbox
                         type="radio"
-                        label={t('yoq')}
+                        label={t("yoq")}
                         value="1"
                         required
                         name="advance"
@@ -506,7 +489,7 @@ const CreateAnnouncement = () => {
                       />
                       <Checkbox
                         type="radio"
-                        label={t('yoq')}
+                        label={t("yoq")}
                         value="0"
                         required
                         name="advance"
@@ -597,8 +580,9 @@ const CreateAnnouncement = () => {
                 <h3 className="h3 mt-30">{t("whole_place")}*</h3>
                 <div className="inputs-row">
                   <label
-                    className={`input-label w-220 ${errors["space_size"] ? "error" : ""
-                      }`}
+                    className={`input-label w-220 ${
+                      errors["space_size"] ? "error" : ""
+                    }`}
                   >
                     <input
                       type="number"
@@ -613,8 +597,23 @@ const CreateAnnouncement = () => {
                   </label>
                 </div>
               </div>
-              
             </div>
+            <div className="_col mt-30">
+                <h3 className="h3">{t("extra_comfort")}</h3>
+                <div className="checkboxes col-2-check">
+                  {amenities?.length
+                    ? amenities?.map((item) => (
+                      <Checkbox
+                        key={item?.id}
+                        name={"amenities"}
+                        value={item?.id}
+                        label={item?.name_uz}
+                        register={register}
+                      />
+                    ))
+                    : "Hech narsa topilmadi"}
+                </div>
+              </div>
             <h3 className="h3 mt-30">{t("where")}*</h3>
             <div
               className={mapsArray.length > 1 ? "address-row" : "inputs-row"}
@@ -650,8 +649,9 @@ const CreateAnnouncement = () => {
                 </>
               ) : (
                 <label
-                  className={`input-label address ${errors["address"] ? "error" : ""
-                    }`}
+                  className={`input-label address ${
+                    errors["address"] ? "error" : ""
+                  }`}
                 >
                   <input
                     type="text"
@@ -675,8 +675,9 @@ const CreateAnnouncement = () => {
             <h3 className="h3 mt-30">{t("description")}*</h3>
             <div className="inputs-row">
               <label
-                className={`input-label address ${errors["description"] ? "error" : ""
-                  }`}
+                className={`input-label address ${
+                  errors["description"] ? "error" : ""
+                }`}
               >
                 <textarea
                   placeholder={t("description*")}
@@ -687,16 +688,17 @@ const CreateAnnouncement = () => {
           </>
         ) : null}
         <button
-          className={`sender-btn mt-30 ${place_type === "skyscraper" ? "disabled" : ""
-            }`}
+          className={`sender-btn mt-30 ${
+            place_type === "skyscraper" ? "disabled" : ""
+          }`}
           disabled={place_type === "skyscraper"}
           onClick={() => {
             if (!imgFiles.length) {
-              setError("photo")
+              setError("photo");
             }
           }}
         >
-          <span  >{t("save")}</span>
+          <span>{t("save")}</span>
           <Save />
         </button>
       </form>

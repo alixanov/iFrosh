@@ -8,12 +8,15 @@ const GeocoderMap = ({ address, setValue }) => {
     iconImageSize: [150, 150],
     iconImageOffset: [-75, -75],
   };
-  const [coordinates, setCoordinates] = useState([40.981272082081325, 71.60873464660148]);
+  const [coordinates, setCoordinates] = useState([
+    40.981272082081325, 71.60873464660148,
+  ]);
 
   useEffect(() => {
     if (address) {
-      ymaps.ready(function () {
-        ymaps.geocode(address).then((results) => {
+      if (!window.ymaps) return;
+      window.ymaps.ready(function () {
+        window.ymaps.geocode(address).then((results) => {
           const firstGeoObject = results.geoObjects.get(0);
           const coords = firstGeoObject.geometry.getCoordinates();
           setCoordinates(coords);
@@ -25,10 +28,11 @@ const GeocoderMap = ({ address, setValue }) => {
   const handleMapChange = (event) => {
     const newCenter = event.get("newCenter");
     setCoordinates(newCenter);
+    if (!window.ymaps) return;
     ymaps.geocode(newCenter).then(
       function (res) {
         const address = res.geoObjects.get(0).properties.get("text");
-        setValue('address',address);
+        setValue("address", address);
         setValue("latitude", newCenter[0]);
         setValue("longitude", newCenter[1]);
       },
