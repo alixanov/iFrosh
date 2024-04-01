@@ -377,23 +377,23 @@ const CreateAnnouncement = () => {
               label={t("select_place_type")}
               options={[
                 {
-                  value: "Kvartira",
+                  value: "apartment",
                   label: t("flat"),
                 },
                 {
-                  value: "Xonadon",
+                  value: "home",
                   label: t("home"),
                 },
                 {
-                  value: "Quruq yer",
+                  value: "dry land",
                   label: t("quruq"),
                 },
                 {
-                  value: "Biznes uchun joy",
+                  value: "business place",
                   label: t("business_place"),
                 },
                 {
-                  value: "Turar joy majmuasi",
+                  value: "skyscraper",
                   label: t("majmuo"),
                 },
               ]}
@@ -472,6 +472,22 @@ const CreateAnnouncement = () => {
                   required
                 />
               ) : null}
+              <div className="_col">
+                <h3 className="h3">{t("extra_comfort")}</h3>
+                <div className="checkboxes">
+                  {amenities?.length
+                    ? amenities?.map((item) => (
+                      <Checkbox
+                        key={item?.id}
+                        name={"amenities"}
+                        value={item?.id}
+                        label={item?.name_uz}
+                        register={register}
+                      />
+                    ))
+                    : "Hech narsa topilmadi"}
+                </div>
+              </div>
             </div>
             <div className="inputs-row">
               {watch("sale_type") === "rent" ? (
@@ -597,22 +613,7 @@ const CreateAnnouncement = () => {
                   </label>
                 </div>
               </div>
-              <div className="_col">
-                <h3 className="h3">{t("extra_comfort")}</h3>
-                <div className="checkboxes">
-                  {amenities?.length
-                    ? amenities?.map((item) => (
-                      <Checkbox
-                        key={item?.id}
-                        name={"amenities"}
-                        value={item?.id}
-                        label={item?.name_uz}
-                        register={register}
-                      />
-                    ))
-                    : "Hech narsa topilmadi"}
-                </div>
-              </div>
+              
             </div>
             <h3 className="h3 mt-30">{t("where")}*</h3>
             <div

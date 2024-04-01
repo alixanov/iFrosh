@@ -11,7 +11,6 @@ import "./style.css";
 import logo from "../../assets/images/placemark.png";
 import { useStoreState } from "../../redux/selectors";
 
-
 const Header = ({ changeLanguage }) => {
   const { t } = useTranslation();
   const user = useStoreState("user");
@@ -85,14 +84,36 @@ const Header = ({ changeLanguage }) => {
 
   const handleCurrencyChange = (e) => {
     setSelectedCurrency(e.target.value);
-    axios.put(
-      "https://api.frossh.uz/api/user/update",
-      {
-        ...user,
-        currency_id: e.target.value,
-      },
-      { headers }
-    );
+    axios
+      .put(
+        "https://api.frossh.uz/api/user/update",
+        {
+          ...user,
+          currency_id: e.target.value,
+        },
+        { headers }
+      )
+      .then((_) => {
+        axios
+          .post(
+            "https://api.frossh.uz/api/auth/refresh",
+            {},
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          )
+          .then(({ data }) => {
+            dispatch(setUser(data?.result));
+            Cookies.set("token", data?.result?.token);
+          })
+          .catch((err) => {
+            setLoading(false);
+            console.log(err);
+          });
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -111,12 +132,12 @@ const Header = ({ changeLanguage }) => {
         <div className="h-right">
           {flag == "uz" ? <Bayroq /> : <Rus />}
 
-          <select   style={ {fontSize:"25px"} } onChange={Changelangheader}>
+          <select style={{ fontSize: "25px" }} onChange={Changelangheader}>
             <option value="uz">UZ</option>
             <option value="ru">RU</option>
           </select>
 
-          <select onBlur={handleCurrencyChange}>
+          <select onChange={handleCurrencyChange}>
             {currencyList?.map((currency) => (
               <option key={currency?.id} value={currency?.id}>
                 {currency?.code || "uzs"}

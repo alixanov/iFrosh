@@ -55,7 +55,7 @@ const translationuz = {
   select_place_type: "Joy turini tanlang",
   select_type_sale: "Sotuv turini tanlang",
   sotix: "Sotix",
-  majmuo: "majmua",
+  majmuo: "Turar joy majmualari",
   quruq: "Quruq yer",
   repairment: "Ta'mir holati",
   bad: "Yomon",
