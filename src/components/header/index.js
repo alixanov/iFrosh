@@ -10,7 +10,6 @@ import { setUser } from "../../redux/user";
 import "./style.css";
 import logo from "../../assets/images/placemark.png";
 import { useStoreState } from "../../redux/selectors";
-import { Select } from '@chakra-ui/react'
 
 
 const Header = ({ changeLanguage }) => {
@@ -20,13 +19,9 @@ const Header = ({ changeLanguage }) => {
   const [loading, setLoading] = useState(false);
   const [nbuData, setNbuData] = useState(null);
   const [currencyList, setCurrencyList] = useState([]);
-<<<<<<< HEAD
-  const [selectedCurrency, setSelectedCurrency] = useState(user?.currency?.code || "uzs");
-=======
   const [selectedCurrency, setSelectedCurrency] = useState(
     user?.currency?.code || "uzs"
   );
->>>>>>> 404e2c298455880e76caa1a0478b69881006d46b
   const [flag, setFlag] = useState("uz");
 
   const Changelangheader = (e) => {
@@ -116,17 +111,12 @@ const Header = ({ changeLanguage }) => {
         <div className="h-right">
           {flag == "uz" ? <Bayroq /> : <Rus />}
 
-          <select onChange={Changelangheader}>
-            <option value="uz">uz</option>
-            <option value="ru">ru</option>
+          <select   style={ {fontSize:"25px"} } onChange={Changelangheader}>
+            <option value="uz">UZ</option>
+            <option value="ru">RU</option>
           </select>
 
-<<<<<<< HEAD
-
-          <select value={selectedCurrency} onBlur={handleCurrencyChange}>
-=======
           <select onBlur={handleCurrencyChange}>
->>>>>>> 404e2c298455880e76caa1a0478b69881006d46b
             {currencyList?.map((currency) => (
               <option key={currency?.id} value={currency?.id}>
                 {currency?.code || "uzs"}

@@ -46,23 +46,24 @@ const Wishes = () => {
         ) : loading ? null : (
           <div className="noProfileInfo">
             <img src={noProfileInfoImg} alt="noProfileInfoImg" />
-            <Link to={"/"}>{t("main1")}</Link>
+            <Link to={"/"}>{t("main")}</Link>
           </div>
         )}
       </div>
       <div className="paginations">
-        {announcements?.data?.length && announcements?.links?.map((item) => (
-          <button
-            dangerouslySetInnerHTML={{
-              __html: item?.label?.replace(/\b(Previous|Next)\b/g, "")?.trim(),
-            }}
-            key={item?.label}
-            onClick={() => setCurrentPage(item === "..." ? currentPage : item)}
-            className={item?.active ? "active" : undefined}
-            disabled={!item?.url}
-          />
-        ))}
-      </div>
+  {announcements?.data?.length ? announcements?.links?.map((item) => (
+    <button
+      dangerouslySetInnerHTML={{
+        __html: item?.label?.replace(/\b(Previous|Next)\b/g, "")?.trim(),
+      }}
+      key={item?.label}
+      onClick={() => setCurrentPage(item === "..." ? currentPage : item)}
+      className={item?.active ? "active" : undefined}
+      disabled={!item?.url}
+    />
+  )) : ""}
+</div>
+
 
     </div>
   );
