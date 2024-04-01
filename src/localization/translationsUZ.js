@@ -124,7 +124,7 @@ const translationuz = {
   rent: "Ijaraga olish",
   close: "Yopish",
   demo: "Sayt hozirda bepul rejimida ishlamoqda. Bemalol bepul e’lon joylashingiz mumkin!",
-  tamir:"Ta’mir holati",
+  tamir: "Ta’mir holati",
 
   // user
   private_info: "Shaxsiy malumotlarim",
@@ -153,8 +153,8 @@ const translationuz = {
   //
   tekshirilmoqda: "Tekshirilmoqda...",
   Quyidagi: "Quyidagi fayllar 10 MB dan katta:",
-
-
+  have_not_account: "Hali hisob ochmadingizmi?",
+  create_account: "Hisob ochish",
 };
 
 export default translationuz;

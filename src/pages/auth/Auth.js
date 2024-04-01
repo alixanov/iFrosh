@@ -242,23 +242,23 @@ export default function Auth() {
     <div className="register">
       <div className="register-card">
         <div className="reg-card-left">
-          <p>{step === "login" ? t('login') : t('royxat')}</p>
+          <p>{step === "login" ? t("login") : t("royxat")}</p>
           <img src={rightimg} alt="images-left" />
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="reg-card-register">
-          <p>{t('enter_your_info')}</p>
+          <p>{t("enter_your_info")}</p>
           {step !== "login" ? (
             <>
               <input
                 type="text"
-                placeholder={t('name')}
+                placeholder={t("name")}
                 {...register("firstName", { required: true })}
                 className={errors.firstName ? "error" : ""}
               />
               <input
                 type="text"
-                placeholder={t('surname')}
+                placeholder={t("surname")}
                 {...register("lastName", { required: true })}
                 className={errors.lastName ? "error" : ""}
               />
@@ -327,29 +327,29 @@ export default function Auth() {
                   <div className="options">
                     {watch("month")
                       ? Array.from(
-                        {
-                          length: months.find(
-                            (item) => item?.value === watch("month")
-                          )?.days,
-                        },
-                        (_, i) => `${i + 1 < 9 ? "0" : ""}${i + 1}`
-                      ).map((item) => (
-                        <div
-                          className="option"
-                          key={item}
-                          aria-hidden
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setValue("day", item);
-                            clearErrors("day");
-                            setOpenSelect(() =>
-                              !watch("year") ? "year" : ""
-                            );
-                          }}
-                        >
-                          {item}
-                        </div>
-                      ))
+                          {
+                            length: months.find(
+                              (item) => item?.value === watch("month")
+                            )?.days,
+                          },
+                          (_, i) => `${i + 1 < 9 ? "0" : ""}${i + 1}`
+                        ).map((item) => (
+                          <div
+                            className="option"
+                            key={item}
+                            aria-hidden
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setValue("day", item);
+                              clearErrors("day");
+                              setOpenSelect(() =>
+                                !watch("year") ? "year" : ""
+                              );
+                            }}
+                          >
+                            {item}
+                          </div>
+                        ))
                       : null}
                   </div>
                 </div>
@@ -389,10 +389,10 @@ export default function Auth() {
               </div>
               <label>
                 <input type="checkbox" className="oferta" required />
-                <p>{t("oferta")}!</p>
+                <p>{t("oferta")}</p>
               </label>
               <div className="row-link-bottom">
-                {t("account")}?{" "}
+                {t("account")}
                 <span
                   aria-hidden
                   onClick={() => setStep("login")}
@@ -404,19 +404,19 @@ export default function Auth() {
             </>
           ) : (
             <div className="row-link-bottom">
-              Hali hisob ochmadingizmi?
+              {t("have_not_account")}
               <span
                 aria-hidden
                 onClick={() => setStep("register")}
                 className="link"
               >
-                Hisob ochish
+                {t("create_account")}
               </span>
             </div>
           )}
 
           <button type="submit" disabled={loading}>
-            {loading ? <LoadingIcon color={"#fff"} /> : t('sms')}
+            {loading ? <LoadingIcon color={"#fff"} /> : t("sms")}
           </button>
         </form>
       </div>
@@ -425,7 +425,7 @@ export default function Auth() {
         <div className="modal">
           {step === "modal-otp" ? (
             <div className="modal-card">
-              <p>{t('kodini')}</p>
+              <p>{t("kodini")}</p>
               <OtpInput
                 inputStyle={{
                   width: "77px",
@@ -444,28 +444,35 @@ export default function Auth() {
               <span>{formatTime(seconds)}</span>
               {seconds ? null : (
                 <span>
-                  {t('kodkelmadi')}
+                  {t("kodkelmadi")}
+                  <br />
                   <button onClick={() => onResendMessage(otp)}>
-                    {t('qaytayuborish')}
+                    {t("qaytayuborish")}
                   </button>
                 </span>
               )}
-              <button onClick={() => onVerificationCode(otp)}> {t('yuborish')}</button>
+              <button
+                onClick={() =>
+                  otp.length === 4 ? onVerificationCode(otp) : null
+                }
+              >
+                {t("yuborish")}
+              </button>
             </div>
           ) : (
             <div className="truecart">
               {step === "modal-success" ? (
                 <>
                   <img src={trudemodal} alt="cs" />
-                  <p>  {t('siz')} </p>
-                  <button onClick={() => navigate("/")}> {t('bosh')} </button>
+                  <p> {t("siz")} </p>
+                  <button onClick={() => navigate("/")}> {t("bosh")} </button>
                 </>
               ) : step === "modal-reject" ? (
                 <>
                   <img src={falsemodal} alt="cs" />
                   <p>Hatolik yuz berdi! Keynroq urinib ko’ring</p>
                   <button onClick={() => setStep("register")}>
-                     {t('bosh')}
+                    {t("bosh")}
                   </button>
                 </>
               ) : null}

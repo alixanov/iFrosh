@@ -13,7 +13,10 @@ import { useStoreState } from "../../redux/selectors";
 
 const Single = () => {
   const user = useStoreState("user");
-  const { t } = useTranslation();
+  const {
+    t,
+    i18n: { language: lang },
+  } = useTranslation();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const swiperRef = useRef(null);
@@ -123,7 +126,7 @@ const Single = () => {
                   onSlideChange={handleChange}
                   className="thumbs-container"
                   slidesPerView={"auto"}
-                  spaceBetween={35}
+                  spaceBetween={window.innerWidth < 768 ? 10 : 35}
                 >
                   {sliderData?.map((slide, i) => (
                     <SwiperSlide
@@ -143,8 +146,9 @@ const Single = () => {
                   <div
                     className="filled"
                     style={{
-                      "--percent": `${(activeIndex + 1) * (100 / sliderData?.length)
-                        }%`,
+                      "--percent": `${
+                        (activeIndex + 1) * (100 / sliderData?.length)
+                      }%`,
                     }}
                   ></div>
                   <p className="absolute-center">
@@ -163,16 +167,19 @@ const Single = () => {
                       className="single-img-small"
                     />
                   ) : (
-                    `${dataSingle?.announcement?.user?.first_name?.charAt(0) ||
-                    ""
-                    }${dataSingle?.announcement?.user?.last_name?.charAt(0) || ""
+                    `${
+                      dataSingle?.announcement?.user?.first_name?.charAt(0) ||
+                      ""
+                    }${
+                      dataSingle?.announcement?.user?.last_name?.charAt(0) || ""
                     }`
                   )}
                 </div>
                 <div className="column">
                   <h3 className="h3">
-                    {`${dataSingle?.announcement?.user?.first_name || ""} ${dataSingle?.announcement?.user?.last_name || ""
-                      }`}
+                    {`${dataSingle?.announcement?.user?.first_name || ""} ${
+                      dataSingle?.announcement?.user?.last_name || ""
+                    }`}
                   </h3>
                   <span>
                     {t("your_account")}
@@ -185,7 +192,7 @@ const Single = () => {
                   </a>
                 </div>
               </div>
-              <h3 className="h3">{t('narx')}</h3>
+              <h3 className="h3">{t("narx")}</h3>
               <ul className="values">
                 <li>
                   <span>
@@ -200,13 +207,11 @@ const Single = () => {
                   y.e
                 </li>
               </ul>
-              <h3 className="h3">
-                {t('oldindantolov')}
-              </h3>
+              <h3 className="h3">{t("oldindantolov")}</h3>
               <ul className="values">
                 <li>
                   {dataSingle?.announcement?.advance &&
-                    dataSingle?.announcement?.advance_month
+                  dataSingle?.announcement?.advance_month
                     ? `${dataSingle?.announcement?.advance_month} oylik`
                     : t("yoq")}
                 </li>
@@ -224,7 +229,8 @@ const Single = () => {
                   <li>
                     <icons.Room />
                     <span className="h3">
-                      {dataSingle?.announcement?.room_count}{t("xona")}
+                      {dataSingle?.announcement?.room_count}
+                      {t("xona")}
                     </span>
                   </li>
                 )}
@@ -236,25 +242,24 @@ const Single = () => {
                     </span>
                   </li>
                 )}
-
               </ul>
             </div>
           </div>
           <div className="more-infos">
             <ul>
-              <li className="caption">{t('extra')} :</li>
+              <li className="caption">{t("extra")} :</li>
               <li className="comment">
                 {dataSingle?.announcement?.description || "Ma’lumot yo’q"}
               </li>
             </ul>
             <ul className="values">
-              <li className="caption">  {t('umumiy')}  </li>
+              <li className="caption"> {t("umumiy")} </li>
               <li>
                 <p>{t("xonalar")}</p>
                 <p>{dataSingle?.announcement?.room_count}</p>
               </li>
               <li>
-                <p>  {t("joy")} </p>
+                <p> {t("joy")} </p>
                 <p>{dataSingle?.announcement?.space_size}m²</p>
               </li>
               <li>
@@ -263,19 +268,18 @@ const Single = () => {
               </li>
 
               <li>
-                <p>  {t("qurulganyil")} </p>
+                <p> {t("qurulganyil")} </p>
                 <p>{dataSingle?.announcement?.construction_year}</p>
               </li>
             </ul>
             <ul className="values">
-              <li className="caption">  {t('qoshimcha')} </li>
+              <li className="caption"> {t("qoshimcha")} </li>
               {dataSingle?.announcement?.amenities?.map((item) => (
                 <li key={item?.id}>
                   {icon[item?.id] ? icon[item?.id] : null}
-                  <span>{item?.name_uz}</span>
+                  <span>{item?.[`name_${lang}`]}</span>
                 </li>
               ))}
-
             </ul>
           </div>
           <YMaps>
@@ -295,7 +299,7 @@ const Single = () => {
 
           {dataSingle?.similar?.length ? (
             <>
-              <h3 className="title"> {t('elonlar')} </h3>
+              <h3 className="title"> {t("elonlar")} </h3>
               <div className="row similar">
                 {dataSingle?.similar?.map((slide) => (
                   <Card key={slide?.id} item={slide} />

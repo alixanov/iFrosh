@@ -20,7 +20,13 @@ const Header = ({ changeLanguage }) => {
   const [loading, setLoading] = useState(false);
   const [nbuData, setNbuData] = useState(null);
   const [currencyList, setCurrencyList] = useState([]);
+<<<<<<< HEAD
   const [selectedCurrency, setSelectedCurrency] = useState(user?.currency?.code || "uzs");
+=======
+  const [selectedCurrency, setSelectedCurrency] = useState(
+    user?.currency?.code || "uzs"
+  );
+>>>>>>> 404e2c298455880e76caa1a0478b69881006d46b
   const [flag, setFlag] = useState("uz");
 
   const Changelangheader = (e) => {
@@ -115,8 +121,12 @@ const Header = ({ changeLanguage }) => {
             <option value="ru">ru</option>
           </select>
 
+<<<<<<< HEAD
 
           <select value={selectedCurrency} onBlur={handleCurrencyChange}>
+=======
+          <select onBlur={handleCurrencyChange}>
+>>>>>>> 404e2c298455880e76caa1a0478b69881006d46b
             {currencyList?.map((currency) => (
               <option key={currency?.id} value={currency?.id}>
                 {currency?.code || "uzs"}
