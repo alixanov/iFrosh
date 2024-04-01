@@ -13,7 +13,7 @@ const Announcements = () => {
     axios
       .get(link ? link : "https://api.frossh.uz/api/announcement/get-by-filter")
       .then(({ data }) => {
-        setData(data?.result?.top);
+        setData([...data?.result?.top, ...data?.result?.non_top?.data]);
         seLinks(data?.result?.non_top?.links);
       })
       .catch((err) => {
@@ -28,7 +28,7 @@ const Announcements = () => {
       <h2 className="title">{t("top_announcement")}</h2>
       <div
         className={`cards-container ${
-          data?.length / 4 ? "justify-between" : ""
+          data?.length % 4 === 1 ? "justify-between" : ""
         }`}
       >
         {data?.map((item) => (
