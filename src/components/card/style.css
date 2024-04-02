@@ -19,13 +19,25 @@
   height: 210px;
   position: relative;
 }
+.favorite-icon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 3;
+  cursor: pointer;
+  fill: #ffbd00;
+}
+.active-favorite {
+  fill: #ff4b55;
 
+}
 .card .card-top .swiper-slide img {
   width: 100%;
   height: 100%;
   z-index: 1;
   border-radius: 27px;
   transition: 300ms ease;
+  position: absolute;
 }
 
 .card .card-top .swiper-slide img:hover {

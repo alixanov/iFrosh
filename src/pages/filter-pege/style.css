@@ -23,6 +23,9 @@
   column-gap: 20px;
   align-items: flex-start;
 }
+.new-card-style .card .card-body {
+  font-size: 15px;
+}
 .not-found {
   font-size: 30px;
   font-weight: 600;

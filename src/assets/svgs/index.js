@@ -30,6 +30,7 @@ import { ReactComponent as Reload } from "./reload.svg";
 import { ReactComponent as Checkbox } from "./checkbox.svg";
 import { ReactComponent as NotFound } from "./404.svg";
 import { ReactComponent as rus } from "./rus.svg";
+import { ReactComponent as Star } from "./star.svg";
 
 import Appstore from "assets/images/Appstore.png";
 import GooglePlay from "assets/images/Googleplay.png";
@@ -78,11 +79,12 @@ export {
   Reload,
   Checkbox,
   NotFound,
+  Star,
   LoadingIcon,
   // image sources
   Appstore,
   GooglePlay,
   Click,
   Payme,
-  rus
+  rus,
 };

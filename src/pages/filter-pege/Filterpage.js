@@ -12,12 +12,14 @@ import {
   RangeSliderThumb,
 } from "@chakra-ui/react";
 import { ArrowSelect, LoadingIcon, NotFound, Search } from "../../assets/svgs";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import "./style.css";
 import { useSearchParams, useLocation } from "react-router-dom";
 import axios from "axios";
+import { useStoreState } from "../../redux/selectors";
 
 export default function Filterpage() {
+  const user = useStoreState("user");
   const { i18n } = useTranslation();
   const [amenities, setAmenities] = useState([]);
   const [openFilter, setOpenFilter] = useState(true);
@@ -33,29 +35,27 @@ export default function Filterpage() {
 
   // Convert array of [key, value] pairs to an object
   const params = Object.fromEntries(paramsArray);
-  const maxPrice = useMemo(
-    () =>
-      announcements?.data?.sort((a, b) => b?.price - a?.price)[0]?.price || 5,
-    [announcements]
-  );
-  const minPrice = useMemo(() => {
-    if (announcements?.data?.length > 1) {
-      return (
-        announcements?.data?.sort((a, b) => a?.price - b?.price)[0]?.price || 0
-      );
-    }
-    return 0;
-  }, [announcements]);
-  const maxM2 = useMemo(
-    () => announcements?.data?.sort((a, b) => b?.space_size - a?.space_size)[0]?.space_size || 5,
-    [announcements]
-  );
-  const minM2 = useMemo(() => {
-    if (announcements?.data?.length > 1) {
-      return announcements?.data?.sort((a, b) => a?.space_size - b?.space_size)[0]?.space_size || 0;
-    }
-    return 0;
-  }, [announcements]);
+  // const maxPrice = useMemo(
+  //   () =>
+  //     announcements?.data?.sort(
+  //       (a, b) =>
+  //         b?.[`price_${user?.curency?.code?.toLowerCase()}`] -
+  //         a?.[`price_${user?.curency?.code?.toLowerCase()}`]
+  //     )[0]?.[`price_${user?.curency?.code?.toLowerCase()}`] || 5,
+  //   [announcements, user?.curency?.code]
+  // );
+  // const minPrice = useMemo(() => {
+  //   if (announcements?.data?.length > 1) {
+  //     return (
+  //       announcements?.data?.sort(
+  //         (a, b) =>
+  //           a?.[`price_${user?.curency?.code?.toLowerCase()}`] -
+  //           b?.[`price_${user?.curency?.code?.toLowerCase()}`]
+  //       )[0]?.[`price_${user?.curency?.code?.toLowerCase()}`] || 0
+  //     );
+  //   }
+  //   return 0;
+  // }, [announcements, user?.curency?.code]);
 
   const getAminites = useCallback(() => {
     if (amenities?.length) return;
@@ -70,7 +70,6 @@ export default function Filterpage() {
   }, [amenities?.length]);
 
   useEffect(() => {
-
     getAminites();
   }, [getAminites]);
   const {
@@ -87,7 +86,6 @@ export default function Filterpage() {
       place_type: searchParams.get("place_type") || "",
       region_id: searchParams.get("region_id") || "",
       sort: searchParams.get("sort") || "",
-      m2: [0, 5],
       price: [0, 5],
     },
   });
@@ -130,7 +128,9 @@ export default function Filterpage() {
     setLoading(true);
     axios
       .get(
-        `https://api.frossh.uz/api/announcement/get-by-filter${encodeURI(location.search)}`
+        `https://api.frossh.uz/api/announcement/get-by-filter${encodeURI(
+          location.search
+        )}`
       )
       .then(({ data }) => {
         setLoading(false);
@@ -145,20 +145,16 @@ export default function Filterpage() {
       });
   }, [location.search]);
 
-  useEffect(() => {
-    if (!watch("m2")[0] || !watch("price")[0]) {
-      setValue("price", [minPrice, maxPrice]);
-      setValue("m2", [minM2, maxM2]);
-    }
-  }, [minPrice, maxPrice, minM2, maxM2, setValue, watch]);
   const region_id = watch("region_id");
 
   useEffect(() => {
-    region_id &&
+    if (region_id) {
       setSearchParams((ee) => ({
         ...Object.fromEntries(Array.from(ee.entries())),
         region_id,
       }));
+      setCurrentPage(1);
+    }
   }, [region_id, setSearchParams]);
 
   const searchBar = (
@@ -179,27 +175,27 @@ export default function Filterpage() {
   );
 
   const place_types = [
-    {
-      value: "apartment",
-      label: t('flat'),
-    },
-    {
-      value: "home",
-      label: t("home"),
-    },
-    {
-      value: "dry land",
-      label: t("quruq"),
-    },
-    {
-      value: "business place",
-      label: t("business_place"),
-    },
-    {
-      value: "skyscraper",
-      label: t("slider_title"),
-    },
-  ],
+      {
+        value: "apartment",
+        label: t("flat"),
+      },
+      {
+        value: "home",
+        label: t("home"),
+      },
+      {
+        value: "dry land",
+        label: t("quruq"),
+      },
+      {
+        value: "business place",
+        label: t("business_place"),
+      },
+      {
+        value: "skyscraper",
+        label: t("slider_title"),
+      },
+    ],
     repair_types = [
       {
         value: "bad",
@@ -211,23 +207,50 @@ export default function Filterpage() {
       },
       {
         value: "new",
-        label: t("good"),
+        label: t("new"),
       },
     ],
     sortes = [
       {
         value: "popular",
-        label: t('popular')
+        label: t("popular"),
       },
       {
         value: "cheap",
-        label: t('cheap'),
+        label: t("cheap"),
       },
       {
         value: "expensive",
-        label: t('expensive'),
+        label: t("expensive"),
       },
     ];
+
+  const [currentPage, setCurrentPage] = useState(
+    Number(
+      isNaN(announcements?.links?.find((item) => item?.active)?.label)
+        ? 1
+        : announcements?.links?.find((item) => item?.active)?.label
+    )
+  );
+
+  const shortLinks = useMemo(
+    () =>
+      announcements?.links?.length
+        ? [
+            announcements?.links[0],
+            ...announcements?.links?.filter((item) => {
+              if (
+                currentPage - 2 < item?.label &&
+                item?.label < currentPage + 2
+              ) {
+                return item;
+              }
+            }),
+            announcements?.links[announcements?.links?.length - 1],
+          ].filter((item, index, array) => array?.indexOf(item) === index)
+        : [],
+    [announcements?.links, currentPage]
+  );
 
   return (
     <div className="container">
@@ -261,7 +284,7 @@ export default function Filterpage() {
               onSelect={(v) => setSearchParams({ ...desiredObject, sort: v })}
               error={errors["sort"]}
               name={"sort"}
-              label={t('sort')}
+              label={t("sort")}
               options={sortes}
               control={control}
               required
@@ -278,14 +301,13 @@ export default function Filterpage() {
                 }
                 error={errors["place_type"]}
                 name={"place_type"}
-                label={t('place')}
+                label={t("place")}
                 options={place_types}
                 control={control}
                 required
               />
             </div>
-
-
+            {/* 
             <div className="input-progress">
               <p>{t("price")}</p>
               <div className="input-size">
@@ -329,23 +351,25 @@ export default function Filterpage() {
               </RangeSliderTrack>
               <RangeSliderThumb index={0} bg={"#0085AF"} />
               <RangeSliderThumb index={1} bg={"#0085AF"} />
-            </RangeSlider>
-            <Select
-              defaultValue={
-                repair_types.find(
-                  (it) => it.value === searchParams.get("repair_type")
-                )?.label
-              }
-              onSelect={(e) =>
-                setSearchParams({ ...desiredObject, repair_type: e })
-              }
-              error={errors["repair_type"]}
-              name={"repair_type"}
-              label={t("tamir")}
-              options={repair_types}
-              control={control}
-              required
-            />
+            </RangeSlider> */}
+            <div className="checkboxes">
+              <Select
+                defaultValue={
+                  repair_types.find(
+                    (it) => it.value === searchParams.get("repair_type")
+                  )?.label
+                }
+                onSelect={(e) =>
+                  setSearchParams({ ...desiredObject, repair_type: e })
+                }
+                error={errors["repair_type"]}
+                name={"repair_type"}
+                label={t("tamir")}
+                options={repair_types}
+                control={control}
+                required
+              />
+            </div>
             <div className="checkboxes">
               <Checkbox
                 type="radio"
@@ -357,6 +381,15 @@ export default function Filterpage() {
                 onChange={({ sale_type }) =>
                   setSearchParams({ ...desiredObject, sale_type: sale_type })
                 }
+                onClick={() => {
+                  if (searchParams.get("sale_type") === "sale") {
+                    delete desiredObject["sale_type"];
+                    setValue("sale_type", "");
+                    setSearchParams({
+                      ...desiredObject,
+                    });
+                  }
+                }}
               />
               <Checkbox
                 type="radio"
@@ -368,6 +401,15 @@ export default function Filterpage() {
                 onChange={({ sale_type }) =>
                   setSearchParams({ ...desiredObject, sale_type })
                 }
+                onClick={() => {
+                  if (searchParams.get("sale_type") === "rent") {
+                    delete desiredObject["sale_type"];
+                    setValue("sale_type", "");
+                    setSearchParams({
+                      ...desiredObject,
+                    });
+                  }
+                }}
               />
             </div>
             <AccordionDynamicHeight
@@ -466,6 +508,15 @@ export default function Filterpage() {
                       value={item.id}
                       label={item?.[`name_${i18n.language}`]}
                       register={register}
+                      onClick={() => {
+                        if (+searchParams.get("region_id") === item.id) {
+                          delete desiredObject["region_id"];
+                          setValue("region_id", "");
+                          setSearchParams({
+                            ...desiredObject,
+                          });
+                        }
+                      }}
                       defaultChecked={
                         +searchParams.get("region_id") === item.id
                       }
@@ -483,7 +534,7 @@ export default function Filterpage() {
               classes={{ header: "header-acc" }}
               header={
                 <>
-                  <p>   {t("additional_comfort")} </p>
+                  <p> {t("additional_comfort")} </p>
                   <ArrowSelect />
                 </>
               }
@@ -542,26 +593,35 @@ export default function Filterpage() {
               </h3>
             )}
           </div>
-          <div className="paginations">
-            {announcements?.links?.map((item) => (
-              <button
-                key={item?.label}
-                dangerouslySetInnerHTML={{
-                  __html: item?.label
-                    ?.replace(/\b(Previous|Next)\b/g, "")
-                    ?.trim(),
-                }}
-                onClick={() =>
-                  setSearchParams({
-                    ...desiredObject,
-                    page: item?.url?.split("=")[1]
-                  })
-                }
-                className={item?.active ? "active" : undefined}
-                disabled={!item?.url || !announcements?.data?.length}
-              />
-            ))}
-          </div>
+          {announcements?.data?.length ? (
+            <div className="paginations">
+              {shortLinks?.map((item) => (
+                <button
+                  key={item?.label}
+                  dangerouslySetInnerHTML={{
+                    __html: item?.label
+                      ?.replace(/\b(Previous|Next)\b/g, "")
+                      ?.trim(),
+                  }}
+                  onClick={() => {
+                    setSearchParams({
+                      ...desiredObject,
+                      page: item?.url?.split("=")[1],
+                    });
+                    setCurrentPage(
+                      item?.label === "..."
+                        ? currentPage
+                        : isNaN(item?.label)
+                        ? Number(item?.url?.split("page=")[1])
+                        : Number(item?.label)
+                    );
+                  }}
+                  className={item?.active ? "active" : undefined}
+                  disabled={!item?.url || !announcements?.data?.length}
+                />
+              ))}
+            </div>
+          ) : null}
         </div>
       </div>
     </div>

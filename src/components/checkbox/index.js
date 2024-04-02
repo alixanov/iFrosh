@@ -13,9 +13,8 @@ const Checkbox = ({
   required,
   onChange,
   defaultChecked,
+  onClick,
 }) => {
-  const [v, setV] = useState(value);
-
   return (
     <label className={`custome-checkbox ${error ? "error" : ""}`}>
       <CheckboxSvg />
@@ -27,13 +26,13 @@ const Checkbox = ({
         {...register(name, { required })}
         onChange={(e) => {
           register(name, { required }).onChange(e);
-          setV(e.target.checked);
           onChange &&
             onChange({
               [name]: value,
               checked: e.target.checked,
             });
         }}
+        onClick={onClick}
         checked={defaultChecked}
       />
       <p>{label || name}</p>

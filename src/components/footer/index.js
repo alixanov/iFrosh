@@ -10,7 +10,7 @@ const Footer = () => {
     <footer>
       <div className="container">
         <div className="f-about">
-          <p>Frosh</p>
+          <p>Frossh</p>
           <Link to="/about-us">{t('footer1')}!</Link>
           <Link to="/announcement/create">{t("footer2")}</Link>
           <Link to="/profile">{t('footer3')}</Link>
@@ -19,7 +19,7 @@ const Footer = () => {
         <div className="f-contact">
           <p>{t("connect_with_us")}</p>
           <a href="te:+998 90 222-43-11">+998 90 222-43-11</a>
-          <a href="mailto:info@frosh.uz">info@frosh.uz</a>
+          <a href="mailto:info@frossh.uz">info@frossh.uz</a>
           <a
             href="https://www.google.com/maps/place/Kamarsada+Dilkusho/@41.0007505,70.9283292,11z/data=!4m11!1m3!2m2!1sNamangan+viloyat,+chust+tumani,+kamarsada!6e1!3m6!1s0x38a4d5e3f9aa365f:0xacab3d2be9870dc2!8m2!3d41.0007505!4d71.2331998!15sCilOYW1hbmdhbiB2aWxveWF0LCBjaHVzdCB0dW1hbmksIGthbWFyc2FkYVopIiduYW1hbmdhbiB2aWxveWF0IGNodXN0IHR1bWFuaSBrYW1hcnNhZGGSAQpyZXN0YXVyYW504AEA!16s%2Fg%2F11pclhk749?entry=ttu"
             target="_blank"

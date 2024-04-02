@@ -8,7 +8,7 @@ import axios from "axios";
 // import Cookies from "js-cookie";
 // import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
-import { Map, YMaps } from "react-yandex-maps";
+import { Map, Placemark, YMaps } from "react-yandex-maps";
 import { useStoreState } from "../../redux/selectors";
 
 const Single = () => {
@@ -91,6 +91,13 @@ const Single = () => {
     () => dataSingle?.announcement?.images,
     [dataSingle?.announcement?.images]
   );
+  const placemarkOptions = {
+    iconLayout: "default#image",
+    iconImageHref: require("../../assets/images/placemark.png"),
+    iconImageSize: [80, 80],
+    iconImageOffset: [-40, -40],
+    title: dataSingle?.announcement?.address,
+  };
   return (
     <div className="container single announcements">
       {loading ? (
@@ -302,11 +309,23 @@ const Single = () => {
                   dataSingle?.announcement?.latitude,
                   dataSingle?.announcement?.longitude,
                 ],
-                zoom: 9,
+                zoom: 18,
               }}
               width="100%"
               height="400px"
-            ></Map>
+            >
+              <Placemark
+                geometry={[
+                  dataSingle?.announcement?.latitude,
+                  dataSingle?.announcement?.longitude,
+                ]}
+                options={placemarkOptions}
+                properties={{
+                  hintContent: "Bu yerda hint",
+                  balloonContent: "Bu yerda balon matni",
+                }}
+              />
+            </Map>
           </YMaps>
 
           {dataSingle?.similar?.length ? (

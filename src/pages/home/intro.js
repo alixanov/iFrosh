@@ -8,12 +8,12 @@ const Intro = () => {
   const navigate = useNavigate();
 
   const { handleSubmit, register, reset } = useForm({
-    defaultValues: { "search-bar-frosh": "" },
+    defaultValues: { "search-bar-frossh": "" },
   });
 
   const onSubmit = (values) => {
     reset();
-    navigate(`/filterpage?title=${values["search-bar-frosh"]}`);
+    navigate(`/filterpage?title=${values["search-bar-frossh"]}`);
   };
 
   const searchBar = (
@@ -21,7 +21,7 @@ const Intro = () => {
       <input
         type="text"
         placeholder={t("search")}
-        {...register("search-bar-frosh", { required: true })}
+        {...register("search-bar-frossh", { required: true })}
       />
       <button type="submit">
         <Search />

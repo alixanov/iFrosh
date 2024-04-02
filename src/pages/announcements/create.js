@@ -88,7 +88,10 @@ export const ImageRow = ({ image, seTimgFiles, setActiveIndex, setError }) => {
 };
 
 const CreateAnnouncement = () => {
-  const { t } = useTranslation();
+  const {
+    t,
+    i18n: { language: lang },
+  } = useTranslation();
   const user = useStoreState("user");
   const navigation = useNavigate();
   const [imgFiles, seTimgFiles] = useState([]);
@@ -230,7 +233,7 @@ const CreateAnnouncement = () => {
         }, 2000);
       })
       .catch((err) => {
-        setResultStatus(err?.response?.data?.message || "reject");
+        setResultStatus(err?.response?.data?.result?.[lang] || "reject");
         setLoading(false);
         console.log(err, "err");
         toast.error(err?.response?.data?.message || "Error");
@@ -454,23 +457,9 @@ const CreateAnnouncement = () => {
                   placeholder="100.000.000"
                   {...register("price", { required: true })}
                 />
-                <span>UZS</span>
+                <span>{user?.currency?.code}</span>
                 <Pen />
               </label>
-
-              {["apartment", "business place"].includes(place_type) ? (
-                <Select
-                  error={errors["room_floor"]}
-                  name={"room_floor"}
-                  label={"Qavatni tanlash"}
-                  options={Array.from({ length: 10 }, (_, i) => ({
-                    value: i + 1,
-                    label: i + 1,
-                  }))}
-                  control={control}
-                  required
-                />
-              ) : null}
             </div>
             <div className="inputs-row">
               {watch("sale_type") === "rent" ? (
@@ -576,6 +565,19 @@ const CreateAnnouncement = () => {
                       required
                     />
                   )}
+                  {["apartment", "business place"].includes(place_type) ? (
+                    <Select
+                      error={errors["room_floor"]}
+                      name={"room_floor"}
+                      label={t("room_floor")}
+                      options={Array.from({ length: 10 }, (_, i) => ({
+                        value: i + 1,
+                        label: i + 1,
+                      }))}
+                      control={control}
+                      required
+                    />
+                  ) : null}
                 </div>
                 <h3 className="h3 mt-30">{t("whole_place")}*</h3>
                 <div className="inputs-row">
@@ -599,10 +601,10 @@ const CreateAnnouncement = () => {
               </div>
             </div>
             <div className="_col mt-30">
-                <h3 className="h3">{t("extra_comfort")}</h3>
-                <div className="checkboxes col-2-check">
-                  {amenities?.length
-                    ? amenities?.map((item) => (
+              <h3 className="h3">{t("extra_comfort")}</h3>
+              <div className="checkboxes col-2-check">
+                {amenities?.length
+                  ? amenities?.map((item) => (
                       <Checkbox
                         key={item?.id}
                         name={"amenities"}
@@ -611,9 +613,9 @@ const CreateAnnouncement = () => {
                         register={register}
                       />
                     ))
-                    : "Hech narsa topilmadi"}
-                </div>
+                  : "Hech narsa topilmadi"}
               </div>
+            </div>
             <h3 className="h3 mt-30">{t("where")}*</h3>
             <div
               className={mapsArray.length > 1 ? "address-row" : "inputs-row"}

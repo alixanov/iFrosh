@@ -64,7 +64,9 @@ const Header = ({ changeLanguage }) => {
           "https://api.frossh.uz/api/currency/get"
         );
         setCurrencyList(
-          currency_list.data?.result?.sort((a, b) => b?.code?.localeCompare(a?.code))
+          currency_list.data?.result?.sort((a, b) =>
+            b?.code?.localeCompare(a?.code)
+          )
         );
         setNbuData(response.data?.result?.nbu_cell_price);
       } catch (error) {
@@ -92,9 +94,15 @@ const Header = ({ changeLanguage }) => {
     );
     if (!user?.token) return;
     axios
-      .put("https://api.frossh.uz/api/user/update", {}, { headers })
+      .put(
+        "https://api.frossh.uz/api/user/update",
+        {
+          currency_id: e.target?.value,
+        },
+        { headers }
+      )
       .then((_) => {
-        getUser();
+        console.log("Currency updated");
       })
       .catch((err) => console.log(err));
   };
@@ -106,7 +114,7 @@ const Header = ({ changeLanguage }) => {
         <div className="h-left">
           <Link to={"/"}>
             <img src={logo} alt="" />
-            Frosh
+            Frossh
           </Link>
           <Link id="usd">
             <p>1 USD {nbuData} UZS</p>
@@ -120,7 +128,7 @@ const Header = ({ changeLanguage }) => {
             <option value="ru">RU</option>
           </select>
 
-          <select onChange={handleCurrencyChange}>
+          <select onChange={handleCurrencyChange} value={user?.currency?.id}>
             {currencyList?.map((currency) => (
               <option key={currency?.id} value={currency?.id}>
                 {currency?.code || "uzs"}

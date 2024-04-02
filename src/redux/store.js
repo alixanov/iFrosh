@@ -3,7 +3,7 @@ import user from "./user";
 
 const store = configureStore({
   reducer: {
-    user,
+    user, //  user: user
   },
   devTools: process.env.NODE_ENV !== "production",
 });
