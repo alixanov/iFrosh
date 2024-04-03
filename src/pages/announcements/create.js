@@ -491,7 +491,7 @@ const CreateAnnouncement = () => {
                     <Select
                       error={errors["advance_month"]}
                       name={"advance_month"}
-                      label={"Oyni tanlash"}
+                      label={ t(" Selectthemonth")}
                       options={[
                         {
                           value: "1",
@@ -613,7 +613,7 @@ const CreateAnnouncement = () => {
                         register={register}
                       />
                     ))
-                  : "Hech narsa topilmadi"}
+                  : t(" Nothingfound")}
               </div>
             </div>
             <h3 className="h3 mt-30">{t("where")}*</h3>
@@ -627,7 +627,7 @@ const CreateAnnouncement = () => {
                     className="edit-address"
                     onClick={() => setMapArray([])}
                   >
-                    {"Yozib kiritish"}
+                    {  t("write")}
                   </button>
                   <Select
                     label={getValues("address")}

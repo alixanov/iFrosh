@@ -163,6 +163,9 @@ const translationuz = {
   Quyidagi: "Quyidagi fayllar 10 MB dan katta:",
   have_not_account: "Hali hisob ochmadingizmi?",
   create_account: "Hisob ochish",
+   write:"Yozib kiritish",
+   Nothingfound:"Hech narsa topilmadi",
+   Selectthemonth:"Oyni tanlash"
 };
 
 export default translationuz;

@@ -156,6 +156,11 @@ const translationru = {
   Quyidagi: "Следующие файлы имеют размер более 10 МБ:",
   have_not_account: "У вас нет аккаунта?",
   create_account: "Создать аккаунт",
+  write:"Запись",
+  Nothingfound:"Ничего не найдено",
+  Selectthemonth:"Выберите месяц"
+
+
 };
 
 export default translationru;
