@@ -250,8 +250,10 @@ form > label > input,
 }
 
 .cards-container {
+  width: 100%;
   display: flex;
-  gap: 70px;
+  justify-content: center;
+  gap: 20px !important;
   flex-wrap: wrap;
 }
 
@@ -358,11 +360,12 @@ form > label > input,
   gap: 30px;
 }
 .my-adds .card {
-  width: 300px;
+  width: 280px;
 }
 /* payme page end */
 
-/********* RESPONSIVE **********/
+
+
 
 @media (max-width: 1870px) {
   .person {

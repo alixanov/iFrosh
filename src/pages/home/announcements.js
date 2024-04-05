@@ -4,11 +4,13 @@ import axios from "axios";
 import { useTranslation } from "react-i18next";
 import { useMemo } from "react";
 
+
 const Announcements = () => {
   const { t } = useTranslation();
   const [data, setData] = useState([]);
   const [links, seLinks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+ 
   const getTopAnnouncements = useCallback((link) => {
     if (link === null) return;
     axios
@@ -56,6 +58,7 @@ const Announcements = () => {
           <Card key={item?.id} item={item} />
         ))}
       </div>
+      
       {data?.length ? (
         <div className="paginations">
           {shortLinks?.map((item) => (
@@ -82,6 +85,8 @@ const Announcements = () => {
           ))}
         </div>
       ) : null}
+      
+ 
     </div>
   );
 };

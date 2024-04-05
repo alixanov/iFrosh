@@ -8,8 +8,11 @@ import { ReactComponent as Bayroq } from "assets/svgs/flagUz.svg";
 import { ReactComponent as Rus } from "assets/svgs/rus.svg";
 import { setUser } from "../../redux/user";
 import "./style.css";
-import logo from "../../assets/images/placemark.png";
+import logo from "../../assets/images/new logo3.png";
 import { useStoreState } from "../../redux/selectors";
+import  homee  from "../../assets/svgs/homee.svg";
+import { useNavigate } from "react-router-dom";
+import userr from "../../assets/svgs/userr.svg"
 
 const Header = ({ changeLanguage }) => {
   const { t } = useTranslation();
@@ -19,6 +22,7 @@ const Header = ({ changeLanguage }) => {
   const [nbuData, setNbuData] = useState(null);
   const [currencyList, setCurrencyList] = useState([]);
   const [flag, setFlag] = useState("uz");
+  const  navigate = useNavigate();
 
   const Changelangheader = (e) => {
     changeLanguage(e.target.value);
@@ -147,7 +151,7 @@ const Header = ({ changeLanguage }) => {
         <div className="h-left">
           <Link to={"/"}>
             <img src={logo} alt="" />
-            Frossh
+         
           </Link>
           <Link id="usd">
             <p>1 USD {nbuData} UZS</p>
@@ -184,6 +188,22 @@ const Header = ({ changeLanguage }) => {
         </div>
       </div>
       </header>
+      <div className="mobilpage">  
+  <button onClick={()=> navigate('/')}>
+<img src={homee} alt="" />
+<span >Asosiy menu</span>
+  </button>
+  <button  onClick={()=> navigate('/announcement/create')} >
+<span className="plas">+</span>
+<span>E'lon joylash</span>
+
+  </button>
+  <button onClick={()=> navigate('/profile')}>
+<img src={userr} alt="" />
+<span>shaxsiy kobinet</span>
+  </button>
+  
+  </div>
     </div>
   );
 };

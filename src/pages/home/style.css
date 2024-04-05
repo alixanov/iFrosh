@@ -12,11 +12,14 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+
+    
   }
 
   .intro .content {
     max-width: 944px;
     margin: 0 auto;
+
   }
 
   .intro .title {
@@ -37,7 +40,7 @@
     background: var(--light);
     box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.25);
     margin-top: 150px;
-    gap: 30px;
+    gap: 0px;
     color: var(--secondary);
     font-size: 22.65px;
     font-weight: 400;
@@ -133,9 +136,11 @@
 
   .cards-container {
     display: flex;
-    gap: 40px 50px;
+    gap: 40px;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
+
 
   }
 

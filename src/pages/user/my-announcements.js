@@ -24,7 +24,8 @@ const MyAnnouncements = () => {
       })
       .then(({ data }) => {
         setLoading(false);
-        setAnnouncements(data?.result);
+        setAnnouncements(data?.result.data);
+        console.log(data.result.data);
       })
       .catch((err) => {
         setLoading(false);
@@ -39,17 +40,20 @@ const MyAnnouncements = () => {
     <>
       {loading && <LoadingIcon />}
       <div className={"cards-container my-adds"}>
-        {announcements?.announcements?.length ? (
-          announcements?.announcements?.map((item) => (
-            <Card key={item?.id} item={item} editable />
-          ))
-        ) : loading ? null : (
-          <div className="noProfileInfo">
-            <img src={noProfileInfoImg} alt="" />
-            <Link to={"/announcement/create"}>{t("create_announcement")}</Link>
-          </div>
-        )}
+  {announcements?.announcements?.length ? (
+    announcements?.announcements?.map((item) => (
+      <div key={item?.id}>
+        <Card item={item} editable />
       </div>
+    ))
+  ) : loading ? null : (
+    <div className="noProfileInfo">
+      <img src={noProfileInfoImg} alt="" />
+      <Link to={"/announcement/create"}>{t("create_announcement")}</Link>
+    </div>
+  )}
+</div>
+
 
     </>
   );
