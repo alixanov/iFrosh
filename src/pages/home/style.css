@@ -133,8 +133,10 @@
 
   .cards-container {
     display: flex;
-    gap: 80px 40px;
+    gap: 40px 50px;
     flex-wrap: wrap;
+    justify-content: center;
+
   }
 
   .justify-between {

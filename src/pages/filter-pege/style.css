@@ -118,7 +118,7 @@
 .close_filter {
   position: fixed;
   top: 50%;
-  right: 10px;
+  right: -10px;
   transform: translateY(-50%);
   transform: rotate(90deg) !important;
   width: 60px;

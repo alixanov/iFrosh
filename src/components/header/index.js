@@ -107,10 +107,43 @@ const Header = ({ changeLanguage }) => {
       .catch((err) => console.log(err));
   };
 
+
+  let www = window.innerWidth
+
   return (
     <div className="main-header">
       {loading && <div className="loading-page"></div>}
       <header className="container">
+        <div className="header-top">
+          <Link id="usd">
+            <p>1 USD {nbuData} UZS</p>
+          </Link>
+          <div className="selectors">
+
+          {flag == "uz" ? <Bayroq /> : <Rus />}
+
+          <select
+            style={{ fontSize: "100%"}}
+            onChange={Changelangheader}
+            >
+            <option value="uz">
+              <p>UZ</p>
+            </option>
+            <option value="ru">
+              <p>RU</p>
+            </option>
+          </select>
+
+          <select onChange={handleCurrencyChange} value={user?.currency?.id}>
+            {currencyList?.map((currency) => (
+              <option key={currency?.id} value={currency?.id}>
+                {currency?.code || "uzs"}
+              </option>
+            ))}
+          </select>
+            </div>
+        </div>
+        <div className="header-bottom">
         <div className="h-left">
           <Link to={"/"}>
             <img src={logo} alt="" />
@@ -123,9 +156,16 @@ const Header = ({ changeLanguage }) => {
         <div className="h-right">
           {flag == "uz" ? <Bayroq /> : <Rus />}
 
-          <select style={{ fontSize: "25px" }} onChange={Changelangheader}>
-            <option value="uz">UZ</option>
-            <option value="ru">RU</option>
+          <select
+            style={{ fontSize: "100%", fontWeight: "bold" }}
+            onChange={Changelangheader}
+          >
+            <option value="uz">
+              <p>UZ</p>
+            </option>
+            <option value="ru">
+              <p>RU</p>
+            </option>
           </select>
 
           <select onChange={handleCurrencyChange} value={user?.currency?.id}>
@@ -142,6 +182,7 @@ const Header = ({ changeLanguage }) => {
             {user?.id ? t("cabinet") : t("register")}
           </Link>
         </div>
+      </div>
       </header>
     </div>
   );
