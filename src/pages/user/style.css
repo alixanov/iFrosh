@@ -6,6 +6,7 @@
   gap: 50px;
 }
 
+
 .personleft {
   display: flex;
   flex-direction: column;
@@ -483,6 +484,7 @@ form > label > input,
   .my-adds .card {
     width: 330px;
   }
+    
 }
 @media (max-width: 1100px) {
   .p-left-top {
