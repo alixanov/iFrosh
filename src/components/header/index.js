@@ -8,11 +8,12 @@ import { ReactComponent as Bayroq } from "assets/svgs/flagUz.svg";
 import { ReactComponent as Rus } from "assets/svgs/rus.svg";
 import { setUser } from "../../redux/user";
 import "./style.css";
-import logo from "../../assets/images/new logo3.png";
+import logo from "../../assets/images/placemark.png";
 import { useStoreState } from "../../redux/selectors";
-import  homee  from "../../assets/svgs/homee.svg";
+import homee from "../../assets/svgs/homee.svg";
 import { useNavigate } from "react-router-dom";
-import userr from "../../assets/svgs/userr.svg"
+import userr from "../../assets/svgs/userr.svg";
+import plas from "../../assets/svgs/plus.svg"
 
 const Header = ({ changeLanguage }) => {
   const { t } = useTranslation();
@@ -22,7 +23,7 @@ const Header = ({ changeLanguage }) => {
   const [nbuData, setNbuData] = useState(null);
   const [currencyList, setCurrencyList] = useState([]);
   const [flag, setFlag] = useState("uz");
-  const  navigate = useNavigate();
+  const navigate = useNavigate();
 
   const Changelangheader = (e) => {
     changeLanguage(e.target.value);
@@ -111,99 +112,96 @@ const Header = ({ changeLanguage }) => {
       .catch((err) => console.log(err));
   };
 
-
-  let www = window.innerWidth
+  let www = window.innerWidth;
 
   return (
     <div className="main-header">
       {loading && <div className="loading-page"></div>}
       <header className="container">
         <div className="header-top">
-          <Link id="usd">
-            <p>1 USD {nbuData} UZS</p>
-          </Link>
+        <div className="h-left">
+            <Link to={"/"}>
+              <img src={logo} alt="" />
+            </Link>
+            <Link id="usd">
+              <p>1 USD {nbuData} UZS</p>
+            </Link>
+          </div>
           <div className="selectors">
+            {flag == "uz" ? <Bayroq /> : <Rus />}
 
-          {flag == "uz" ? <Bayroq /> : <Rus />}
-
-          <select
-            style={{ fontSize: "100%"}}
-            onChange={Changelangheader}
-            >
-            <option value="uz">
-              <p>UZ</p>
-            </option>
-            <option value="ru">
-              <p>RU</p>
-            </option>
-          </select>
-
-          <select onChange={handleCurrencyChange} value={user?.currency?.id}>
-            {currencyList?.map((currency) => (
-              <option key={currency?.id} value={currency?.id}>
-                {currency?.code || "uzs"}
+            <select style={{ fontSize: "100%" }} onChange={Changelangheader}>
+              <option value="uz">
+                <p>UZ</p>
               </option>
-            ))}
-          </select>
-            </div>
+              <option value="ru">
+                <p>RU</p>
+              </option>
+            </select>
+
+            <select onChange={handleCurrencyChange} value={user?.currency?.id}>
+              {currencyList?.map((currency) => (
+                <option key={currency?.id} value={currency?.id}>
+                  {currency?.code || "uzs"}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         <div className="header-bottom">
-        <div className="h-left">
-          <Link to={"/"}>
-            <img src={logo} alt="" />
-         
-          </Link>
-          <Link id="usd">
-            <p>1 USD {nbuData} UZS</p>
-          </Link>
-        </div>
-        <div className="h-right">
-          {flag == "uz" ? <Bayroq /> : <Rus />}
+          <div className="h-left">
+            <Link to={"/"}>
+              <img src={logo} alt="" />
+            </Link>
+            <Link id="usd">
+              <p>1 USD {nbuData} UZS</p>
+            </Link>
+          </div>
+          <div className="h-right">
+            {flag == "uz" ? <Bayroq /> : <Rus />}
 
-          <select
-            style={{ fontSize: "100%", fontWeight: "bold" }}
-            onChange={Changelangheader}
-          >
-            <option value="uz">
-              <p>UZ</p>
-            </option>
-            <option value="ru">
-              <p>RU</p>
-            </option>
-          </select>
-
-          <select onChange={handleCurrencyChange} value={user?.currency?.id}>
-            {currencyList?.map((currency) => (
-              <option key={currency?.id} value={currency?.id}>
-                {currency?.code || "uzs"}
+            <select
+              style={{ fontSize: "100%", fontWeight: "bold" }}
+              onChange={Changelangheader}
+            >
+              <option value="uz">
+                <p>UZ</p>
               </option>
-            ))}
-          </select>
-          <Link id="a" to={user?.id ? "/announcement/create" : "/auth"}>
-            {t("create_announcement")} +
-          </Link>
-          <Link to={user?.id ? "/profile" : "/auth"}>
-            {user?.id ? t("cabinet") : t("register")}
-          </Link>
-        </div>
-      </div>
-      </header>
-      <div className="mobilpage">  
-  <button onClick={()=> navigate('/')}>
-<img src={homee} alt="" />
-<span >Asosiy menu</span>
-  </button>
-  <button  onClick={()=> navigate('/announcement/create')} >
-<span className="plas">+</span>
-<span>E'lon joylash</span>
+              <option value="ru">
+                <p>RU</p>
+              </option>
+            </select>
 
-  </button>
-  <button onClick={()=> navigate('/profile')}>
-<img src={userr} alt="" />
-<span>shaxsiy kobinet</span>
-  </button>
-  
-  </div>
+            <select onChange={handleCurrencyChange} value={user?.currency?.id}>
+              {currencyList?.map((currency) => (
+                <option key={currency?.id} value={currency?.id}>
+                  {currency?.code || "uzs"}
+                </option>
+              ))}
+            </select>
+            <Link id="a" to={user?.id ? "/announcement/create" : "/auth"}>
+              {t("create_announcement")} +
+            </Link>
+            <Link id="b" to={user?.id ? "/profile" : "/auth"}>
+              {user?.id ? t("cabinet") : t("register")}
+            </Link>
+          </div>
+        </div>
+      </header>
+      <div className="mobilpage">
+        <button onClick={() => navigate("/")}>
+          <img src={homee} alt="" />
+          <span>Asosiy menu</span>
+        </button>
+        <button onClick={() => navigate("/announcement/create")}>
+          <img src={plas} alt="" />
+          <span>E'lon joylash</span>
+        </button>
+        <button onClick={() => navigate("/profile")}>
+          <img  id="user" src={userr} alt="" />
+          <span id="kabinet">shaxsiy kobinet</span>
+        </button>
+      </div>
     </div>
   );
 };
