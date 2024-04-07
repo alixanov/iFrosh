@@ -27,11 +27,15 @@ const handleRemoveImage = (
   element,
   seTimgFiles,
   setActiveIndex,
-  setError
+  setError,
+  setRemovedImages
 ) => {
   setActiveIndex((index) => index - 1);
   element?.current?.classList?.add("this-removed");
-  console.log(image.id, "image.id");
+  if (!element?.file) {
+    setRemovedImages((prev) => [...prev, image?.id]);
+  }
+  console.log(image, "image.id");
   setTimeout(() => {
     seTimgFiles((files) => {
       const arr = files.filter((item) => item.id !== image.id);
@@ -41,7 +45,13 @@ const handleRemoveImage = (
   }, 500);
 };
 
-export const ImageRow = ({ image, seTimgFiles, setActiveIndex, setError }) => {
+export const ImageRow = ({
+  image,
+  seTimgFiles,
+  setActiveIndex,
+  setError,
+  setRemovedImages,
+}) => {
   const ref = useRef();
   const [scale, setScale] = useState(0);
 
@@ -54,7 +64,14 @@ export const ImageRow = ({ image, seTimgFiles, setActiveIndex, setError }) => {
       }}
       onSlideChange={(swiper) => {
         if (swiper.activeIndex === 1) {
-          handleRemoveImage(image, ref, seTimgFiles, setActiveIndex, setError);
+          handleRemoveImage(
+            image,
+            ref,
+            seTimgFiles,
+            setActiveIndex,
+            setError,
+            setRemovedImages
+          );
         }
       }}
     >
@@ -68,7 +85,8 @@ export const ImageRow = ({ image, seTimgFiles, setActiveIndex, setError }) => {
                 ref,
                 seTimgFiles,
                 setActiveIndex,
-                setError
+                setError,
+                setRemovedImages
               )
             }
           />
@@ -100,6 +118,7 @@ const UpdateAnnouncement = () => {
   const navigation = useNavigate();
   const [imgFiles, seTimgFiles] = useState([]);
   const [amenities, setAmenities] = useState([]);
+  const [removedImages, setRemovedImages] = useState([]);
   const [keyCounter, setKeyCounter] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -249,9 +268,17 @@ const UpdateAnnouncement = () => {
   const onSubmit = (values) => {
     if (!getValues("address")) return setError("address");
     if (!imgFiles?.length) return setError("photo");
-    return console.log(values, "values");
+
+    // return console.log(values, "values");
     setLoading(true);
-    const data = { ...values, photo: imgFiles?.map(({ file }) => file) };
+    const data = {
+      id,
+      ...defaultValues,
+      photo: imgFiles?.filter(({ file }) => file)?.map(({ file }) => file),
+      removedImages: removedImages,
+      _method: "PUT",
+    };
+    delete data.place_type;
     const formData = new FormData();
     Object.keys(data).map((key) => {
       if (key === "photo") {
@@ -264,11 +291,22 @@ const UpdateAnnouncement = () => {
           formData.append(`amenities[${index}]`, am)
         );
       }
+      if (key === "removedImages") {
+        return data[key].map((photo, index) =>
+          formData.append(`remove_photos[${index}]`, photo)
+        );
+      }
+      if (key === "price") {
+        return formData.append(
+          key,
+          data[key][user?.currency?.code?.toLowerCase()]
+        );
+      }
       return formData.append(key, data[key]);
     });
     setLoading(true);
     axios
-      .post("https://api.frossh.uz/api/announcement/create", formData, {
+      .put("https://api.frossh.uz/api/announcement/update", formData, {
         headers: {
           Authorization: `Bearer ${user?.token}`,
           "Content-Type": "multipart/form-data",
@@ -403,6 +441,7 @@ const UpdateAnnouncement = () => {
                           seTimgFiles={seTimgFiles}
                           setActiveIndex={setActiveIndex}
                           setError={setError}
+                          setRemovedImages={setRemovedImages}
                         />
                       </SwiperSlide>
                     ))}
