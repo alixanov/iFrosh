@@ -17,8 +17,6 @@ const translationuz = {
   cabinet: "Shaxsiy kabinet",
   // Register
   room_floor: "Qavatni tanlash",
-  announcement_favorite: "E'lon sevimlilarga qo'shildi",
-  announcement_unfavorite: "E'lon sevimlilardan o'chirildi",
   enter_your_info: "Ma'lumotlaringizni kiriting",
   name: "Ismingiz",
   surname: "Familiyangiz",
@@ -157,15 +155,17 @@ const translationuz = {
   additional_comfort: "Qo`shimcha qulayliklar",
   close: "Yopish",
   elon: "E'lonlar topilmadi",
-
+  announcement_favorite: "E'lon sevimlilarga qo'shildi",
+  announcement_unfavorite: "E'lon sevimlilardan o'chirildi",
+  announcement_favorite_error: "E'lonni sevimlilarga qo'shishda xatolik",
   //
   tekshirilmoqda: "Tekshirilmoqda...",
   Quyidagi: "Quyidagi fayllar 10 MB dan katta:",
   have_not_account: "Hali hisob ochmadingizmi?",
   create_account: "Hisob ochish",
-   write:"Yozib kiritish",
-   Nothingfound:"Hech narsa topilmadi",
-   Selectthemonth:"Oyni tanlash"
+  write: "Yozib kiritish",
+  Nothingfound: "Hech narsa topilmadi",
+  Selectthemonth: "Oyni tanlash",
 };
 
 export default translationuz;

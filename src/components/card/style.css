@@ -38,6 +38,7 @@
   border-radius: 27px;
   transition: 300ms ease;
   position: absolute;
+  object-fit: cover;
 }
 
 .card .card-top .swiper-slide img:hover {

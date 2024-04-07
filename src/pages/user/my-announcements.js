@@ -1,12 +1,11 @@
 import { useState, useCallback, useEffect } from "react";
-import { Card } from "../../components/card";
-import axios from "axios";
-import { LoadingIcon } from "../../assets/svgs";
-import Cookies from "js-cookie";
-import noProfileInfoImg from "./warningUser.png";
-import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useTranslation } from "react-i18next";
 import { useStoreState } from "../../redux/selectors";
+import { Card } from "../../components/card";
+import { LoadingIcon } from "../../assets/svgs";
+import noProfileInfoImg from "./warningUser.png";
 
 const MyAnnouncements = () => {
   const user = useStoreState("user");
@@ -24,8 +23,7 @@ const MyAnnouncements = () => {
       })
       .then(({ data }) => {
         setLoading(false);
-        setAnnouncements(data?.result.data);
-        console.log(data.result.data);
+        setAnnouncements(data?.result);
       })
       .catch((err) => {
         setLoading(false);
@@ -40,21 +38,19 @@ const MyAnnouncements = () => {
     <>
       {loading && <LoadingIcon />}
       <div className={"cards-container my-adds"}>
-  {announcements?.announcements?.length ? (
-    announcements?.announcements?.map((item) => (
-      <div key={item?.id}>
-        <Card item={item} editable />
+        {announcements?.data?.length ? (
+          announcements?.data?.map((item) => (
+            <div key={item?.id}>
+              <Card item={item} editable />
+            </div>
+          ))
+        ) : loading ? null : (
+          <div className="noProfileInfo">
+            <img src={noProfileInfoImg} alt="" />
+            <Link to={"/announcement/create"}>{t("create_announcement")}</Link>
+          </div>
+        )}
       </div>
-    ))
-  ) : loading ? null : (
-    <div className="noProfileInfo">
-      <img src={noProfileInfoImg} alt="" />
-      <Link to={"/announcement/create"}>{t("create_announcement")}</Link>
-    </div>
-  )}
-</div>
-
-
     </>
   );
 };

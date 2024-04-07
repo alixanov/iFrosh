@@ -68,6 +68,7 @@ export const Card = ({ item, editable = false }) => {
                 })
                 .catch((err) => {
                   console.log(err);
+                  toast.error(t("announcement_favorite_error"));
                 });
             }}
           >
@@ -98,6 +99,7 @@ export const Card = ({ item, editable = false }) => {
                 })
                 .catch((err) => {
                   console.log(err);
+                  toast.error(t("announcement_favorite_error"));
                 });
             }}
           />
@@ -166,16 +168,13 @@ export const Card = ({ item, editable = false }) => {
       </Link>
 
       {/* status pending overlay */}
-      {!item.is_active
-        ? overlay
-        : editable && (
-            <Link
-              to={`/announcement/${item?.id}?edit=${item?.slug}&_a_id=${item?.id}`}
-              className="edit-btn"
-            >
-              <Pen />
-            </Link>
-          )}
+      {!item?.is_active ? (
+        overlay
+      ) : editable ? (
+        <Link to={`/announcement/${item?.id}/edit`} className="edit-btn">
+          <Pen />
+        </Link>
+      ) : null}
     </div>
   );
 };

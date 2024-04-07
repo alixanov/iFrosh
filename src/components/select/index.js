@@ -37,7 +37,9 @@ const Select = ({
         ref={ref}
         disabled={disabled}
         title={disabled ? "Disabled!" : "Choose a select"}
-        className={`custome-select${open ? " opened" : ""}${error ? " error" : ""}`}
+        className={`custome-select${open ? " opened" : ""}${
+          error ? " error" : ""
+        }`}
       >
         {valueSelect ? label || "" : ""}
         <button

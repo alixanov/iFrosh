@@ -55,18 +55,9 @@ const Single = () => {
   const config = useMemo(
     () => ({
       id: searchParams.get("_a_id"),
-      edit: searchParams.get("edit"),
-      token: user?.token,
     }),
-    [searchParams, user?.token]
+    [searchParams]
   );
-  useEffect(() => {
-    if (config.edit && !config.token) {
-      navigate("/auth");
-      Cookies.remove("token");
-    }
-    if (!config.id) navigate(-1);
-  }, [config, navigate]);
 
   useEffect(() => {
     if (!config?.id) return;

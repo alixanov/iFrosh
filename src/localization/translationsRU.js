@@ -16,6 +16,7 @@ const translationru = {
   register: "Зарегистрироваться",
   cabinet: "Личный кабинет",
   // Register
+  announcement_favorite_error: "Ошибка добавления объявления в избранное",
   announcement_favorite: "Объявление добавлено в избранное",
   announcement_unfavorite: "Объявление удалено из избранного",
   room_floor: "Выберите этаж",

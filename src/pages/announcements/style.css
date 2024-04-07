@@ -69,6 +69,7 @@
     user-select: none;
     height: 100%;
     width: 100%;
+    object-fit: contain;
   }
   .row .space .thumbs-container {
     min-height: 250px;
