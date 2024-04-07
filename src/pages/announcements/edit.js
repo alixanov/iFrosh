@@ -278,7 +278,6 @@ const UpdateAnnouncement = () => {
       removedImages: removedImages,
       _method: "PUT",
     };
-    delete data.place_type;
     const formData = new FormData();
     Object.keys(data).map((key) => {
       if (key === "photo") {
