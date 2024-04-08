@@ -1,4 +1,4 @@
-import React, { useRef, useState, memo } from "react";
+import React, { useRef, useState, memo, useMemo } from "react";
 import { Controller } from "react-hook-form";
 import { ArrowSelect, LoadingIcon } from "../../assets/svgs";
 import { useClickOutside } from "../../utils";
@@ -26,9 +26,12 @@ const Select = ({
     onSelect && onSelect(value, option);
   };
 
-  const SelectComponent = ({ onChange, onBlur, value }) => {
+  const optionsMemo = useMemo(() => defaultValue, [defaultValue]);
+
+  const SelectComponent = memo(({ onChange, onBlur, value }) => {
     const [open, setOpen] = useState(defaultOpened || false);
-    const [valueSelect, setValue] = useState(defaultValue);
+
+    const [valueSelect, setValue] = useState(optionsMemo);
     useClickOutside(ref, () => {
       setOpen(false);
     });
@@ -79,15 +82,15 @@ const Select = ({
         <input type="text" hidden {...{ onChange, onBlur, value }} />
       </div>
     );
-  };
+  });
 
   return control ? (
     <Controller
       control={control}
       rules={{ required }}
-      render={({ field: { onChange, onBlur, value } }) =>
-        SelectComponent({ onChange, onBlur, value })
-      }
+      render={({ field: { onChange, onBlur, value } }) => (
+        <SelectComponent {...{ onChange, onBlur, value }} />
+      )}
       name={name}
     />
   ) : (

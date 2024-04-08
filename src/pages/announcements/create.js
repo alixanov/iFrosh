@@ -469,7 +469,7 @@ const CreateAnnouncement = () => {
                     <div className="checkboxes">
                       <Checkbox
                         type="radio"
-                        label={t("yoq")}
+                        label={t("ha")}
                         value="1"
                         required
                         name="advance"
@@ -491,7 +491,7 @@ const CreateAnnouncement = () => {
                     <Select
                       error={errors["advance_month"]}
                       name={"advance_month"}
-                      label={ t(" Selectthemonth")}
+                      label={t("select_month")}
                       options={[
                         {
                           value: "1",
@@ -609,7 +609,7 @@ const CreateAnnouncement = () => {
                         key={item?.id}
                         name={"amenities"}
                         value={item?.id}
-                        label={item?.name_uz}
+                        label={item[`name_${lang}`]}
                         register={register}
                       />
                     ))
@@ -627,7 +627,7 @@ const CreateAnnouncement = () => {
                     className="edit-address"
                     onClick={() => setMapArray([])}
                   >
-                    {  t("write")}
+                    {t("write")}
                   </button>
                   <Select
                     label={getValues("address")}

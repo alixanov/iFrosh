@@ -38,17 +38,15 @@ export default function UserInfo() {
     e.stopPropagation();
     setOpen(false);
     dispatch(setUser({}));
-    navigate("/");
-    setOpen(false);
     axios
       .post("https://api.frossh.uz/api/auth/logout", {}, { headers })
       .then(() => {
-        console.log("logout");
         Cookies.remove("token");
       })
       .catch((err) => {
         console.log(err);
       });
+    navigate("/");
   };
 
   return (

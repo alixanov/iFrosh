@@ -76,6 +76,10 @@ const translationuz = {
   rent_out: "Ijaraga berish",
   sell: "Sotish",
   select_month: "Oyni tanlash",
+  delete_announcement: "E'lonni o'chirish",
+  delete_announcement_text: "Nima sababdan e’lonni o’chirmoqchisiz?",
+  delete_announcement_reasons: "Uy sotildi., Fikrimdan qaytdim., {{date}} vaqtdan beri hech kim bog'lanmadi., Boshqa sabab:",
+  delete_announcement_reason: "Sababini yozing...",
   month: "Oy",
   general_info: "Umumiy ma'lumot",
   extra_info: "Qo'shimcha ma'lumot",
@@ -165,7 +169,6 @@ const translationuz = {
   create_account: "Hisob ochish",
   write: "Yozib kiritish",
   Nothingfound: "Hech narsa topilmadi",
-  Selectthemonth: "Oyni tanlash",
 };
 
 export default translationuz;

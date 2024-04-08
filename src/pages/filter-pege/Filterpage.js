@@ -92,28 +92,6 @@ export default function Filterpage() {
 
   const onSubmit = (values) => console.log(values);
 
-  const handleFirstInputChange = (e, name, paramName) => {
-    const value = parseInt(Number(e.target.value));
-    const currentValues = watch(name);
-    const newValue = [
-      value < currentValues[1] - 3 ? value : currentValues[1] - 3,
-      currentValues[1],
-    ];
-    setValue(name, newValue);
-    paramName && setSearchParams({ ...desiredObject, [paramName]: value });
-  };
-
-  const handleSecondInputChange = (e, name, paramName) => {
-    const value = Number(e.target.value);
-    const currentValues = watch(name);
-    const newValue = [
-      currentValues[0],
-      value > currentValues[0] + 3 ? value : currentValues[0] + 3,
-    ];
-    setValue(name, newValue);
-    paramName && setSearchParams({ ...desiredObject, [paramName]: value });
-  };
-
   const desiredObject = useMemo(
     () =>
       Object.assign(
@@ -307,51 +285,7 @@ export default function Filterpage() {
                 required
               />
             </div>
-            {/* 
-            <div className="input-progress">
-              <p>{t("price")}</p>
-              <div className="input-size">
-                <input
-                  type="number"
-                  onChange={(e) =>
-                    handleFirstInputChange(e, "price", "price_from")
-                  }
-                  placeholder="dan"
-                  value={watch("price")[0]}
-                />
-                <input
-                  type="number"
-                  onChange={(e) =>
-                    handleSecondInputChange(e, "price", "price_to")
-                  }
-                  placeholder="gacha"
-                  value={watch("price")[1]}
-                />
-              </div>
-            </div>
-            <RangeSlider
-              max={maxPrice}
-              min={minPrice}
-              aria-label={"['min', 'max']"}
-              onChange={(value) => {
-                setValue("price", value);
-              }}
-              onChangeEnd={(value) => {
-                setSearchParams({
-                  ...desiredObject,
-                  price_from: value[0],
-                  price_to: value[1],
-                });
-              }}
-              value={watch("price")}
-              className="range-slider"
-            >
-              <RangeSliderTrack>
-                <RangeSliderFilledTrack />
-              </RangeSliderTrack>
-              <RangeSliderThumb index={0} bg={"#0085AF"} />
-              <RangeSliderThumb index={1} bg={"#0085AF"} />
-            </RangeSlider> */}
+
             <div className="checkboxes">
               <Select
                 defaultValue={

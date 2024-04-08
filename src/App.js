@@ -14,8 +14,8 @@ i18next.use(initReactI18next).init({
     uz: { translation: translationuz },
     ru: { translation: translationru },
   },
-  lng: "uz",
-  fallbackLng: "uz",
+  lng: localStorage.getItem("i18nextLng") || "uz",
+  fallbackLng: localStorage.getItem("i18nextLng") || "uz",
 });
 
 function App() {

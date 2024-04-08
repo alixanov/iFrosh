@@ -13,21 +13,25 @@ import { useStoreState } from "../../redux/selectors";
 import homee from "../../assets/svgs/homee.svg";
 import { useNavigate } from "react-router-dom";
 import userr from "../../assets/svgs/userr.svg";
-import plas from "../../assets/svgs/plus.svg"
+import plas from "../../assets/svgs/plus.svg";
 
 const Header = ({ changeLanguage }) => {
-  const { t } = useTranslation();
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation();
   const user = useStoreState("user");
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [nbuData, setNbuData] = useState(null);
   const [currencyList, setCurrencyList] = useState([]);
-  const [flag, setFlag] = useState("uz");
+  const [flag, setFlag] = useState(language);
   const navigate = useNavigate();
 
   const Changelangheader = (e) => {
     changeLanguage(e.target.value);
     setFlag(e.target.value);
+    localStorage.setItem("i18nextLng", e.target.value);
   };
 
   const token = Cookies.get("token");
@@ -119,7 +123,7 @@ const Header = ({ changeLanguage }) => {
       {loading && <div className="loading-page"></div>}
       <header className="container">
         <div className="header-top">
-        <div className="h-left">
+          <div className="h-left">
             <Link to={"/"}>
               <img src={logo} alt="" />
             </Link>
@@ -130,12 +134,16 @@ const Header = ({ changeLanguage }) => {
           <div className="selectors">
             {flag == "uz" ? <Bayroq /> : <Rus />}
 
-            <select style={{ fontSize: "100%" }} onChange={Changelangheader}>
-              <option value="uz">
-                <p>UZ</p>
+            <select
+              style={{ fontSize: "100%" }}
+              onChange={Changelangheader}
+              value={flag === "uz" ? "uz" : "ru"}
+            >
+              <option value="uz" selected={flag === "uz"}>
+                UZ
               </option>
-              <option value="ru">
-                <p>RU</p>
+              <option value="ru" selected={flag === "ru"}>
+                RU
               </option>
             </select>
 
@@ -163,13 +171,10 @@ const Header = ({ changeLanguage }) => {
             <select
               style={{ fontSize: "100%", fontWeight: "bold" }}
               onChange={Changelangheader}
+              value={language}
             >
-              <option value="uz">
-                <p>UZ</p>
-              </option>
-              <option value="ru">
-                <p>RU</p>
-              </option>
+              <option value="uz">UZ</option>
+              <option value="ru">RU</option>
             </select>
 
             <select onChange={handleCurrencyChange} value={user?.currency?.id}>
@@ -191,15 +196,15 @@ const Header = ({ changeLanguage }) => {
       <div className="mobilpage">
         <button onClick={() => navigate("/")}>
           <img src={homee} alt="" />
-          <span>Asosiy menu</span>
+          <span>{t("main")}</span>
         </button>
         <button onClick={() => navigate("/announcement/create")}>
           <img src={plas} alt="" />
-          <span>E'lon joylash</span>
+          <span>{t("create_announcement")}</span>
         </button>
         <button onClick={() => navigate("/profile")}>
-          <img  id="user" src={userr} alt="" />
-          <span id="kabinet">shaxsiy kobinet</span>
+          <img id="user" src={userr} alt="" />
+          <span id="kabinet">{t("cabinet")}</span>
         </button>
       </div>
     </div>

@@ -32,7 +32,6 @@ const translationru = {
   kodkelmadi: "Код не пришел ?",
   qaytayuborish: "Повторная отправка",
   yuborish: "Отправить",
-  yuborish: "Отправить",
   siz: "Вы успешно  вошли в систему!",
   bosh: "Главное меню",
 
@@ -80,6 +79,11 @@ const translationru = {
   rent_out: "Сдать в аренду",
   sell: "Продажа",
   select_month: "Выберите месяц",
+  delete_announcement: "Удалить объявление",
+  delete_announcement_text: "По какой причине вы хотите удалить объявление?",
+  delete_announcement_reasons:
+    "Продано., Я передумал., С {{date}} никто не связывался., Другое:",
+  delete_announcement_reason: "Запишите причину...",
   month: "Месяц",
   general_info: "Общая информация",
   extra_info: "Дополнительная информация",
@@ -157,11 +161,9 @@ const translationru = {
   Quyidagi: "Следующие файлы имеют размер более 10 МБ:",
   have_not_account: "У вас нет аккаунта?",
   create_account: "Создать аккаунт",
-  write:"Запись",
-  Nothingfound:"Ничего не найдено",
-  Selectthemonth:"Выберите месяц"
-
-
+  write: "Запись",
+  Nothingfound: "Ничего не найдено",
+  kodini: "Введите код подтверждения",
 };
 
 export default translationru;

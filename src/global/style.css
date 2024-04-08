@@ -224,6 +224,9 @@ a {
   }
 }
 @media (max-width: 470px) {
+  .app-container {
+    padding-bottom: 60px;
+  }
   .container {
     padding: 0 16px;
   }

@@ -29,7 +29,6 @@
 }
 .active-favorite {
   fill: #ff4b55;
-
 }
 .card .card-top .swiper-slide img {
   width: 100%;
@@ -97,6 +96,13 @@
 .card .card-body .row-info {
   display: flex;
   align-items: center;
+}
+
+.card .card-body .address {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
 }
 
 .card .card-body .row-info p:nth-child(2) {
