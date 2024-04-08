@@ -198,7 +198,7 @@ const Header = ({ changeLanguage }) => {
           <img src={homee} alt="" />
           <span>{t("main")}</span>
         </button>
-        <button onClick={() => navigate("/announcement/create")}>
+        <button onClick={() => user?.id ? navigate("/announcement/create") : navigate('/auth')}>
           <img src={plas} alt="" />
           <span>{t("create_announcement")}</span>
         </button>
