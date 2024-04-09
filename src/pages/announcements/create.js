@@ -135,7 +135,7 @@ const CreateAnnouncement = () => {
     }));
 
     if ([...imgFiles, ...arrayImages].length > 10) {
-      toast.error("10 tadan ko'p rasmlar tanlash mumkin emas!");
+      toast.error(t("max_img_length"));
       return;
     }
     seTimgFiles((files) => {
@@ -305,10 +305,7 @@ const CreateAnnouncement = () => {
                 aria-hidden
                 onClick={
                   imgFiles.length === 10
-                    ? () =>
-                        toast.error(
-                          "10 tadan ko'p rasmlar tanlash mumkin emas!"
-                        )
+                    ? () => toast.error(t("max_img_length"))
                     : null
                 }
               >
@@ -401,6 +398,30 @@ const CreateAnnouncement = () => {
               ]}
               control={control}
               required
+              defaultValue={
+                [
+                  {
+                    value: "apartment",
+                    label: t("flat"),
+                  },
+                  {
+                    value: "home",
+                    label: t("home"),
+                  },
+                  {
+                    value: "dry land",
+                    label: t("quruq"),
+                  },
+                  {
+                    value: "business place",
+                    label: t("business_place"),
+                  },
+                  {
+                    value: "skyscraper",
+                    label: t("majmuo"),
+                  },
+                ].find((item) => item.value === watch("place_type"))?.label
+              }
             />
             <Select
               error={errors["repair_type"]}
@@ -422,9 +443,24 @@ const CreateAnnouncement = () => {
               ]}
               control={control}
               required
+              defaultValue={
+                [
+                  {
+                    value: "bad",
+                    label: t("bad"),
+                  },
+                  {
+                    value: "good",
+                    label: t("norm"),
+                  },
+                  {
+                    value: "new",
+                    label: t("good"),
+                  },
+                ].find((item) => item.value === watch("repair_type"))?.label
+              }
             />
             <Select
-              defaultOpened
               error={errors["sale_type"]}
               name={"sale_type"}
               label={t("select_type_sale")}
@@ -433,15 +469,20 @@ const CreateAnnouncement = () => {
                   value: "sale",
                   label: t("sell"),
                 },
-                place_type !== "skyscraper"
-                  ? {
-                      value: "rent",
-                      label: t("rent_out"),
-                    }
-                  : null,
+
+                {
+                  value: "rent",
+                  label: t("rent_out"),
+                },
               ].filter(Boolean)}
               control={control}
               required
+              defaultValue={
+                [
+                  { value: "sale", label: t("sell") },
+                  { value: "rent", label: t("rent_out") },
+                ].find((item) => item.value === watch("sale_type"))?.label
+              }
             />
           </div>
         </div>

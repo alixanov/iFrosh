@@ -78,7 +78,8 @@ const translationuz = {
   select_month: "Oyni tanlash",
   delete_announcement: "E'lonni o'chirish",
   delete_announcement_text: "Nima sababdan e’lonni o’chirmoqchisiz?",
-  delete_announcement_reasons: "Uy sotildi., Fikrimdan qaytdim., {{date}} vaqtdan beri hech kim bog'lanmadi., Boshqa sabab:",
+  delete_announcement_reasons:
+    "Uy sotildi., Fikrimdan qaytdim., {{date}} vaqtdan beri hech kim bog'lanmadi., Boshqa sabab:",
   delete_announcement_reason: "Sababini yozing...",
   month: "Oy",
   general_info: "Umumiy ma'lumot",
@@ -169,6 +170,7 @@ const translationuz = {
   create_account: "Hisob ochish",
   write: "Yozib kiritish",
   Nothingfound: "Hech narsa topilmadi",
+  max_img_length: "Maksimal rasm soni 10",
 };
 
 export default translationuz;

@@ -6,7 +6,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
-import { Eye, Pen, Reload, Star } from "../../assets/svgs";
+import { Close, Eye, Pen, Reload, Star } from "../../assets/svgs";
 import { useStoreState } from "../../redux/selectors";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
@@ -170,6 +170,21 @@ export const Card = ({ item, editable = false }) => {
       {/* status pending overlay */}
       {!item?.is_active ? (
         overlay
+      ) : item?.is_rejected ? (
+        <div className="overlay pending-status">
+          <Close />
+          <p
+            style={{
+              padding: "0 10px",
+              color: "red",
+              backgroundColor: "white",
+              borderRadius: "5px",
+              marginTop: "10px",
+            }}
+          >
+            {item?.rejection_reason}
+          </p>
+        </div>
       ) : editable ? (
         <Link to={`/announcement/${item?.id}/edit`} className="edit-btn">
           <Pen />

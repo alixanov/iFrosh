@@ -164,6 +164,7 @@ const translationru = {
   write: "Запись",
   Nothingfound: "Ничего не найдено",
   kodini: "Введите код подтверждения",
+  max_img_length: "Максимальное количество изображений 10",
 };
 
 export default translationru;

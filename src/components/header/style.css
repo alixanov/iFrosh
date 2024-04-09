@@ -65,9 +65,6 @@
   .header-bottom {
     display: none;
   }
-  .main-header {
-    height: 60px;
-  }
 }
 @media (max-width: 636px) {
   .mobilpage {
@@ -111,15 +108,11 @@
     display: none;
   }
   .main-header {
-    height: 60px;
-  }
-  .main-header {
     z-index: 6;
     background: #e7e7e7;
     box-shadow: 0px 4px 11.8px 0px rgba(0, 0, 0, 0.25);
     transition: 300ms ease;
     padding: 7px 0px;
-    height: 50px;
   }
   
 }
@@ -137,8 +130,8 @@
     gap: 169px;
   }
   .h-left img {
-    width: 32px;
-    height: 32px;
+    width: 120px;
+    height: 40px;
     object-fit: contain;
     margin-right: 10px;
   }
@@ -211,7 +204,7 @@
 
     .h-left {
       display: flex;
-      align-items: start;
+      align-items: center;
       gap: 0;
     }
   }
@@ -222,7 +215,7 @@
 
     .h-left {
       display: flex;
-      align-items: start;
+      align-items: center;
       gap: 10px !important;
     }
   }
@@ -233,7 +226,7 @@
 
     .h-left {
       display: flex;
-      align-items: start;
+      align-items: center;
       gap: 10px !important;
     }
 
@@ -255,12 +248,11 @@
   @media (max-width: 1020px) {
     .container {
       padding: 0 20px;
-      height: 60px;
     }
 
     .h-left {
       display: flex;
-      align-items: start;
+      align-items: center;
       gap: 20px !important;
     }
 
@@ -285,12 +277,11 @@
   @media (max-width: 900px) {
     .container {
       padding: 0;
-      height: 60px;
     }
 
     .h-left {
       display: flex;
-      align-items: start;
+      align-items: center;
       gap: 20px !important;
     }
     .h-left > a > p {
@@ -318,12 +309,11 @@
   @media (max-width: 820px) {
     .container {
       padding: 0 20px;
-      height: 60px;
     }
 
     .h-left {
       display: flex;
-      align-items: start;
+      align-items: center;
       gap: 20px !important;
     }
     .h-left > a > p {
@@ -350,7 +340,6 @@
     .container {
       display: flex;
       flex-direction: column;
-      height: 60px !important;
     }
     .header-top {
       display: flex;
@@ -394,8 +383,6 @@
         font-weight: 400;
       }
       .container {
-        /* background: #0085af; */
-        height: 74px !important;
         padding: 0 10px;
         justify-content: start;
         gap: 5px;
@@ -419,8 +406,6 @@
         font-weight: 400;
       }
       .container {
-        /* background: #0085af; */
-        height: 74px !important;
         padding: 0 10px;
         justify-content: start;
         gap: 5px;
@@ -450,8 +435,6 @@
         font-weight: 400;
       }
       .container {
-        /* background: #0085af; */
-        height: 74px !important;
         padding: 0 10px;
         justify-content: start;
         gap: 5px;

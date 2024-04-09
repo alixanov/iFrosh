@@ -8,7 +8,7 @@ import { ReactComponent as Bayroq } from "assets/svgs/flagUz.svg";
 import { ReactComponent as Rus } from "assets/svgs/rus.svg";
 import { setUser } from "../../redux/user";
 import "./style.css";
-import logo from "../../assets/images/placemark.png";
+import logo from "../../assets/svgs/logo.svg";
 import { useStoreState } from "../../redux/selectors";
 import homee from "../../assets/svgs/homee.svg";
 import { useNavigate } from "react-router-dom";
@@ -116,8 +116,6 @@ const Header = ({ changeLanguage }) => {
       .catch((err) => console.log(err));
   };
 
-  let www = window.innerWidth;
-
   return (
     <div className="main-header">
       {loading && <div className="loading-page"></div>}
@@ -137,12 +135,12 @@ const Header = ({ changeLanguage }) => {
             <select
               style={{ fontSize: "100%" }}
               onChange={Changelangheader}
-              value={flag === "uz" ? "uz" : "ru"}
+              value={language}
             >
-              <option value="uz" selected={flag === "uz"}>
+              <option value="uz">
                 UZ
               </option>
-              <option value="ru" selected={flag === "ru"}>
+              <option value="ru">
                 RU
               </option>
             </select>

@@ -154,7 +154,7 @@ const UpdateAnnouncement = () => {
     }));
 
     if ([...imgFiles, ...arrayImages].length > 10) {
-      toast.error("10 tadan ko'p rasmlar tanlash mumkin emas!");
+      toast.error(t("max_img_length"));
       return;
     }
     seTimgFiles((files) => {
@@ -183,8 +183,8 @@ const UpdateAnnouncement = () => {
           sale_type: data?.result?.announcement?.sale_type,
           advance: data?.result?.announcement?.advance,
           bargain: data?.result?.announcement?.bargain,
-          advance_month: data?.result?.announcement?.advance_month,
-          room_floor: data?.result?.announcement?.room_floor,
+          advance_month: data?.result?.announcement?.advance_month || "0",
+          room_floor: data?.result?.announcement?.room_floor || "1",
           room_count: data?.result?.announcement?.room_count,
           construction_year: data?.result?.announcement?.construction_year,
           address: data?.result?.announcement?.address,
@@ -254,8 +254,8 @@ const UpdateAnnouncement = () => {
       sale_type: "",
       advance: "0",
       bargain: "",
-      advance_month: "",
-      room_floor: "",
+      advance_month: "0",
+      room_floor: "1",
       room_count: "",
       construction_year: "",
       address: "",
@@ -513,10 +513,7 @@ const UpdateAnnouncement = () => {
                 aria-hidden
                 onClick={
                   imgFiles.length === 10
-                    ? () =>
-                        toast.error(
-                          "10 tadan ko'p rasmlar tanlash mumkin emas!"
-                        )
+                    ? () => toast.error(t("max_img_length"))
                     : null
                 }
               >
@@ -620,11 +617,17 @@ const UpdateAnnouncement = () => {
                   ].find((item) => item.value === defaultValues?.repair_type)
                     .label
                 }
+                onSelect={(value) => {
+                  console.log(value);
+                  setDefaultValues((prev) => ({
+                    ...prev,
+                    repair_type: value,
+                  }));
+                }}
               />
             ) : null}
             {defaultValues?.sale_type ? (
               <Select
-                defaultOpened
                 error={errors["sale_type"]}
                 name={"sale_type"}
                 label={t("select_type_sale")}
@@ -655,6 +658,12 @@ const UpdateAnnouncement = () => {
                   ].find((item) => item.value === defaultValues?.sale_type)
                     ?.label
                 }
+                onSelect={(value) => {
+                  setDefaultValues((prev) => ({
+                    ...prev,
+                    sale_type: value,
+                  }));
+                }}
               />
             ) : null}
           </div>
@@ -739,7 +748,7 @@ const UpdateAnnouncement = () => {
                         },
                       ]}
                       control={control}
-                      defaultValue={defaultValues?.advance_month}
+                      defaultValue={defaultValues?.advance_month || "0"}
                     />
                   ) : null}
                 </>

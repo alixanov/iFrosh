@@ -225,6 +225,7 @@
   .more-infos ul .comment {
     font-size: 33.65px;
     line-height: 50px;
+    line-break: anywhere;
   }
   .more-infos ul li {
     display: flex;
