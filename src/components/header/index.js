@@ -8,7 +8,7 @@ import { ReactComponent as Bayroq } from "assets/svgs/flagUz.svg";
 import { ReactComponent as Rus } from "assets/svgs/rus.svg";
 import { setUser } from "../../redux/user";
 import "./style.css";
-import logo from "../../assets/svgs/logo.svg";
+import logo from "../../assets/images/logo.png";
 import { useStoreState } from "../../redux/selectors";
 import homee from "../../assets/svgs/homee.svg";
 import { useNavigate } from "react-router-dom";
