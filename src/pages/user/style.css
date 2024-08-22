@@ -11,9 +11,11 @@
   flex-direction: column;
   align-items: flex-start;
 }
+
 [role="dialog"] {
   border: none !important;
 }
+
 .personright {
   display: flex;
   flex-direction: column;
@@ -22,6 +24,7 @@
   position: sticky;
   top: 60px;
 }
+
 .personright button {
   width: 100%;
   height: 64px;
@@ -41,9 +44,11 @@
   line-height: normal;
   border: 3px solid #fff;
 }
+
 .personright button.active {
   border-color: #3498db;
 }
+
 /* person page start */
 .person {
   /* width: 1184px;
@@ -86,6 +91,7 @@
   padding: 65px 45px;
   gap: 30px;
 }
+
 .user-img {
   width: 210px;
   height: 210px;
@@ -101,11 +107,13 @@
   font-family: Poppins;
   text-transform: uppercase;
 }
+
 .p-text-info {
   display: flex;
   flex-direction: column;
 }
-.p-text-info > p {
+
+.p-text-info>p {
   color: #5d6661;
   font-size: 50px;
   font-style: normal;
@@ -120,14 +128,15 @@
   max-width: 600px;
 }
 
-.p-text-info > span {
+.p-text-info>span {
   color: #5d6661;
   font-size: 22.65px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
-.p-text-info > b {
+
+.p-text-info>b {
   color: #5d6661;
   font-family: Poppins;
   font-size: 36.65px;
@@ -135,6 +144,7 @@
   font-weight: 400;
   line-height: normal;
 }
+
 .p-right {
   width: 100%;
   padding: 10px;
@@ -142,14 +152,15 @@
   align-items: center;
   justify-content: center;
 }
-.p-right > span {
+
+.p-right>span {
   color: #5d6661;
   text-align: center;
   font-size: 28px;
   font-weight: 400;
 }
 
-.p-left > form {
+.p-left>form {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -157,7 +168,8 @@
   gap: 27px;
   padding: 33px;
 }
-.p-left > form > label {
+
+.p-left>form>label {
   width: 100%;
   display: flex;
   align-items: center;
@@ -170,7 +182,7 @@
   gap: 20px;
 }
 
-.p-left > form > button {
+.p-left>form>button {
   padding: 8px 54px;
   align-items: center;
   gap: 23px;
@@ -184,10 +196,11 @@
   font-weight: 400;
   line-height: normal;
 }
-form > label > input,
-.p-left > form > label > select,
-.p-left > form > label > div > select,
-.p-left > form > label > div > input {
+
+form>label>input,
+.p-left>form>label>select,
+.p-left>form>label>div>select,
+.p-left>form>label>div>input {
   width: 416px;
   height: 64px;
   flex-shrink: 0;
@@ -203,11 +216,11 @@ form > label > input,
   line-height: normal;
 }
 
-.p-left > form > label > select > option {
+.p-left>form>label>select>option {
   color: #5d6661;
 }
 
-.p-left > form > label > div {
+.p-left>form>label>div {
   width: 416px;
   display: flex;
   justify-content: space-between;
@@ -215,15 +228,16 @@ form > label > input,
   gap: 12px;
 }
 
-.p-left > form > label > div > select {
+.p-left>form>label>div>select {
   width: 35%;
 }
 
-.p-left > form > label > div > input {
+.p-left>form>label>div>input {
   width: 33%;
 }
-.p-left > form > label > div > input:nth-child(2),
-.p-left > form > label > div > input:last-child {
+
+.p-left>form>label>div>input:nth-child(2),
+.p-left>form>label>div>input:last-child {
   width: 30%;
 }
 
@@ -246,6 +260,19 @@ form > label > input,
 .noProfileInfo a {
   color: dodgerblue;
   font-size: 30px;
+}
+
+@media (max-width: 500px) {
+  .noProfileInfo>p {
+    font-size: 23px;
+  }
+
+  .noProfileInfo>a {
+    font-size: 20px;
+  }
+  .noProfileInfo > img{
+    width: 50%;
+  }
 }
 
 .cards-container {
@@ -281,20 +308,22 @@ form > label > input,
   border-radius: 16px;
 }
 
-.payme > p {
+.payme>p {
   color: #5d6661;
   font-size: 55.9px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
+
 .payme-click {
   display: flex;
   align-items: center;
   gap: 71px;
   padding: 25px 0 56px 0;
 }
-.payme-click > button {
+
+.payme-click>button {
   width: 416px;
   height: 199px;
   background: none;
@@ -305,11 +334,13 @@ form > label > input,
   align-items: center;
   justify-content: center;
 }
+
 .payme-click button.active-type,
-.payme-click > button:hover {
+.payme-click>button:hover {
   border: 3px solid #3498db;
 }
-.payme > label {
+
+.payme>label {
   display: flex;
   align-items: center;
   color: #5d6661;
@@ -320,7 +351,8 @@ form > label > input,
   line-height: normal;
   padding-top: 14px;
 }
-.payme > label > input {
+
+.payme>label>input {
   width: 295px;
   height: 88px;
   flex-shrink: 0;
@@ -357,22 +389,27 @@ form > label > input,
   padding: 0px 30px;
   gap: 30px;
 }
+
 .my-adds .card {
   width: 280px;
 }
+
 /* payme page end */
 
 @media (max-width: 1870px) {
   .person {
     width: 100%;
   }
+
   div.container.person {
     padding: 0 50px;
   }
+
   .p-left {
     width: 900px;
     border-right: none;
   }
+
   .p-left::after,
   .p-right {
     display: none;
@@ -383,24 +420,30 @@ form > label > input,
   .payme-click button {
     width: 45%;
   }
+
   .payme-click button img {
     width: 85%;
   }
+
   .payme p {
     font-size: 40px;
   }
-  .p-left > form > label > div {
+
+  .p-left>form>label>div {
     flex-direction: column;
   }
-  .p-left > form > label > div > input,
-  .p-left > form > label > div > select {
+
+  .p-left>form>label>div>input,
+  .p-left>form>label>div>select {
     width: 100% !important;
   }
 }
+
 @media (max-width: 1500px) {
   .p-left {
     width: 800px;
   }
+
   .person,
   .p-left {
     height: auto;
@@ -411,31 +454,39 @@ form > label > input,
   div.container.person {
     width: 80%;
   }
+
   .payme-click button {
     height: 130px;
   }
+
   .payme-click button img {
     width: 70%;
   }
 }
+
 @media (max-width: 1350px) {
   .p-left {
     width: 100%;
   }
+
   .user-img {
     width: 150px;
     height: 150px;
   }
+
   .p-text-info p {
     font-size: 44px;
   }
+
   .p-text-info b {
     font-size: 30px;
   }
+
   @scope (.p-left) {
     form label p {
       font-size: 30px;
     }
+
     form button,
     form label input {
       width: 60% !important;
@@ -449,25 +500,31 @@ form > label > input,
     width: 270px;
   }
 }
+
 @media (max-width: 1200px) {
   .p-text-info p {
     font-size: 38px;
   }
+
   .p-text-info b {
     font-size: 26px;
   }
+
   .payme label,
   .payme label input,
   .payme p {
     font-size: 28px;
   }
+
   .payme label input {
     width: 150px;
     height: 80px;
   }
+
   .payme-click button {
     height: 100px;
   }
+
   .payme :nth-child(5) {
     padding: 8px 30px;
     margin-top: 40px;
@@ -479,31 +536,39 @@ form > label > input,
   .my-adds {
     justify-content: center;
   }
+
   .my-adds .card {
     width: 330px;
   }
 }
+
 @media (max-width: 1100px) {
   .p-left-top {
     padding: 45px;
   }
+
   .p-left form {
     padding: 45px;
   }
+
   .p-left form label p,
   .p-left form label input {
     font-size: 24px !important;
   }
+
   .user-img {
     width: 100px;
     height: 100px;
   }
+
   .p-text-info p {
     font-size: 28px;
   }
+
   .p-text-info span {
     font-size: 18px;
   }
+
   .p-text-info b {
     font-size: 22px;
   }
@@ -513,6 +578,7 @@ form > label > input,
   .person {
     width: 95%;
   }
+
   .p-left form button {
     padding: 8px 30px;
   }
@@ -522,9 +588,10 @@ form > label > input,
   .personinfo {
     position: relative;
   }
+
   .personright {
-    min-width: 60px;
-    min-height: 60px;
+    min-width: 45px;
+    min-height: 45px;
 
     position: absolute;
     top: 20px;
@@ -536,32 +603,34 @@ form > label > input,
     padding: 20px;
     z-index: 50;
   }
+
   .personright::before {
     content: "";
     display: inline-block;
     vertical-align: middle;
     position: absolute;
-    top: 12px;
-    right: 15px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>')
-      no-repeat center center;
-    width: 30px;
-    height: 30px;
+    top: 10px;
+    right: 10px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>') no-repeat center center;
+    width: 22px;
+    height: 22px;
     fill: black;
   }
+
   .personright {
     cursor: pointer;
   }
 
-  .personright > button {
+  .personright>button {
     display: none;
   }
+
   .personright.active {
     padding-top: 50px;
     z-index: 4;
   }
 
-  .personright.active > button {
+  .personright.active>button {
     display: flex;
   }
 
@@ -571,17 +640,22 @@ form > label > input,
   .person {
     width: 800px;
   }
+
   .personinfo .cards-container {
     justify-content: center;
   }
+
   .my-adds {
     padding: 0;
   }
+
   .my-adds .card {
     width: 280px;
   }
 }
+
 @media (max-width: 860px) {
+
   div.container.person,
   .personleft,
   .person-left,
@@ -589,7 +663,9 @@ form > label > input,
     width: 700px;
   }
 }
+
 @media (max-width: 860px) {
+
   div.container.person,
   .personleft,
   .person-left,
@@ -597,7 +673,9 @@ form > label > input,
     width: 700px;
   }
 }
+
 @media (max-width: 730px) {
+
   div.container.person,
   .personleft,
   .person-left,
@@ -605,7 +683,9 @@ form > label > input,
     width: 600px;
   }
 }
+
 @media (max-width: 630px) {
+
   div.container.person,
   .personleft,
   .person-left,
@@ -616,7 +696,8 @@ form > label > input,
   .p-left form label p {
     font-size: 18px !important;
   }
-  .p-left > form > button {
+
+  .p-left>form>button {
     margin: 15px auto 0;
     font-size: 20px !important;
     gap: 0;
@@ -624,16 +705,20 @@ form > label > input,
     display: flex;
     justify-content: center;
   }
+
   .p-left form label input {
     width: 130px !important;
     height: 50px;
     font-size: 18px !important;
   }
-  label > select {
+
+  label>select {
     width: 320px !important;
   }
 }
+
 @media (max-width: 530px) {
+
   div.container.person,
   .personleft,
   .person-left,
@@ -644,7 +729,8 @@ form > label > input,
   .p-left form label p {
     font-size: 18px !important;
   }
-  .p-left > form > button {
+
+  .p-left>form>button {
     margin: 13px auto 0;
     font-size: 20px !important;
     gap: 0;
@@ -652,33 +738,39 @@ form > label > input,
     display: flex;
     justify-content: center;
   }
+
   .p-left form label input {
     width: 100px !important;
     height: 50px;
     font-size: 18px !important;
   }
-  label > select {
+
+  label>select {
     width: 220px !important;
   }
-  form > label > input,
-  .p-left > form > label > select,
-  .p-left > form > label > div > select,
-  .p-left > form > label > div > input,
+
+  form>label>input,
+  .p-left>form>label>select,
+  .p-left>form>label>div>select,
+  .p-left>form>label>div>input,
   .p-left form label input,
-  .p-left > form > label > div > input,
-  .p-left > form > label > div > select {
-    width: 220px !important;
+  .p-left>form>label>div>input,
+  .p-left>form>label>div>select {
+    /* width: 220px !important; */
     height: 64px !important;
     font-size: 14px;
   }
 }
+
 @media (max-width: 400px) {
+
   div.container.person,
   .personleft,
   .person-left,
   .person {
     width: 350px;
   }
+
   form {
     padding: 5px !important;
   }
@@ -686,7 +778,8 @@ form > label > input,
   .p-left form label p {
     font-size: 18px !important;
   }
-  .p-left > form > button {
+
+  .p-left>form>button {
     margin: 13px auto 0;
     font-size: 20px !important;
     gap: 0;
@@ -694,87 +787,104 @@ form > label > input,
     display: flex;
     justify-content: center;
   }
+
   .p-left form label input {
     width: 100px !important;
     height: 30px;
     font-size: 18px !important;
   }
-  label > select {
+
+  label>select {
     width: 220px !important;
     height: 30px !important;
   }
-  form > label > input,
-  .p-left > form > label > select,
-  .p-left > form > label > div > select,
-  .p-left > form > label > div > input,
+
+  form>label>input,
+  .p-left>form>label>select,
+  .p-left>form>label>div>select,
+  .p-left>form>label>div>input,
   .p-left form label input,
-  .p-left > form > label > div > input,
-  .p-left > form > label > div > select {
-    width: 220px !important;
+  .p-left>form>label>div>input,
+  .p-left>form>label>div>select {
+    /* width: 220px !important; */
     height: 64px !important;
     font-size: 14px;
   }
 }
 
 @media (max-width: 380px) {
-  .p-left > form > label {
+  .p-left>form>label {
     flex-direction: column;
   }
-  form > label > input,
-  .p-left > form > label > select,
-  .p-left > form > label > div > select,
-  .p-left > form > label > div > input,
+
+  form>label>input,
+  .p-left>form>label>select,
+  .p-left>form>label>div>select,
+  .p-left>form>label>div>input,
   .p-left form label input,
-  .p-left > form > label > div > input,
-  .p-left > form > label > div > select {
-    width: 240px !important;
+  .p-left>form>label>div>input,
+  .p-left>form>label>div>select {
+    /* width: 240px !important; */
     height: 64px !important;
     font-size: 14px;
   }
+
   .personright button {
     width: 220px;
     font-size: 16px;
   }
+
   .hidden-button svg {
     width: 25px;
     height: 25px;
   }
+
   .p-left form label p {
     font-size: 16px !important;
   }
+
   .payme-click button {
     height: 50px;
   }
+
   .payme label,
   .payme p {
     font-size: 20px;
   }
+
   .payme label input {
     height: 40px;
   }
+
   .payme :nth-child(5) {
     font-size: 18px;
   }
+
   .my-adds .card {
     width: 250px;
   }
 }
+
 @media (max-width: 340px) {
   .personright button {
     width: 180px;
   }
+
   .p-left form label p {
     font-size: 14px !important;
   }
+
   .p-left form label input {
     font-size: 14px !important;
   }
 }
+
 @media only screen and (max-width: 375px) {
   .personinfo {
     grid-template-columns: 1fr;
     padding: 100px 0px 40px 0;
   }
+
   div.container.person,
   .personleft,
   .person-left,
